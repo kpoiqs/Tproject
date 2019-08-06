@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Detail QnA</title>
 </head>
 <body>
+	<h3>Detail QnA</h3>
+	<form action="q_update" method="post">
+	
+	Writer : ${q.writer }<br/>
+	Subject : ${q.subject }<br/>
+	Content : ${q.content }
+	
+	</form>
+	
+	<a href="q_list">back to list</a>
 
 </body>
 </html>

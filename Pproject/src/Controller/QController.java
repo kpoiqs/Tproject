@@ -50,6 +50,7 @@ public class QController extends HttpServlet {
 			System.out.println(result);
 			
 			resp.sendRedirect("q_list");
+			
 		}else if(action.equals("q_list")) {
 			
 			QnaDAO dao = new QnaDAOImpl();
