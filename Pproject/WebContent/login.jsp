@@ -9,11 +9,11 @@
 <body>
 	
 	<form action="login" method ="post">
-		<input type="text" placeholder="ID"><br />
-		<input type="password" placeholder="Password">
+		<input type="text" placeholder="ID" name="id"><br />
+		<input type="password" placeholder="Password" name="password">
 	<button type="submit">login</button><br />
 	</form>
-		${message}
+	${message}<br />
 		<button>sign up</button>
 		<button>find id</button>
 </body>
