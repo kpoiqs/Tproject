@@ -23,13 +23,15 @@
 			<c:forEach var="qq" items="${q}">
 					<tr>
 						<td>${qq.no}</td>
-						<td>${qq.subject}</td>
+						<td><a href="q_detail?no=${qq.no}">${qq.subject}</td>
 						<td>${qq.writer}</td>
-						<td>${qq.date}</td>
+						<td>${qq.wdate}</td>
 						<!-- <td><a href="memo_detail?memoid=${memo.memoid}">상세보기</a></td> -->
 					</tr>
 			</c:forEach>
 			</table> 	
 			</c:if>
+			
+			<a href="q_form.jsp">write</a>
 </body>
 </html>

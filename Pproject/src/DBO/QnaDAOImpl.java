@@ -17,6 +17,9 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	private static final String Q_SELECTALL_SQL
 	="select * from q order by no desc";
 	
+	private static final String Q_SELECTBYNO_SQL
+	="select * from q where no = ?";
+	
 	@Override
 	public List<Qna> selectall() {
 		List<Qna> qna = new ArrayList<Qna>();
@@ -35,7 +38,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				q.setNo(resultSet.getInt("no"));
 				q.setSubject(resultSet.getString("subject"));
 				q.setWriter(resultSet.getString("writer"));
-				q.setWdate(resultSet.getInt("wdate"));
+				q.setWdate(resultSet.getString("wdate"));
 				
 				qna.add(q);
 			}
@@ -56,9 +59,32 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 
 	@Override
 	public Qna selectByNo(int no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Qna qna = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(Q_SELECTBYNO_SQL);
+			preparedStatement.setInt(1, no);
+			resultSet = preparedStatement.executeQuery();
+		if(resultSet.next()) {
+			qna = new Qna();
+			
+			qna.setNo(resultSet.getInt("no"));
+			qna.setWriter(resultSet.getString("writer"));
+			qna.setSubject(resultSet.getString("subject"));
+			qna.setContent(resultSet.getString("content"));
+		}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			CloseDBObjects(resultSet, preparedStatement, connection);
+		}
+		return qna;
+		}
 
 	@Override
 	public boolean insert(Qna qna) {

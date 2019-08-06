@@ -14,7 +14,7 @@ import DBO.QnaDAO;
 import DBO.QnaDAOImpl;
 import Model.Qna;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -49,7 +49,7 @@ public class QController extends HttpServlet {
 			boolean result = dao.insert(qna);
 			System.out.println(result);
 			
-			resp.sendRedirect("q_list");;
+			resp.sendRedirect("q_list");
 		}else if(action.equals("q_list")) {
 			
 			QnaDAO dao = new QnaDAOImpl();
@@ -57,6 +57,20 @@ public class QController extends HttpServlet {
 			req.setAttribute("q", qList);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/q_list.jsp");//출력할 페이지로 이동
+			rd.forward(req, resp);
+			
+		}else if(action.equals("q_detail")) {
+			
+			int no = Integer.parseInt(req.getParameter("no"));
+			
+			QnaDAO dao = new QnaDAOImpl();
+			Qna qna = dao.selectByNo(no);
+			
+			System.out.println(qna);
+			
+			req.setAttribute("q", qna);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/q_detail.jsp");//출력할 페이지로 이동
 			rd.forward(req, resp);
 			
 		}
