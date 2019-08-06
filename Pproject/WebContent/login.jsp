@@ -7,10 +7,14 @@
 <title>login</title>
 </head>
 <body>
-id<input type="text"><br />
-pwd<input type="text">
-<button>login</button><br />
-<button>sign up</button>
-<button>find id</button>
+	
+	<form action="login" method ="post">
+		<input type="text" placeholder="ID"><br />
+		<input type="password" placeholder="Password">
+	<button type="submit">login</button><br />
+	</form>
+		${message}
+		<button>sign up</button>
+		<button>find id</button>
 </body>
 </html>
