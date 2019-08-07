@@ -26,6 +26,9 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	private static final String Q_UPDATE_SQL
 	="update qna set content=? where no=?";
 	
+	private static final String Q_PAGE_SQL
+	="select * from (select rownum rn, q.* from (select * from qna order by no desc) q) where rn BETWEEN ? and ?";
+	
 	@Override
 	public List<Qna> selectall() {
 		List<Qna> qna = new ArrayList<Qna>();
@@ -167,5 +170,41 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			}			
 		return result;
 	}
+
+	@Override
+	public List<Qna> selectAll(int rowStartNumber, int rowEndNumber) {
+		List<Qna> qna = new ArrayList<Qna>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(Q_PAGE_SQL);
+			preparedStatement.setInt(1, rowStartNumber);
+			preparedStatement.setInt(2, rowEndNumber);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				Qna q = new Qna();
+				q.setNo(resultSet.getInt("no"));
+				q.setSubject(resultSet.getString("subject"));
+				q.setContent(resultSet.getString("content"));
+				q.setWriter(resultSet.getString("writer"));
+				q.setWdate(resultSet.getString("wdate"));
+				
+			
+				qna.add(q);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			CloseDBObjects(resultSet, preparedStatement,connection);
+		}
+		
+		return qna;
+	}	
 
 }

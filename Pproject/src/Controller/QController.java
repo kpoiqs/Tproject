@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import DBO.QnaDAO;
 import DBO.QnaDAOImpl;
 import Model.Qna;
+import page.PageManager;
+import page.PageSQL;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -93,6 +95,21 @@ public class QController extends HttpServlet {
 			dao.update(qna);
 		
 			RequestDispatcher rd = req.getRequestDispatcher("q_list");//출력할 페이지로 이동
+			rd.forward(req, resp);
+			
+		}else if(action.equals("q_req_list")) {
+			
+			int requestPage = Integer.parseInt(req.getParameter("reqPage"));
+			PageManager pm = new PageManager(requestPage);
+			
+			QnaDAO dao = new QnaDAOImpl();
+			List<Qna> qList = dao.selectAll(pm.getPageRowResult().getRowStartNumber(),pm.getPageRowResult().getRowEndNumber());
+			
+			req.setAttribute("q", qList);//memoList화면으로 보내고자하는거 .  memos는 맘대로
+			
+			req.setAttribute("pageGroupResult", pm.getPageGroupResult(PageSQL.QNA_SELECT_ALL_COUNT));
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/q_list.jsp");//출력할 페이지로 이동
 			rd.forward(req, resp);
 			
 		}
