@@ -14,23 +14,23 @@ import DBO.CDAO;
 import DBO.CDAOIMPL;
 import Model.C;
 
-@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout"})
+@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/checkid" ,"/find"})
 public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		process(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		process(req, resp);
 	}
 
 	private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String uri = req.getRequestURI();
 		int lastIndex = uri.lastIndexOf("/");
 		String action = uri.substring(lastIndex+1);
@@ -67,6 +67,27 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);
 		}
+		else if(action.equals("join")) {
+			CDAO dao = new CDAOIMPL();
+			C c = new C();
+			
+			c.setId(req.getParameter("inputid"));
+			c.setPwd(req.getParameter("inputpassword"));
+			c.setEmail(req.getParameter("inputemail"));
+			
+			dao.insert(c);
+			
+			resp.sendRedirect("/Pproject/index.jsp");		
+		}
+		else if(action.equals("find")) {
+			String email = req.getParameter("email");
+			CDAO dao = new CDAOIMPL();
+			dao.selectByEmail(email);
+			req.setAttribute("email", email);
+			RequestDispatcher rd = req.getRequestDispatcher("/find.jsp");
+			rd.forward(req, resp);
+		}
+		
 	}
 
 }

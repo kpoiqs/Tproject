@@ -14,7 +14,7 @@
 	<button type="submit">login</button><br />
 	</form>
 	${message}<br />
-		<button>sign up</button>
-		<button>find id</button>
+	<button onclick="location.href='signup.jsp'">sign up</button>
+	<button onclick="location.href='find.jsp'">find id</button>
 </body>
 </html>
