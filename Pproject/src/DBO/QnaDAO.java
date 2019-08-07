@@ -12,7 +12,7 @@ public interface QnaDAO {
 	Qna selectByNo(int no);
 	
 	boolean insert(Qna qna);
-	boolean update(Qna qna);
+	void update(Qna qna);
 	boolean deleteByNo(int no);
 
 }

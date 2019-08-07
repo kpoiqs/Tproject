@@ -12,13 +12,19 @@ import Model.Qna;
 public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	
 	private static final String Q_INSERT_SQL
-	="insert into q values (q_seq.nextval,?,?,?,sysdate)";
+	="insert into qna values (qna_seq.nextval,?,?,?,sysdate)";
 	
 	private static final String Q_SELECTALL_SQL
-	="select * from q order by no desc";
+	="select * from qna order by no desc";
 	
 	private static final String Q_SELECTBYNO_SQL
-	="select * from q where no = ?";
+	="select * from qna where no = ?";
+	
+	private static final String Q_DELETE_SQL
+	="delete from qna where no=?";
+	
+	private static final String Q_UPDATE_SQL
+	="update qna set content=? where no=?";
 	
 	@Override
 	public List<Qna> selectall() {
@@ -113,15 +119,53 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	}
 
 	@Override
-	public boolean update(Qna qna) {
-		// TODO Auto-generated method stub
-		return false;
+	public void update(Qna qna) {
+	
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(Q_UPDATE_SQL);
+			
+			preparedStatement.setString(1, qna.getContent());
+			preparedStatement.setInt(2, qna.getNo());
+			
+			preparedStatement.executeUpdate();
+		
+			}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}			
+
 	}
 
 	@Override
 	public boolean deleteByNo(int no) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(Q_DELETE_SQL);
+			
+			preparedStatement.setInt(1, no);
+
+			int rowCount = preparedStatement.executeUpdate();
+			
+			if(rowCount>0) {
+				result = true;
+			}
+			}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}			
+		return result;
 	}
 
 }

@@ -29,9 +29,31 @@
 						<!-- <td><a href="memo_detail?memoid=${memo.memoid}">상세보기</a></td> -->
 					</tr>
 			</c:forEach>
-			</table> 	
+			</table> 
+				
+			</c:if>
+				<!-- 페이지 처리 부분 -->
+			<c:if test="${pageGroupResult.beforPage }">	
+				<a href="qna_req_list?reqPage=${pageGroupResult.groupStartNumber-1 }">&#171;</a>
 			</c:if>
 			
+			<c:forEach var="index" begin="${pageGroupResult.groupStartNumber }" end="${pageGroupResult.groupEndNumber }">
+				<c:choose>
+					<c:when test="${pageGroupResult.selectPageNumger==index}">			
+					<span id="select"><a href="qna_req_list?reqPage=${index }">${index }</a></span>
+					</c:when>
+			
+					<c:otherwise>
+					<a href="qna_req_list?reqPage=${index }">${index }</a>
+					</c:otherwise>
+				</c:choose>
+			
+			</c:forEach>
+			
+			<c:if test="${pageGroupResult.afterPage }">
+			<a href="qna_req_list?reqPage=${pageGroupResult.groupEndNumber+1 }">&#187;</a>
+			
+			</c:if>
 			<a href="q_form.jsp">write</a>
 </body>
 </html>

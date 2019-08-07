@@ -8,14 +8,17 @@
 </head>
 <body>
 	<h3>Detail QnA</h3>
-	<form action="q_update" method="post">
+	<form action="q_update?no=${q.no }" method="post">
 	
+	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>
 	Subject : ${q.subject }<br/>
-	Content : ${q.content }
-	
+	Content : <input type="text" name="content" value="${q.content }">
+	<input type="submit" value="modify">
 	</form>
 	
+	<a href="q_delete?no=${q.no }">delete</a>
+	<a href="q_input">write</a>
 	<a href="q_list">back to list</a>
 
 </body>

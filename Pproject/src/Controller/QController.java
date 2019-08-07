@@ -14,7 +14,7 @@ import DBO.QnaDAO;
 import DBO.QnaDAOImpl;
 import Model.Qna;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -45,9 +45,8 @@ public class QController extends HttpServlet {
 			qna.setSubject(req.getParameter("subject"));
 			qna.setContent(req.getParameter("content"));
 			qna.setWriter(req.getParameter("writer"));
-					
-			boolean result = dao.insert(qna);
-			System.out.println(result);
+								
+			dao.insert(qna);
 			
 			resp.sendRedirect("q_list");
 			
@@ -72,6 +71,28 @@ public class QController extends HttpServlet {
 			req.setAttribute("q", qna);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/q_detail.jsp");//출력할 페이지로 이동
+			rd.forward(req, resp);
+			
+		}else if(action.equals("q_delete")) {
+			int no = Integer.parseInt(req.getParameter("no"));
+			QnaDAO dao = new QnaDAOImpl();
+			dao.deleteByNo(no);
+			
+			req.setAttribute("q", no);
+			
+			resp.sendRedirect("q_list");
+			
+		}else if(action.equals("q_update")) {
+
+			QnaDAO dao = new QnaDAOImpl();
+			Qna qna = new Qna();
+			
+			qna.setNo(Integer.parseInt(req.getParameter("no")));
+			qna.setContent(req.getParameter("content"));
+	
+			dao.update(qna);
+		
+			RequestDispatcher rd = req.getRequestDispatcher("q_list");//출력할 페이지로 이동
 			rd.forward(req, resp);
 			
 		}
