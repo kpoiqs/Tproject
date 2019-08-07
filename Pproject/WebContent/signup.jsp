@@ -7,9 +7,11 @@
 <title>login</title>
 </head>
 <body>
+<form>
 ID<input type="text"><br />
 Password<input type="text"><br />
 Email<input type="text">
 <button>join</button>
+</form>
 </body>
 </html>

@@ -49,7 +49,7 @@ public class QController extends HttpServlet {
 			boolean result = dao.insert(qna);
 			System.out.println(result);
 			
-			resp.sendRedirect("q_list");
+			resp.sendRedirect("/q_form.jsp");
 			
 		}else if(action.equals("q_list")) {
 			
