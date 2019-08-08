@@ -43,17 +43,30 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			String from = req.getParameter("from");
 			String to = req.getParameter("to");
-			System.out.println(from);
-			System.out.println(to);
+			String fromdate = req.getParameter("fromDate");
+			String todate = req.getParameter("toDate");
 			
-			
+			if(todate != null) {
 			PlanDAO dao = new PlanDAOImpl();
 			List<plan> planlist = dao.selectname12(from,to);
 			
 			req.setAttribute("plans",planlist);
 			
+			List<plan> planlist1 = dao.selectname12(to,from);
+			
+			req.setAttribute("plan2", planlist1);
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 			rd.forward(req, resp);
+			}else if(todate == null) {
+				PlanDAO dao = new PlanDAOImpl();
+				List<plan> planlist = dao.selectname12(from,to);
+				
+				req.setAttribute("plans",planlist);
+				
+				RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
+				rd.forward(req, resp);
+			}
 		}
 		
 	}

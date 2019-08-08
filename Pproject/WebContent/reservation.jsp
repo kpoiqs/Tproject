@@ -8,14 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${plans != null}">
 		<c:forEach var="planlist" items = "${plans}">
+		<c:forEach var="planlists" items = "${plan2}">
 					<tr>
 						<td>${planlist.depa}</td>
 						<td>${planlist.arva}</td>
+						<td>${planlists.depa}</td>
+						<td>${planlists.arva}</td>
+							<hr/>
 						
 					</tr>
 		</c:forEach>
-	</c:if>
+		</c:forEach>
 </body>
 </html>
