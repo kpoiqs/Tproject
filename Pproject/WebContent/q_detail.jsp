@@ -19,7 +19,7 @@
 	
 	<a href="q_delete?no=${q.no }">delete</a>
 	<a href="q_input">write</a>
-	<a href="q_list">back to list</a>
+	<a href="#" onclick="history.back()">back to list</a>
 
 </body>
 </html>
