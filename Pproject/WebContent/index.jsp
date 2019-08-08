@@ -81,9 +81,18 @@ li{
 
 <div id = "a" >
   <h2>&nbsp;&nbsp;&nbsp;Board</h2>
-  
- 	<form action = 'login' style="text-align:right">
- 	<input type = "submit" class="btn btn-primary" value = "login"/>&nbsp;&nbsp;&nbsp;
+  	<c:choose>
+  		<c:when test="${account !=null}">
+			<form action="logout" style="text-align:right">
+			<input type = "submit" class="btn btn-primary" value = "logout"/>&nbsp;&nbsp;&nbsp;
+			</form> 	
+  		</c:when>
+  		<c:otherwise>
+  			<form action = 'login' style="text-align:right">
+ 			<input type = "submit" class="btn btn-primary" value = "login"/>&nbsp;&nbsp;&nbsp;
+ 			</form>
+  		</c:otherwise>
+  	</c:choose>
  	</form>
   </div>
     
@@ -101,13 +110,13 @@ li{
 		<select name = to>
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
-			<option value='kix'>FUK</option>
+			<option value='kix'>KIX</option>
 		</select>
 		 <input type="text" id="datepicker1"> ~ <input type="text" id="datepicker2">
 		</li></ul>
 		<input type = "submit" class="btn btn-primary" value = "reservation"/>
 		</form>
-
+		<button type="button" onclick="location.href='q_req_list?reqPage=1'">QnA</button>
 	
 		
 </body>
