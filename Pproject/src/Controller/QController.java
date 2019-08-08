@@ -82,7 +82,7 @@ public class QController extends HttpServlet {
 			
 			req.setAttribute("q", no);
 			
-			resp.sendRedirect("q_list");
+			resp.sendRedirect("q_req_list?reqPage=1");
 			
 		}else if(action.equals("q_update")) {
 
