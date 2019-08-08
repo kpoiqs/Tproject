@@ -13,7 +13,7 @@
 		<input type="password" placeholder="Password" name="password">
 	<button type="submit">login</button><br />
 	</form>
-	${message}<br />
+	
 	<button onclick="location.href='signup.jsp'">sign up</button>
 	<button onclick="location.href='find.jsp'">find id</button>
 </body>
