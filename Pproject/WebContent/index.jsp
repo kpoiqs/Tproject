@@ -95,6 +95,7 @@ li{
   	</c:choose>
  	</form>
   </div>
+   
     
     <form style="text-align: center" action = 'reservation'>
 			<input type = "radio" id = "check1" name = "check1" value = "c1" checked = "checked">return
