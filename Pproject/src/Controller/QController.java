@@ -50,7 +50,7 @@ public class QController extends HttpServlet {
 								
 			dao.insert(qna);
 			
-			resp.sendRedirect("q_list");
+			resp.sendRedirect("q_req_list?reqPage=1");
 			
 		}else if(action.equals("q_list")) {
 			
