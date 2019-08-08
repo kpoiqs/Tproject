@@ -59,15 +59,13 @@ $(function (){
 </head>
 <body>
 
-<form method="post" action="join" id="singupForm" name="joinform">
-
+<form method="post" action="join" id="singupForm">
 ID<input type="text" placeholder="Input ID" name="inputid">
-<input type="button" value="overlap" name="check" onclick="idcheck(this.form)" /><br />
+<input type="button" value="overlap" /><br />
 Password<input type="password" placeholder="Input Password" name="inputpassword" id="pwd"><br />
 Password check<input type="password" placeholder="Input Password" name="repwd"><br />
 Email<input type="email" placeholder="Input Email" name="inputemail">
 <input type="submit" value="join" />
-
 </form>
 
 </body>
