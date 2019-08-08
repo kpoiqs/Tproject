@@ -87,13 +87,13 @@ li{
  	</form>
   </div>
     
-    <form style="text-align: center" action = 'reservation'>
+    <form style="text-align: center" action = 'reservation' method = "post" >
 			<input type = "radio" id = "check1" name = "check1" value = "c1" checked = "checked">return
 			<input type = "radio" id = "check2" name = "check1" value = "c2">one way
 		<br/>
 		
 		<ul class = "a"><li>
-		<select name = from>
+		<select name = from >
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
