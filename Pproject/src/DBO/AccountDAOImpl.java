@@ -5,23 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.sun.org.apache.regexp.internal.recompile;
+import Model.Account;
 
-import Model.C;
+public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 
-public class CDAOIMPL extends BaseDAO implements CDAO{
-	
-	private static final String C_SELECT_BY_ID
-	="select * from c where id=? and pwd=?";
-	private static final String C_INSERT
-	="insert into c values(c_seq.nextval ,? ,? ,?)";
-	private static final String C_ID_CHECK
-	="select count(*) as overlap from c where id=";
-	private static final String C_FIND
-	="select * from c where email=?";
+	private static final String ACCOUNT_SELECT_BY_ID
+	="select * from account where id=? and pwd=?";
+	private static final String ACCOUNT_INSERT
+	="insert into account values(account_seq.nextval ,? ,? ,?)";
+	private static final String ACCOUNT_ID_CHECK
+	="select count(*) as overlap from account where id=";
+	private static final String ACCOUNT_FIND
+	="select id from account where email=?";
 	@Override
-	public C selectById(String id , String pwd) {
-		C c = null;
+	public Account selectById(String id, String pwd) {
+		Account account = null;
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -29,26 +27,26 @@ public class CDAOIMPL extends BaseDAO implements CDAO{
 		
 		try {
 			connection = getConnection();
-			preparedStatement = connection.prepareStatement(C_SELECT_BY_ID);
+			preparedStatement = connection.prepareStatement(ACCOUNT_SELECT_BY_ID);
 			preparedStatement.setString(1,id);
 			preparedStatement.setString(2, pwd);
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-				c = new C();
-				c.setId(resultSet.getString("id"));
-				c.setPwd(resultSet.getString("pwd"));
-				c.setEmail(resultSet.getString("email"));
+				account = new Account();
+				account.setId(resultSet.getString("id"));
+				account.setPwd(resultSet.getString("pwd"));
+				account.setEmail(resultSet.getString("email"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			CloseDBObjects(resultSet, preparedStatement, connection);
-		}return c;
+		}return account;
 	}
 
 	@Override
-	public boolean insert(C c) {
+	public boolean insert(Account account) {
 		boolean result = false;
 		
 		Connection connection = null;
@@ -56,10 +54,10 @@ public class CDAOIMPL extends BaseDAO implements CDAO{
 		
 		try {
 			connection = getConnection();
-			preparedStatement = connection.prepareStatement(C_INSERT);
-			preparedStatement.setString(1, c.getId());
-			preparedStatement.setString(2, c.getPwd());
-			preparedStatement.setString(3, c.getEmail());
+			preparedStatement = connection.prepareStatement(ACCOUNT_INSERT);
+			preparedStatement.setString(1, account.getId());
+			preparedStatement.setString(2, account.getPwd());
+			preparedStatement.setString(3, account.getEmail());
 			int rowCount = preparedStatement.executeUpdate();
 		if(rowCount>0) {
 			result = true;
@@ -81,7 +79,7 @@ public class CDAOIMPL extends BaseDAO implements CDAO{
 		ResultSet resultSet = null;
 		try {
 			connection = getConnection();
-			preparedStatement = connection.prepareStatement(C_ID_CHECK);
+			preparedStatement = connection.prepareStatement(ACCOUNT_ID_CHECK);
 			preparedStatement.setString(1, id);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -95,8 +93,8 @@ public class CDAOIMPL extends BaseDAO implements CDAO{
 	}
 
 	@Override
-	public C selectByEmail(String email) {
-		C c = null;
+	public Account selectByEmail(String email) {
+		Account account = null;
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -104,20 +102,19 @@ public class CDAOIMPL extends BaseDAO implements CDAO{
 		
 		try {
 			connection = getConnection();
-			preparedStatement = connection.prepareStatement(C_FIND);
+			preparedStatement = connection.prepareStatement(ACCOUNT_FIND);
 			preparedStatement.setString(1,email);
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-				c = new C();
-				c.setId(resultSet.getString("id"));
-				c.setEmail(resultSet.getString("email"));
+				account = new Account();
+				account.setId(resultSet.getString("id"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			CloseDBObjects(resultSet, preparedStatement, connection);
-		}return c;
+		}return account;
 	}
-}
 
+}

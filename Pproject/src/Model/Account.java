@@ -1,11 +1,10 @@
 package Model;
 
-public class C {
+public class Account {
 	private int no;
 	private String id;
 	private String pwd;
 	private String email;
-	
 	public int getNo() {
 		return no;
 	}
@@ -32,6 +31,6 @@ public class C {
 	}
 	@Override
 	public String toString() {
-		return "C [no=" + no + ", id=" + id + ", pwd=" + pwd + ", email=" + email + "]";
+		return "Account [no=" + no + ", id=" + id + ", pwd=" + pwd + ", email=" + email + "]";
 	}
 }

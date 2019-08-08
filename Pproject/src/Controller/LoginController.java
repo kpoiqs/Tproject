@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DBO.CDAO;
-import DBO.CDAOIMPL;
-import Model.C;
+import DBO.AccountDAO;
+import DBO.AccountDAOImpl;
+import Model.Account;
+
+
 
 @WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/checkid" ,"/find"})
 public class LoginController extends HttpServlet {
@@ -38,19 +40,19 @@ public class LoginController extends HttpServlet {
 		if(action.equals("login_input")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 			rd.forward(req, resp);
-		}
+			}
 		else if(action.equals("login")){
 			req.setCharacterEncoding("utf-8");
 			
 			String id = req.getParameter("id");
 			String password = req.getParameter("password");
 			
-			CDAO dao = new CDAOIMPL();
-			C c = dao.selectById(id, password);
+			AccountDAO dao = new AccountDAOImpl();
+			Account account = dao.selectById(id, password);
 			
-				if(c != null) {
+				if(account != null) {
 					HttpSession session = req.getSession();
-					session.setAttribute("c", c);
+					session.setAttribute("account", account);
 					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 					rd.forward(req, resp);
 				}
@@ -59,31 +61,32 @@ public class LoginController extends HttpServlet {
 					RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 					rd.forward(req, resp);
 				}
-		}
-		else if(action.equals("logout")) {
+			}
+			else if(action.equals("logout")) {
 			HttpSession session = req.getSession();
-			session.removeAttribute("c");
+			session.removeAttribute("account");
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);
-		}
-		else if(action.equals("join")) {
-			CDAO dao = new CDAOIMPL();
-			C c = new C();
+			}
+			else if(action.equals("join")) {
+			AccountDAO dao = new AccountDAOImpl();
+			Account account = new Account();
 			
-			c.setId(req.getParameter("inputid"));
-			c.setPwd(req.getParameter("inputpassword"));
-			c.setEmail(req.getParameter("inputemail"));
+			account.setId(req.getParameter("inputid"));
+			account.setPwd(req.getParameter("inputpassword"));
+			account.setEmail(req.getParameter("inputemail"));
 			
-			dao.insert(c);
+			dao.insert(account);
 			
 			resp.sendRedirect("/Pproject/index.jsp");		
-		}
-		else if(action.equals("find")) {
+			}
+			else if(action.equals("find")) {
 			String email = req.getParameter("email");
-			CDAO dao = new CDAOIMPL();
-			dao.selectByEmail(email);
-			req.setAttribute("email", email);
+			AccountDAO dao = new AccountDAOImpl();
+			Account account = dao.selectByEmail(email);
+			System.out.println(account);
+			req.setAttribute("account", account);
 			RequestDispatcher rd = req.getRequestDispatcher("/find.jsp");
 			rd.forward(req, resp);
 		}

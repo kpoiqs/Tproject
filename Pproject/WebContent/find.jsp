@@ -10,6 +10,6 @@
 Email <input type="text" name="email" />
 <input type="submit" value="find" /><br />
 </form>
-${email}	
+your id is : ${account.id}	
 </body>
 </html>
