@@ -101,7 +101,7 @@ li{
 		<select name = to>
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
-			<option value='kix'>FUK</option>
+			<option value='kix'>KIX</option>
 		</select>
 		 <input type="text" id="datepicker1"> ~ <input type="text" id="datepicker2">
 		</li></ul>
