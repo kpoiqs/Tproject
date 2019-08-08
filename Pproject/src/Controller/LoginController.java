@@ -16,7 +16,9 @@ import Model.Account;
 
 
 
-@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/checkid" ,"/find"})
+
+ 
+@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck"})
 public class LoginController extends HttpServlet {
 
 	@Override
@@ -89,8 +91,40 @@ public class LoginController extends HttpServlet {
 			req.setAttribute("account", account);
 			RequestDispatcher rd = req.getRequestDispatcher("/find.jsp");
 			rd.forward(req, resp);
-		}
-		
-	}
+		}else if(action.equals("idcheck")) {
+			
+			req.setCharacterEncoding("utf-8");
+			
+			AccountDAO dao = new AccountDAOImpl();
+			int count = dao.checkById(req.getParameter("inputid"));
+			
+			if(count==0) {
+				req.setAttribute("message", "The ID is available for use.");
+			}else {
+				req.setAttribute("message", "This ID cannot be used.");				
+			}
 
+			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
+			rd.forward(req, resp);	
+			
+		}
+		else if(action.equals("emailcheck")) {
+			
+			req.setCharacterEncoding("utf-8");
+			
+			AccountDAO dao = new AccountDAOImpl();
+			int count = dao.checkByemail(req.getParameter("inputemail"));
+			
+			if(count==0) {
+				req.setAttribute("email", "This is an email you can use.");
+			}else {
+				req.setAttribute("email", "This email is not available.");				
+			}
+
+			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
+			rd.forward(req, resp);	
+			
+		}
+
+	}
 }
