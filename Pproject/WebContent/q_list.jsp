@@ -1,11 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>QnA</title>
+<style>
+	
+#select {font-size: 30px;
+		font-color: red;}
+
+</style>
 </head>
 <body>
 <h3>AIR Q&A</h3>
