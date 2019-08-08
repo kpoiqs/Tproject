@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Dao.MemoDAO;
-import Dao.MemoDAOImpl;
-import model.Memo;
+import DBO.PlanDAO;
+import DBO.PlanDAOImpl;
+
+import Model.plan;
+
 
 
 @WebServlet(name="ReservationController" , urlPatterns={"/reservation"})
@@ -39,11 +41,12 @@ public class ReservationController extends HttpServlet {
 		
 		if(action.equals("reservation")) {
 			req.setCharacterEncoding("utf-8");
-			String name = req.getParameter("name");
-			MemoDAO dao = new MemoDAOImpl();
-			List<Memo> memolist = dao.selectByName(name);
+			String from = req.getParameter("from");
+			String to = req.getParameter("to");
+			PlanDAO dao = new PlanDAOImpl();
+			List<plan> planlist = dao.selectname1(from,to);
 			
-			req.setAttribute("memos",memolist);
+			req.setAttribute("plans",planlist);
 			
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
