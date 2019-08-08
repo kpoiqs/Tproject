@@ -5,6 +5,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Detail QnA</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$("#delete").click(function(){
+	var result = confirm("게시글을 삭제하시겠습니까?");
+	if(result){
+		location.href = "q_delete?no=${q.no }";
+	}
+});
+
+</script>
+
+
+
+
 </head>
 <body>
 	<h3>Detail QnA</h3>
@@ -17,7 +33,7 @@
 	<input type="submit" value="modify">
 	</form>
 	
-	<a href="q_delete?no=${q.no }">delete</a>
+	<button type="button" id="delete">delete</button></a>
 	<a href="q_input">write</a>
 	<a href="#" onclick="history.back()">back to list</a>
 
