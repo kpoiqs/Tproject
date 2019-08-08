@@ -6,5 +6,5 @@ import Model.plan;
 
 public interface PlanDAO {
 
-	List<plan> selectname1(String depa , String arva);
+	List<plan> selectname12(String depa , String arva);
 }

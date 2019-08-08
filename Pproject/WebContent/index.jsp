@@ -53,7 +53,7 @@ li{
         });
 		$("#check1").click(function(){
 			$("ul").empty();
-				var li = $("<li>").css("color" , "black").html("<select name = from> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = to><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<input type='text' id='datepicker1'> ~ <input type='text' id='datepicker2'>");
+				var li = $("<li>").css("color" , "black").html("<select name = from> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = to><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>종료일</label><input type='text' name='toDate' id='toDate'>");
 			
 				$("ul").append(li);
 				$("#datepicker1, #datepicker2").datepicker({
@@ -64,7 +64,7 @@ li{
 		});
 		$("#check2").click(function(){
 			$("ul").empty();
-			var li = $("<li>").css("color" , "black").html("<select name = from> <option value='1' selected = 'selected'>ICN</option><option value='2'>NRT</option><option value='3'>FUK</option></select>&nbsp;<select name = to><option value='1' selected = 'selected'>ICN</option><option value='2'>NRT</option><option value='3'>FUK</option></select>&nbsp; <input type='text' id='datepicker1'>");
+			var li = $("<li>").css("color" , "black").html("<select name = from> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = to><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp; <label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'>");
 			
 			$("ul").append(li);
 			$("#datepicker1, #datepicker2").datepicker({
@@ -76,6 +76,43 @@ li{
 		 
 	});
 	</script>
+	  <script>
+            $(function() {
+                
+            
+
+                
+                // 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
+                // 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
+
+                //시작일.
+                $('#fromDate').datepicker({
+                    showOn: "both",          // 버튼 이미지만 표시할지 여부
+   
+                    dateFormat: "yy-mm-dd",             // 날짜의 형식
+                    changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
+                    //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+                    onClose: function( selectedDate ) {    
+                        // 시작일(fromDate) datepicker가 닫힐때
+                        // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                        $("#toDate").datepicker( "option", "minDate", selectedDate );
+                    }                
+                });
+
+                //종료일
+                $('#toDate').datepicker({
+                    showOn: "both", 
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    //minDate: 0, // 오늘 이전 날짜 선택 불가
+                    onClose: function( selectedDate ) {
+                        // 종료일(toDate) datepicker가 닫힐때
+                        // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+                        $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+                    }                
+                });
+            });
+        </script>
 </head>
 <body>
 
@@ -93,26 +130,26 @@ li{
  			</form>
   		</c:otherwise>
   	</c:choose>
- 	</form>
   </div>
+   
     
-    <form style="text-align: center" action = 'reservation'>
+    <form style="text-align: center" action = 'reservation' method = "post" >
 			<input type = "radio" id = "check1" name = "check1" value = "c1" checked = "checked">return
 			<input type = "radio" id = "check2" name = "check1" value = "c2">one way
 		<br/>
 		
 		<ul class = "a"><li>
-		<select name = from>
+		<select name = 'from' id = 'from' >
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
 		</select>
-		<select name = to>
+		<select name = 'to' id = 'to'>
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
 		</select>
-		 <input type="text" id="datepicker1"> ~ <input type="text" id="datepicker2">
+          <label for="fromDate">시작일</label><input type="text" name="fromDate" id="fromDate"> ~ <label for="toDate">종료일</label><input type="text" name="toDate" id="toDate">
 		</li></ul>
 		<input type = "submit" class="btn btn-primary" value = "reservation"/>
 		</form>

@@ -12,8 +12,9 @@ import Model.plan;
 public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String PLAN_SQL_SELECTNAME1 = "select DEPA , ARVA , DepT, ARVT , SNO, cost From plan where depa = ? and arva = ?";
+	
 	@Override
-	public List<plan> selectname1(String depa, String arva) {
+	public List<plan> selectname12(String depa, String arva) {
 
 		List<plan> planlist = new ArrayList<plan>();
 		Connection connection = null;
@@ -27,21 +28,23 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			resultSet = preparedstatement.executeQuery();
 
 			while (resultSet.next()) {
-				plan plan = new plan();
-				plan.setDepa(resultSet.getString("depa"));
-				plan.setArva(resultSet.getString("arva"));
-				plan.setArvt(resultSet.getString("arvt"));
-				plan.setCost(resultSet.getInt("cost"));
-				plan.setDept(resultSet.getString("dept"));
-				plan.setSno(resultSet.getString("sno"));
+				plan pla = new plan();
+				pla.setArva(resultSet.getString("arva"));
+				pla.setArvt(resultSet.getString("arvt"));
+				pla.setCost(resultSet.getInt("cost"));
+				pla.setDepa(resultSet.getString("depa"));
+				pla.setDept(resultSet.getString("dept"));
+				pla.setSno(resultSet.getString("sno"));
 				
-				planlist.add(plan);
+				
+				planlist.add(pla);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return planlist;
 	}
+
 
 	
 }
