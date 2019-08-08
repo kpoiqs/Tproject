@@ -102,7 +102,7 @@ li{
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
-		</select>
+		</select>ss
 		 <input type="text" id="datepicker1"> ~ <input type="text" id="datepicker2">
 		</li></ul>
 		<input type = "submit" class="btn btn-primary" value = "reservation"/>
