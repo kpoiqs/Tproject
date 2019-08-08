@@ -9,12 +9,11 @@
 </head>
 <body>
 	<c:if test="${plans != null}">
-	여기로써지나
 		<c:forEach var="planlist" items = "${plans}">
 					<tr>
 						<td>${planlist.depa}</td>
 						<td>${planlist.arva}</td>
-						<td>${planlist.cost}</td>
+						
 					</tr>
 		</c:forEach>
 	</c:if>

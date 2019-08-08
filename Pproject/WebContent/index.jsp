@@ -64,7 +64,7 @@ li{
 		});
 		$("#check2").click(function(){
 			$("ul").empty();
-			var li = $("<li>").css("color" , "black").html("<select name = from> <option value='1' selected = 'selected'>ICN</option><option value='2'>NRT</option><option value='3'>FUK</option></select>&nbsp;<select name = to><option value='1' selected = 'selected'>ICN</option><option value='2'>NRT</option><option value='3'>FUK</option></select>&nbsp; <input type='text' id='datepicker1'>");
+			var li = $("<li>").css("color" , "black").html("<select name = from> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = to><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp; <input type='text' id='datepicker1'>");
 			
 			$("ul").append(li);
 			$("#datepicker1, #datepicker2").datepicker({

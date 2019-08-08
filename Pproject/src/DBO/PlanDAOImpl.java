@@ -45,5 +45,6 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 		return planlist;
 	}
 
+
 	
 }
