@@ -8,17 +8,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+Depart air <hr/>
 		<c:forEach var="planlist" items = "${plans}">
-		<c:forEach var="planlists" items = "${plan2}">
+		
 					<tr>
 						<td>${planlist.depa}</td>
+						<td>${planlist.dept}</td>
 						<td>${planlist.arva}</td>
-						<td>${planlists.depa}</td>
-						<td>${planlists.arva}</td>
+						<td>${planlist.arvt}</td>
+						<td>${planlist.cost}</td>
+						<td>${planlist.sno}</td>
+				
 							<hr/>
 						
 					</tr>
-		</c:forEach>
+					</c:forEach><br><br><br>Arrive air<hr/>
+					
+					<c:forEach var="planlists" items = "${plan2}">
+						<tr>						
+						<td>${planlists.depa}</td>
+						<td>${planlists.dept}</td>
+						<td>${planlists.arva}</td>
+						<td>${planlists.arvt}</td>
+						<td>${planlists.cost}</td>
+						<td>${planlists.sno}</td>
+						<hr/>
+							</tr>
+		
 		</c:forEach>
 </body>
 </html>

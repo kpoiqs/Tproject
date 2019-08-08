@@ -8,4 +8,5 @@ public interface AccountDAO {
 	boolean insert(Account account);
 	int checkById(String id);
 	Account selectByEmail(String email);
+	int checkByemail(String email);
 }

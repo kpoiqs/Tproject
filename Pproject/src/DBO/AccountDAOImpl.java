@@ -14,9 +14,11 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 	private static final String ACCOUNT_INSERT
 	="insert into account values(account_seq.nextval ,? ,? ,?)";
 	private static final String ACCOUNT_ID_CHECK
-	="select count(*) as overlap from account where id=";
+	="select count(*) as overlap from account where id=?";
 	private static final String ACCOUNT_FIND
 	="select id from account where email=?";
+	private static final String ACCOUNT_EMAIL_CHECK
+	="select count(*) as overlap from account where email=?";
 	@Override
 	public Account selectById(String id, String pwd) {
 		Account account = null;
@@ -115,6 +117,28 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 		}finally {
 			CloseDBObjects(resultSet, preparedStatement, connection);
 		}return account;
+	}
+
+	@Override
+	public int checkByemail(String email) {
+		int count = 0;
+			
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(ACCOUNT_EMAIL_CHECK);
+			preparedStatement.setString(1, email);
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				count = resultSet.getInt("overlap");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }

@@ -55,15 +55,67 @@ $(function (){
 		}
 	});
 });
+
+$(function(){
+	
+	$("#checkid").click(function(){
+		
+		var input_val = $("#id").val();
+		
+	
+	if(!input_val){
+		alert("Please enter your ID.");
+		return false;
+	}
+	
+	var url = "idcheck";
+	
+	$.get(url, {"inputid":input_val},function(xml){
+		
+		
+		var result = $(xml).find("result").text();
+		
+		$(".console").html(result);
+		});
+	});		
+});
+
+$(function(){
+	
+	$("#checkemail").click(function(){
+		
+		var input_val = $("#email").val();
+		
+	
+	if(!input_val){
+		alert("Please enter e-mail.");
+		return false;
+	}
+	
+	var url = "emailcheck";
+	
+	$.get(url, {"inputemail":input_val},function(xml){
+		
+		
+		var result = $(xml).find("result").text();
+		
+		$(".console1").html(result);
+		});
+	});		
+});
 </script>
 </head>
 <body>
 
 <form method="post" action="join" id="singupForm">
-ID<input type="text" placeholder="Input ID" name="inputid"><br />
+ID<input type="text" placeholder="Input ID" name="inputid" id="id">
+<input type="button" id="checkid" value="중복검사" /><br />
+<div class="console"></div>
 Password<input type="password" placeholder="Input Password" name="inputpassword" id="pwd"><br />
 Password check<input type="password" placeholder="Input Password" name="repwd"><br />
-Email<input type="email" placeholder="Input Email" name="inputemail">
+Email<input type="email" placeholder="Input Email" name="inputemail" id="email">
+<input type="button" id="checkemail" value="중복검사" /><br />
+<div class="console1"></div>
 <input type="submit" value="join" />
 </form>
 
