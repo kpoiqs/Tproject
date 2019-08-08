@@ -93,7 +93,6 @@ li{
  			</form>
   		</c:otherwise>
   	</c:choose>
- 	</form>
   </div>
    
     
@@ -103,12 +102,12 @@ li{
 		<br/>
 		
 		<ul class = "a"><li>
-		<select name = from >
+		<select name = 'from' id = 'from' >
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
 		</select>
-		<select name = to>
+		<select name = 'to' id = 'to'>
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>

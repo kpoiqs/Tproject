@@ -43,11 +43,14 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			String from = req.getParameter("from");
 			String to = req.getParameter("to");
+			System.out.println(from);
+			System.out.println(to);
+			
+			
 			PlanDAO dao = new PlanDAOImpl();
-			List<plan> planlist = dao.selectname1(from,to);
+			List<plan> planlist = dao.selectname12(from,to);
 			
 			req.setAttribute("plans",planlist);
-			
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 			rd.forward(req, resp);
