@@ -5,13 +5,46 @@
 <head>
 <meta charset="utf-8">
 <title>login</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script type = "text/javascript">
+$(function(){
+	$("#check").click(function(){
+		var input_val = $("#idcheck").val();
+		if(!input_val){
+			alert("Please enter your ID.");
+			return false;
+		}
+	});
+});
+
+$(function(){
+	$("#check").click(function(){
+		var input_val = $("#passwordcheck").val();
+		if(!input_val){
+			alert("Please enter your password.");
+			return false;
+		}
+	});
+});
+
+$(function(){
+	$("#check").click(function(){
+		var input_val = $("#passwordcheck , #idcheck").val();
+		if(!input_val){
+			alert("${message}")
+		}
+	});
+});
+
+</script>
 </head>
 <body>
 	
 	<form action="login" method ="post">
-		<input type="text" placeholder="ID" name="id"><br />
-		<input type="password" placeholder="Password" name="password">
-	<button type="submit">login</button><br />
+		<input type="text" placeholder="ID" name="id" id="idcheck"><br />
+		<input type="password" placeholder="Password" name="password" id="passwordcheck">
+		<input type="submit" id="check" value="login"><br />
 	</form>
 	
 	<button onclick="location.href='signup.jsp'">sign up</button>

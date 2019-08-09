@@ -6,7 +6,6 @@
 <meta charset="utf-8">
 <title>login</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- 유효성 검사 plug in -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<style type="text/css">
 		#singupForm input.error, #singupForm textarea.error{
@@ -109,12 +108,12 @@ $(function(){
 
 <form method="post" action="join" id="singupForm">
 ID<input type="text" placeholder="Input ID" name="inputid" id="id">
-<input type="button" id="checkid" value="중복검사" /><br />
+<input type="button" id="checkid" value="ID check" /><br />
 <div class="console"></div>
 Password<input type="password" placeholder="Input Password" name="inputpassword" id="pwd"><br />
 Password check<input type="password" placeholder="Input Password" name="repwd"><br />
 Email<input type="email" placeholder="Input Email" name="inputemail" id="email">
-<input type="button" id="checkemail" value="중복검사" /><br />
+<input type="button" id="checkemail" value="Email Check" /><br />
 <div class="console1"></div>
 <input type="submit" value="join" />
 </form>

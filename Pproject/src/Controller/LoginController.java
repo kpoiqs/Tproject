@@ -39,11 +39,7 @@ public class LoginController extends HttpServlet {
 		int lastIndex = uri.lastIndexOf("/");
 		String action = uri.substring(lastIndex+1);
 		
-		if(action.equals("login_input")) {
-			RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-			rd.forward(req, resp);
-			}
-		else if(action.equals("login")){
+			if(action.equals("login")){
 			req.setCharacterEncoding("utf-8");
 			
 			String id = req.getParameter("id");
@@ -71,6 +67,7 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);
 			}
+		
 			else if(action.equals("join")) {
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = new Account();
@@ -123,8 +120,13 @@ public class LoginController extends HttpServlet {
 
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);	
+			}
+		else if (action.equals("login_input")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+			rd.forward(req, resp);	
 			
 		}
+	
 
 	}
 }
