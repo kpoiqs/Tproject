@@ -19,11 +19,11 @@ $(function(){
 	});
 });
 
-$(function(){
+ $(function(){
 	$("#modify").click(function(){
 	var result = confirm("${q.no }번 게시글을 수정하시겠습니까?");
 
-	if(result != null){
+	if(result){
 		location.href = "q_update?no=${q.no }";
 	}
 	});
@@ -43,12 +43,13 @@ $(function(){
 	Writer : ${q.writer }<br/>
 	Subject : ${q.subject }<br/>
 	Content : <input type="text" name="content" value="${q.content }">
-	<button type="button" id="modify">modify</button>
+	<!-- <button type="button" id="modify">modify</button> -->
+	<input type="submit" value="modify" id="modify">
 	</form>
 	
 	<button type="button" id="delete">delete</button>
-	<a href="q_input">write</a>
-	<a href="#" onclick="history.back()">back to list</a>
+	<button type="button" id="write">write</button>
+	<button type="button" onclick="history.back()">back to list</button>
 
 </body>
 </html>
