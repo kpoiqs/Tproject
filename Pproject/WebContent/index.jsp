@@ -53,7 +53,7 @@ li{
         });
 		$("#check1").click(function(){
 			$("ul").empty();
-				var li = $("<li>").css("color" , "black").html("<select name = from> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = to><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>종료일</label><input type='text' name='toDate' id='toDate'>");
+				var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>종료일</label><input type='text' name='toDate' id='toDate'>");
 			
 				$("ul").append(li);
 				$("#datepicker1, #datepicker2").datepicker({
@@ -75,7 +75,7 @@ li{
 	   
 	                    dateFormat: "yy-mm-dd",             // 날짜의 형식
 	                    changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
-	                    //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+	                    minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
 	                    onClose: function( selectedDate ) {    
 	                        // 시작일(fromDate) datepicker가 닫힐때
 	                        // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
@@ -88,7 +88,7 @@ li{
 	                    showOn: "both", 
 	                    dateFormat: "yy-mm-dd",
 	                    changeMonth: true,
-	                    //minDate: 0, // 오늘 이전 날짜 선택 불가
+	                    minDate: 0, // 오늘 이전 날짜 선택 불가
 	                    onClose: function( selectedDate ) {
 	                        // 종료일(toDate) datepicker가 닫힐때
 	                        // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
@@ -99,7 +99,7 @@ li{
 		});
 		$("#check2").click(function(){
 			$("ul").empty();
-			var li = $("<li>").css("color" , "black").html("<select name = from> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = to><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp; <label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'>");
+			var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp; <label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'>");
 			
 			$("ul").append(li);
 			$("#datepicker1, #datepicker2").datepicker({
@@ -121,7 +121,7 @@ $(function() {
    
                     dateFormat: "yy-mm-dd",             // 날짜의 형식
                     changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
-                    //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+                    minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
                     onClose: function( selectedDate ) {    
                         // 시작일(fromDate) datepicker가 닫힐때
                         // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
@@ -134,7 +134,7 @@ $(function() {
                     showOn: "both", 
                     dateFormat: "yy-mm-dd",
                     changeMonth: true,
-                    //minDate: 0, // 오늘 이전 날짜 선택 불가
+                    minDate: 0, // 오늘 이전 날짜 선택 불가
                     onClose: function( selectedDate ) {
                         // 종료일(toDate) datepicker가 닫힐때
                         // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
@@ -143,7 +143,28 @@ $(function() {
                 });
             });
 	});
-		 
+		$(function(){                
+            $("#reservation").click(function(){              
+             var input_val = $("#fromDate").val();
+             var input_val2 = $("#toDate").val();
+             var from = $("#from").val();
+             var to = $("#to").val();
+             //alert(input_val);
+              if(!input_val){
+              alert("insert fromDate");
+              return false;
+             } 
+              if(!input_val2&&input_val2!=null){
+              alert("insert toDate");
+              return false;
+             }    
+              if(from==to){
+                  alert("개씨발");
+                  return false;
+                 }    
+  			
+            });                
+           });
 	});
 	</script>
 	  <script>
@@ -161,7 +182,7 @@ $(function() {
    
                     dateFormat: "yy-mm-dd",             // 날짜의 형식
                     changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
-                    //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+                    minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
                     onClose: function( selectedDate ) {    
                         // 시작일(fromDate) datepicker가 닫힐때
                         // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
@@ -174,13 +195,15 @@ $(function() {
                     showOn: "both", 
                     dateFormat: "yy-mm-dd",
                     changeMonth: true,
-                    //minDate: 0, // 오늘 이전 날짜 선택 불가
+                    minDate: 0, // 오늘 이전 날짜 선택 불가
                     onClose: function( selectedDate ) {
                         // 종료일(toDate) datepicker가 닫힐때
                         // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
                         $("#fromDate").datepicker( "option", "maxDate", selectedDate );
                     }                
                 });
+
+                
             });
         </script>
 </head>
@@ -221,7 +244,7 @@ $(function() {
 		</select>
           <label for="fromDate">시작일</label><input type="text" name="fromDate" id="fromDate"> ~ <label for="toDate">종료일</label><input type="text" name="toDate" id="toDate">
 		</li></ul>
-		<input type = "submit" class="btn btn-primary" value = "reservation"/>
+		<input type = "submit" class="btn btn-primary" id="reservation" value = "reservation"/>
 		</form>
 		<button type="button" onclick="location.href='q_req_list?reqPage=1'">QnA</button>
 	
