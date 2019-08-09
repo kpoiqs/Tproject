@@ -91,11 +91,13 @@ public class QController extends HttpServlet {
 			
 			qna.setNo(Integer.parseInt(req.getParameter("no")));
 			qna.setContent(req.getParameter("content"));
-	
+			
 			dao.update(qna);
-		
-			RequestDispatcher rd = req.getRequestDispatcher("q_list");//출력할 페이지로 이동
-			rd.forward(req, resp);
+			boolean c = dao.update(qna);
+			System.out.println(c);
+			System.out.println(req.getParameter("content"));
+
+			resp.sendRedirect("q_req_list?reqPage=1");
 			
 		}else if(action.equals("q_req_list")) {
 			

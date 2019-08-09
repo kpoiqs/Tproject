@@ -15,19 +15,46 @@ $(function(){
 	var result = confirm("${q.no }번 게시글을 삭제하시겠습니까?");
 	if(result){
 		location.href = "q_delete?no=${q.no }";
+	}else{
+		return;
 	}
+	
+	
 	});
 });
 
- $(function(){
+/*  $(function(){
 	$("#modify").click(function(){
 	var result = confirm("${q.no }번 게시글을 수정하시겠습니까?");
-
+	
 	if(result){
-		location.href = "q_update?no=${q.no }";
+		
+	}else{
+		return false;
 	}
 	});
-});
+}); */
+
+ $(function checkSubmit() {
+	 $("#modify").click(function(){
+	// 내용 입력확인
+	var txt_cont = document.form1.modify.value;
+	if(txt_cont == null || txt_cont == "") {
+		alert('내용을 입력하세요.');
+		return false;
+	} else {
+		return confirm("정확하게 입력하셨습니까?");
+	}
+
+	// 서버측에서 처리해주지않으면 submit 이벤트를 취소한다.
+	return false;
+	});
+	});
+ $(function(){
+		$("#write").click(function(){
+			location.href = "q_form.jsp";
+		});
+	});
 
 </script>
 
@@ -37,7 +64,7 @@ $(function(){
 </head>
 <body>
 	<h3>Detail QnA</h3>
-	<form action="q_update?no=${q.no }" method="post">
+	<form action="q_update?no=${q.no }" method="post" name="form1">
 	
 	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>

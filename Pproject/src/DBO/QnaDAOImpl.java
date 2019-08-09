@@ -122,8 +122,9 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	}
 
 	@Override
-	public void update(Qna qna) {
+	public boolean update(Qna qna) {
 	
+		boolean result = false;
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -135,13 +136,16 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			preparedStatement.setString(1, qna.getContent());
 			preparedStatement.setInt(2, qna.getNo());
 			
-			preparedStatement.executeUpdate();
-		
+			int rowCount = preparedStatement.executeUpdate();
+			if(rowCount>0) {
+				result = true;
+			}
 			}catch(SQLException e) {
 			e.printStackTrace();
 			}finally {
 			CloseDBObjects(null, preparedStatement, connection);
-			}			
+			}
+		return result;			
 
 	}
 
