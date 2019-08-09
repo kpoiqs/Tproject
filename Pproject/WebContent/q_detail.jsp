@@ -23,33 +23,36 @@ $(function(){
 	});
 });
 
-/*  $(function(){
+ $(function(){
 	$("#modify").click(function(){
 	var result = confirm("${q.no }번 게시글을 수정하시겠습니까?");
+	var con = document.form1.modify;
 	
 	if(result){
 		
 	}else{
 		return false;
-	}
-	});
-}); */
-
- $(function checkSubmit() {
-	 $("#modify").click(function(){
-	// 내용 입력확인
-	var txt_cont = document.form1.modify.value;
-	if(txt_cont == null || txt_cont == "") {
-		alert('내용을 입력하세요.');
+	}/* ,
+	
+	if(con == null){
+		alert("입력 부탁");
 		return false;
-	} else {
-		return confirm("정확하게 입력하셨습니까?");
-	}
-
-	// 서버측에서 처리해주지않으면 submit 이벤트를 취소한다.
-	return false;
+	} */
+	
 	});
-	});
+}); 
+	
+ /* $(function(){
+		$("#modify").click(function(){
+		var con = document.modify;
+		
+		if(con == null){
+			alert("입력 부탁");
+			return false;
+		}
+		});
+	});  */
+ 
  $(function(){
 		$("#write").click(function(){
 			location.href = "q_form.jsp";
