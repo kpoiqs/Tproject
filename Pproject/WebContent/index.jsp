@@ -151,15 +151,15 @@ $(function() {
              var to = $("#to").val();
              //alert(input_val);
               if(!input_val){
-              alert("insert fromDate");
+              alert("Plz insert the Date of Departure");
               return false;
              } 
               if(!input_val2&&input_val2!=null){
-              alert("insert toDate");
+              alert("Plz insert the Date of Return");
               return false;
              }    
               if(from==to){
-                  alert("개씨발");
+                  alert("Searching from and to the same city is not possible");
                   return false;
                  }    
   			
