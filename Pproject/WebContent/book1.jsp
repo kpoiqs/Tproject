@@ -8,7 +8,7 @@
 </head>
 <body>
 	Depart ${fromdate} ${plan1.depa} ${plan1.dept} ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
-	Return ${todate}${plan2.depa} ${plan2.dept} ${todate} ${plan2.arva} ${plan2.arvt}<br/>
+	
 	
 	<ul>°³¾¾¹ß</ul>
 	<li>Á¿¾¾¹ß</li>

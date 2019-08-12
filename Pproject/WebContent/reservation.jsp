@@ -39,12 +39,12 @@
 	$("#book").click(function(){ 
 	var chk_radio = document.getElementsByName('check1');
 	var chk_radio2 = document.getElementsByName('check2');
+	
 
 	var sel_type = null;
 	
 	var sel_type2 = null;
 	
-	var sel_type3 = null;
 
 	for(var i=0;i<chk_radio.length;i++){
 
@@ -60,7 +60,7 @@
 
 	if(!sel_type){
 
-            alert("개씨발"); 
+            alert("1"); 
 
 		return false;
 
@@ -79,30 +79,34 @@
 
 
 
-	if(!sel_type2&&sel_type2!=null){
+	if(!sel_type2&&sel_type!=null){
 
-            alert("좆씨발"); 
+            alert("2"); 
 
 		return false;
 
 	
 
 	}
-	for(var o=0;o<chk_radio2.length;o++){
+	
+	});
+ });
+	 $(function(){      
+			$("#book1").click(function(){ 
+				var chk_radio3 = document.getElementsByName('check3');
+				var sel_type3 = null;
+			for(var o=0;o<chk_radio3.length;o++){
 
-		if(chk_radio2[o].checked == true){ 
+					if(chk_radio3[o].checked == true){ 
 
-			sel_type3 = chk_radio2[o].value;
+						sel_type3 = chk_radio3[o].value;
 
-		}
+				}
 
-	}
-
-
-
+			}
 	if(!sel_type3){
 
-            alert("최고다"); 
+            alert("3"); 
 
 		return false;
 
@@ -116,7 +120,8 @@
 </head>
 <body>
 Depart air ${fromdate}<hr/>
-<form action = 'book' method = 'post'>
+<form action = 'book.do' method = 'post'>
+<c:if test = "${plan2 != null}">
 		<c:forEach var="planlist" items = "${plans}">
 		
 					<tr>
@@ -125,13 +130,14 @@ Depart air ${fromdate}<hr/>
 						&#61;&#61;&#62;<td>${planlist.arva}</td>
 						<td>${planlist.arvt}</td>
 						<td>${planlist.cost}</td>&#165;
-				<input type = "radio" id = "check1" name = "check1" value = "c1" >
+				<input type = "radio" id = "check1" name = "check1" value = "${planlist.sno}" >
+			
 							<hr/>
 						
 					</tr>
 					
 					</c:forEach>
-					<c:if test = "${plan2 != null}">
+					<input type = 'hidden' id = 'fromdate' name = 'fromdate' value = '${fromdate}'>
 					<br><br><br>Return air ${todate}<hr/>
 				
 					<c:forEach var="planlists" items = "${plan2}">
@@ -141,13 +147,37 @@ Depart air ${fromdate}<hr/>
 						&#61;&#61;&#62;<td>${planlists.arva}</td>
 						<td>${planlists.arvt}</td>
 						<td>${planlists.cost}</td>&#165;
-						<input type = "radio" id = "check2" name = "check2" value = "c1">
+						<input type = "radio" id = "check2" name = "check2" value = "${planlists.sno}">
 						<hr/>
 							</tr>
 		
 		</c:forEach>
-		</c:if>
+			<input type = 'hidden' id = 'todate' name = 'todate' value = '${todate}'>
 		<input type = "submit" class="btn btn-primary" id="book" value = "book"/>
+		</c:if>
+		</form>
+		
+					
+					<form action = 'book1.do' method = 'post'>
+					<c:if test = "${plan2 == null}">
+					<c:forEach var="planlist" items = "${plans}">
+		
+					<tr>
+						<td>${planlist.depa}</td>
+						<td>${planlist.dept}</td>
+						&#61;&#61;&#62;<td>${planlist.arva}</td>
+						<td>${planlist.arvt}</td>
+						<td>${planlist.cost}</td>&#165;
+				<input type = "radio" id = "check3" name = "check3" value = "${planlist.sno}" >
+							<hr/>
+						
+					</tr>
+					
+					</c:forEach>
+					<input type = 'hidden' id = 'fromdate' name = 'fromdate' value = '${fromdate}'>
+					<input type = "submit" class="btn btn-primary" id="book1" value = "book1"/>
+		</c:if>
+		
 		</form>
 </body>
 </html>

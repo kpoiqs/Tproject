@@ -12,7 +12,7 @@ import Model.plan;
 public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String PLAN_SQL_SELECTNAME1 = "select DEPA , ARVA , DepT, ARVT , SNO, cost From plan where depa = ? and arva = ?";
-
+	private static final String PLAN_SQL_SELECT_BY_SNO = "select depa,arva,dept,arvt,sno,cost From plan where sno = ?";
 	
 	@Override
 	public List<plan> selectname12(String depa, String arva) {
@@ -70,6 +70,36 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public plan selectbysno(String sno) {
+		
+		plan pla = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = getConnection();
+			preparedstatement = connection.prepareStatement(PLAN_SQL_SELECT_BY_SNO);
+			preparedstatement.setString(1,sno);
+			resultSet = preparedstatement.executeQuery();
+
+			if (resultSet.next()) {
+				pla = new plan();
+				pla.setArva(resultSet.getString("arva"));
+				pla.setArvt(resultSet.getString("arvt"));
+				pla.setCost(resultSet.getInt("cost"));
+				pla.setDepa(resultSet.getString("depa"));
+				pla.setDept(resultSet.getString("dept"));
+				pla.setSno(resultSet.getString("sno"));
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pla;
 	}
 
 

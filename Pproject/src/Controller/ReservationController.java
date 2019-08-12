@@ -19,7 +19,7 @@ import Model.plan;
 
 
 
-@WebServlet(name="ReservationController" , urlPatterns={"/reservation","/book"})
+@WebServlet(name="ReservationController" , urlPatterns={"/reservation","/book.do","/book1.do"})
 public class ReservationController extends HttpServlet {
 
 	@Override
@@ -111,12 +111,37 @@ public class ReservationController extends HttpServlet {
 			
 			
 			
-			}else if(action.equals("book")) {
+			}else if(action.equals("book.do")) {
 				req.setCharacterEncoding("utf-8");
 				
+				String check1 = req.getParameter("check1");
+				String check2 = req.getParameter("check2");
+				String fromdate = req.getParameter("fromdate");
+				String todate = req.getParameter("todate");
+				PlanDAO dao = new PlanDAOImpl();
+				plan plan1 = dao.selectbysno(check1);
+				plan plan2 = dao.selectbysno(check2);
+				
+				req.setAttribute("fromdate", fromdate);
+				req.setAttribute("todate", todate);
+				req.setAttribute("plan1", plan1);
+				req.setAttribute("plan2", plan2);
 				RequestDispatcher rd = req.getRequestDispatcher("/book.jsp");
 				rd.forward(req, resp);
+			}else if(action.equals("book1.do")) {
+				req.setCharacterEncoding("utf-8");
+				String check3 = req.getParameter("check3");
+				String fromdate = req.getParameter("fromdate");
+				
+				PlanDAO dao = new PlanDAOImpl();
+				plan plan1 = dao.selectbysno(check3);
+				req.setAttribute("fromdate", fromdate);
+				req.setAttribute("plan1", plan1);
+				
+				RequestDispatcher rd = req.getRequestDispatcher("/book1.jsp");
+				rd.forward(req, resp);
 			}
+		
 		}
 		
 	
