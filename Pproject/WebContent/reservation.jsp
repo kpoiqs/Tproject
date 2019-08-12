@@ -60,7 +60,7 @@
 
 	if(!sel_type){
 
-            alert("1"); 
+            alert("please select a departure journey"); 
 
 		return false;
 
@@ -81,7 +81,7 @@
 
 	if(!sel_type2&&sel_type!=null){
 
-            alert("2"); 
+            alert("please select a return journey"); 
 
 		return false;
 
@@ -106,7 +106,7 @@
 			}
 	if(!sel_type3){
 
-            alert("3"); 
+            alert("please select a departure journey"); 
 
 		return false;
 
