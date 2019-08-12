@@ -218,7 +218,7 @@ $(function() {
 			</form> 	
   		</c:when>
   		<c:otherwise>
-  			<form action = 'login_input' style="text-align:right">
+  			<form action = 'login' style="text-align:right">
  			<input type = "submit" class="btn btn-primary" value = "login"/>&nbsp;&nbsp;&nbsp;
  			</form>
   		</c:otherwise>

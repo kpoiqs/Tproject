@@ -17,7 +17,8 @@
 		<input type="password" placeholder="Password" name="password" id="passwordcheck">
 		<input type="submit" id="check" value="login"><br />
 	</form>
-	${message}
+	<ul>${account}</ul>
+	
 	<br />
 	<button onclick="location.href='signup.jsp'">sign up</button>
 	<button onclick="location.href='find.jsp'">find id</button>

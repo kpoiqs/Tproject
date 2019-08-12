@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
 					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 					rd.forward(req, resp);
 				}
-				else{
+				else if (account == null){
 					req.setAttribute("message", "discord");
 					RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 					rd.forward(req, resp);
