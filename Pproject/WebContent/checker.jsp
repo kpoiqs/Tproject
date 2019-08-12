@@ -5,4 +5,5 @@
 <idcheck>
 	<result>${message}</result>
 	<result>${email}</result>
+	<result>${idcheck}</result>
 </idcheck>

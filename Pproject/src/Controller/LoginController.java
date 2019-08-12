@@ -96,9 +96,9 @@ public class LoginController extends HttpServlet {
 			int count = dao.checkById(req.getParameter("inputid"));
 			
 			if(count==0) {
-				req.setAttribute("message", "The ID is available for use.");
+				req.setAttribute("idcheck", "The ID is available for use.");
 			}else {
-				req.setAttribute("message", "This ID cannot be used.");				
+				req.setAttribute("idcheck", "This ID cannot be used.");				
 			}
 
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
