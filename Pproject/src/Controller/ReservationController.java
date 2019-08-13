@@ -14,12 +14,12 @@ import javax.servlet.http.HttpSession;
 
 import DBO.PlanDAO;
 import DBO.PlanDAOImpl;
-
+import Model.book;
 import Model.plan;
 
 
 
-@WebServlet(name="ReservationController" , urlPatterns={"/reservation","/book.do","/book1.do"})
+@WebServlet(name="ReservationController" , urlPatterns={"/reservation","/book.do","/book1.do","/insert_book","/insert_book1"})
 public class ReservationController extends HttpServlet {
 
 	@Override
@@ -42,6 +42,7 @@ public class ReservationController extends HttpServlet {
 		
 		if(action.equals("reservation")) {
 			
+			
 			req.setCharacterEncoding("utf-8");
 			String from = req.getParameter("from");
 			String to = req.getParameter("to");
@@ -49,8 +50,12 @@ public class ReservationController extends HttpServlet {
 			String todate = req.getParameter("toDate");
 			
 			PlanDAO dao = new PlanDAOImpl();
+			
+			
 			List<plan> planlist = dao.selectname12(from,to);
 			List<plan> planlist1 = dao.selectname12(to,from);
+			
+			
 			if(todate != null ) {
 				if(!fromdate.equals(todate)) {
 					
@@ -111,6 +116,7 @@ public class ReservationController extends HttpServlet {
 			
 			
 			
+			
 			}else if(action.equals("book.do")) {
 				req.setCharacterEncoding("utf-8");
 				
@@ -121,7 +127,9 @@ public class ReservationController extends HttpServlet {
 				PlanDAO dao = new PlanDAOImpl();
 				plan plan1 = dao.selectbysno(check1);
 				plan plan2 = dao.selectbysno(check2);
+				int a = plan1.getCost()+plan2.getCost();
 				
+				req.setAttribute("pluscost", a);
 				req.setAttribute("fromdate", fromdate);
 				req.setAttribute("todate", todate);
 				req.setAttribute("plan1", plan1);
@@ -139,6 +147,53 @@ public class ReservationController extends HttpServlet {
 				req.setAttribute("plan1", plan1);
 				
 				RequestDispatcher rd = req.getRequestDispatcher("/book1.jsp");
+				rd.forward(req, resp);
+			}else if(action.equals("insert_book1")) {
+				req.setCharacterEncoding("utf-8");
+				PlanDAO dao = new PlanDAOImpl();
+				String id = req.getParameter("id");
+				String fromdate = req.getParameter("fromdate");
+				int plan1cost = Integer.parseInt(req.getParameter("plan1cost"));
+				String plan1sno = req.getParameter("plan1sno");
+				
+				book book1 = new book();
+				book1.setId(id);
+				book1.setDay(fromdate);
+				book1.setPay(plan1cost);
+				book1.setSno(plan1sno);
+				
+				
+				boolean result1 = dao.insert(book1);
+				
+				RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+				rd.forward(req, resp);
+			}else if(action.equals("insert_book")) {
+				req.setCharacterEncoding("utf-8");
+				PlanDAO dao = new PlanDAOImpl();
+				String id = req.getParameter("id");
+				String fromdate = req.getParameter("fromdate");
+				String todate = req.getParameter("todate");
+				int plan1cost = Integer.parseInt(req.getParameter("plan1cost"));
+				String plan1sno = req.getParameter("plan1sno");
+				int plan2cost = Integer.parseInt(req.getParameter("plan2cost"));
+				String plan2sno = req.getParameter("plan2sno");
+				
+				book book1 = new book();
+				book1.setId(id);
+				book1.setDay(fromdate);
+				book1.setPay(plan1cost);
+				book1.setSno(plan1sno);
+				
+				book book2 = new book();
+				book2.setId(id);
+				book2.setDay(todate);
+				book2.setPay(plan2cost);
+				book2.setSno(plan2sno);
+				
+				boolean result1 = dao.insert(book1);
+				boolean result2 = dao.insert(book2);
+				
+				RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 				rd.forward(req, resp);
 			}
 		
