@@ -238,7 +238,7 @@ $(function() {
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
 		</select>
-		TO
+		TOaaaaaaaaaaaaaaa
 		<select name = 'to' id = 'to'>
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
