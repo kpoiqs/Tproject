@@ -107,7 +107,8 @@
 	<hr />
 	<form action='book.do' method='post'>
 		<c:if test="${empty plans&&plan2 != null}">
-	비행기가없습니다.<br />
+	sorry, we found no resuslts on this date.<br />
+	Plz select another date.<br />
 
 		</c:if>
 
@@ -135,7 +136,8 @@
 			<br>
 			<br>Return air ${todate}<hr />
 			<c:if test="${empty plan2&&plans != null}">
-		비행기가없습니다.<br />
+			sorry, we found no resuslts on this date.<br />
+			Plz select another date.<br />
 
 			</c:if>
 
