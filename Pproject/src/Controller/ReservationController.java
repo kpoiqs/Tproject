@@ -65,10 +65,19 @@ public class ReservationController extends HttpServlet {
 							} 
 						
 						}
+					int cnt1=0;
+					for (int y = 0; y < planlist1.size(); y++) {
+
+						cnt1= dao.checkbook(todate,planlist1.get(y).getSno());
+						if (cnt1 <3) {
+							planlist6.add(planlist1.get(y));
+						} 
+					
+					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
 					req.setAttribute("plans", planlist5);
-					req.setAttribute("plan2", planlist1);
+					req.setAttribute("plan2", planlist6);
 
 					RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 					rd.forward(req, resp);
@@ -84,8 +93,15 @@ public class ReservationController extends HttpServlet {
 							if (cht <= 0) {
 
 							} else {
+								int cnt4=0;
+								 
 
-								planlist3.add(planlist1.get(i));
+										cnt4= dao.checkbook(todate,planlist1.get(i).getSno());
+										if (cnt4 <3) {
+											planlist3.add(planlist1.get(i));
+										} 
+									
+									
 							}
 						}
 					}
@@ -97,8 +113,16 @@ public class ReservationController extends HttpServlet {
 							if (cht <= 0) {
 
 							} else {
+								int cnt3=0;
+								
 
-								planlist4.add(planlist.get(d));
+										cnt3= dao.checkbook(fromdate,planlist.get(d).getSno());
+										if (cnt3 <3) {
+											planlist4.add(planlist.get(d));
+										} 
+									
+									
+								
 							}
 						}
 					}
@@ -111,7 +135,17 @@ public class ReservationController extends HttpServlet {
 				}
 			} else if (todate == null) {
 
-				req.setAttribute("plans", planlist);
+				List<plan> planlist7 = new ArrayList<plan>();
+				int cnt2=0;
+				for (int y = 0; y < planlist.size(); y++) {
+
+						cnt2= dao.checkbook(fromdate,planlist.get(y).getSno());
+						if (cnt2 <3) {
+							planlist7.add(planlist.get(y));
+						} 
+					
+					}
+				req.setAttribute("plans", planlist7);
 				req.setAttribute("fromdate", fromdate);
 				RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 				rd.forward(req, resp);
