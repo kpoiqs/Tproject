@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ import Model.Account;
 
 
  
-@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck"})
+@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd"})
 public class LoginController extends HttpServlet {
 
 	@Override
@@ -39,8 +40,7 @@ public class LoginController extends HttpServlet {
 		int lastIndex = uri.lastIndexOf("/");
 		String action = uri.substring(lastIndex+1);
 		
-			if(action.equals("login")){
-			req.setCharacterEncoding("utf-8");
+		if(action.equals("login")){
 			
 			String id = req.getParameter("id");
 			String password = req.getParameter("password");
@@ -54,21 +54,22 @@ public class LoginController extends HttpServlet {
 					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 					rd.forward(req, resp);
 				}
-				else if (account == null){
+				else{
 					req.setAttribute("message", "discord");
 					RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 					rd.forward(req, resp);
 				}
-			}
-			else if(action.equals("logout")) {
+				
+		}else if(action.equals("logout")) {
+			
 			HttpSession session = req.getSession();
 			session.removeAttribute("account");
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);
-			}
-		
-			else if(action.equals("join")) {
+			
+		}else if(action.equals("join")) {
+			
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = new Account();
 			
@@ -79,36 +80,32 @@ public class LoginController extends HttpServlet {
 			dao.insert(account);
 			
 			resp.sendRedirect("/Pproject/index.jsp");		
-			}
-			else if(action.equals("find")) {
+		
+		}else if(action.equals("find")) {
+			
 			String email = req.getParameter("email");
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.selectByEmail(email);
-			System.out.println(account);
 			req.setAttribute("account", account);
 			RequestDispatcher rd = req.getRequestDispatcher("/find.jsp");
 			rd.forward(req, resp);
+		
 		}else if(action.equals("idcheck")) {
-			
-			req.setCharacterEncoding("utf-8");
-			
+		
 			AccountDAO dao = new AccountDAOImpl();
 			int count = dao.checkById(req.getParameter("inputid"));
 			
 			if(count==0) {
 				req.setAttribute("idcheck", "The ID is available for use.");
 			}else {
-				req.setAttribute("idcheck", "This ID cannot be used.");				
+				req.setAttribute("idcheck", "This ID cannot be used.");
 			}
 
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);	
 			
-		}
-		else if(action.equals("emailcheck")) {
-			
-			req.setCharacterEncoding("utf-8");
-			
+		}else if(action.equals("emailcheck")) {
+					
 			AccountDAO dao = new AccountDAOImpl();
 			int count = dao.checkByemail(req.getParameter("inputemail"));
 			
@@ -120,11 +117,20 @@ public class LoginController extends HttpServlet {
 
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);	
-			}
-		else if (action.equals("login_input")) {
+		
+		}else if (action.equals("login_input")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 			rd.forward(req, resp);	
 			
+		}
+		else if (action.equals("findpwd")) {
+			String id = req.getParameter("id");
+			String email = req.getParameter("email");
+			AccountDAO dao = new AccountDAOImpl();
+			Account account = dao.findByPwd(id, email);
+			req.setAttribute("account", account);
+			RequestDispatcher rd = req.getRequestDispatcher("/findpwd.jsp");
+			rd.forward(req, resp);
 		}
 	
 

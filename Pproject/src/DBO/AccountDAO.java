@@ -9,4 +9,5 @@ public interface AccountDAO {
 	int checkById(String id);
 	Account selectByEmail(String email);
 	int checkByemail(String email);
+	Account findByPwd(String id , String email);
 }
