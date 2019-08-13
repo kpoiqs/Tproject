@@ -16,7 +16,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 	private static final String PLAN_SQL_SELECTNAME1 = "select DEPA , ARVA , DepT, ARVT , SNO, cost From plan where depa = ? and arva = ?";
 	private static final String PLAN_SQL_SELECT_BY_SNO = "select depa,arva,dept,arvt,sno,cost From plan where sno = ?";
 	private static final String INSERT_BOOK = "insert into book values(?,?,?,?,book_seq1.nextval)";
-	private static final String CHECKBOOK_SQL = "select sno from book where day = ? ";
+	private static final String CHECKBOOK_SQL = "select b.sno from plan p right outer join book b on p.sno = b.sno where b.day = ? and p.depa= ? and p.arva= ?";
 	
 	@Override
 	public List<plan> selectname12(String depa, String arva) {
@@ -110,9 +110,8 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 
 	@Override
-	public List<plan> checkbook(String fromdate) {
+	public List<plan> checkbook(String fromdate, String depa, String arva) {
 
-		
 		plan pla = new plan();
 		List<plan> planlist = new ArrayList<plan>();
 		Connection connection = null;
@@ -122,13 +121,17 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			connection = getConnection();
 			preparedstatement = connection.prepareStatement(CHECKBOOK_SQL);
 			preparedstatement.setString(1,fromdate);
+			preparedstatement.setString(2,depa);
+			preparedstatement.setString(3,arva);
 			resultSet = preparedstatement.executeQuery();
 
 			while (resultSet.next()) {
 				
+				
 				pla.setSno(resultSet.getString("sno"));
 				
 				planlist.add(pla);
+				
 			}
 			
 		} catch (SQLException e) {
