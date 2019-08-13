@@ -56,16 +56,21 @@ public class ReservationController extends HttpServlet {
 			List<plan> planlist1 = dao.selectname12(to,from);
 			
 			List<plan> planlist5 = dao.checkbook(fromdate, from, to);
-			int a = 0;
 			int b = 0;
-			for(int ioi = 0;ioi<planlist5.size();ioi++) {
-				for(int oio = 0;oio<planlist.size();oio++) {
-					if(planlist.get(oio).getSno().equals(planlist5.get(ioi).getSno())) {
-						a = a+1;
-					}else if(!planlist.get(oio).getSno().equals(planlist5.get(ioi).getSno())) {
+			 for(int oio = 0;oio<planlist.size();oio++)
+			{
+				for(int ioi = 0;ioi<planlist5.size();ioi++){
+					 
+					if(planlist5.get(ioi).getSno().equals(planlist.get(oio).getSno())) {
 						b = b+1;
+						if(b >= 5) {
+							planlist.remove(oio);
+							continue;
+						}
 					}
+					
 				}
+				b = 0;
 			}
 			
 			if(todate != null ) {
