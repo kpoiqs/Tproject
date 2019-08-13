@@ -106,9 +106,13 @@
 	Depart air ${fromdate}
 	<hr />
 	<form action='book.do' method='post'>
+		<c:if test="${empty plans&&plan2 != null}">
+	비행기가없습니다.<br />
+
+		</c:if>
 
 		<c:if test="${plans != null&&plan2 != null}">
-		
+
 			<c:forEach var="planlist" items="${plans}">
 
 				<tr>
@@ -130,6 +134,10 @@
 			<br>
 			<br>
 			<br>Return air ${todate}<hr />
+			<c:if test="${empty plan2&&plans != null}">
+		비행기가없습니다.<br />
+
+			</c:if>
 
 			<c:forEach var="planlists" items="${plan2}">
 				<tr>
