@@ -232,17 +232,19 @@ $(function() {
 		<br/>
 		
 		<ul class = "a"><li>
+		From
 		<select name = 'from' id = 'from' >
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
 		</select>
+		TO
 		<select name = 'to' id = 'to'>
 			<option value='icn' selected = 'selected'>ICN</option>
 			<option value='nrt'>NRT</option>
 			<option value='kix'>KIX</option>
 		</select>
-          <label for="fromDate">시작일</label><input type="text" name="fromDate" id="fromDate"> ~ <label for="toDate">종료일</label><input type="text" name="toDate" id="toDate">
+          <label for="fromDate">Depart</label><input type="text" name="fromDate" id="fromDate"> ~ <label for="toDate">Return</label><input type="text" name="toDate" id="toDate">
 		</li></ul>
 		<input type = "submit" class="btn btn-primary" id="reservation" value = "reservation"/>
 		</form>
