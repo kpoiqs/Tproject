@@ -16,4 +16,6 @@ public interface QnaDAO {
 	boolean update(Qna qna);
 	boolean deleteByNo(int no);
 
+	void insertReply(Qna qna);//
+	void updateVisited(int no);//
 }

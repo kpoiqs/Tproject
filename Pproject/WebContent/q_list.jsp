@@ -16,7 +16,7 @@
 <h3>AIR Q&A</h3>
 		
 		<c:if test="${!empty q}">
-			<table>
+			<table id="q">
 				<tr>
 					<td>NO</td>
 					<td>Subject</td>
@@ -28,7 +28,19 @@
 			<c:forEach var="qq" items="${q}">
 					<tr>
 						<td>${qq.no}</td>
+						
+						<td>
+						<c:if test="${qq.lvl > 0}">
+						<c:forEach begin="1" end="${qq.lvl }">
+						 &nbsp;&nbsp;
+                        </c:forEach>
+                        RE : 
+                    </c:if>	
+						<a href="/q_visited"></a><a href="q_detail?no=${qq.no}">${qq.subject}</a>
+						</td>
+						
 						<td><a href="q_detail?no=${qq.no}">${qq.subject}</td>
+						
 						<td>${qq.writer}</td>
 						<td>${qq.wdate}</td>
 						<!-- <td><a href="memo_detail?memoid=${memo.memoid}">상세보기</a></td> -->

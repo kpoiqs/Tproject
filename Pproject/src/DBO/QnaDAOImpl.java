@@ -12,10 +12,13 @@ import Model.Qna;
 public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	
 	private static final String Q_INSERT_SQL
-	="insert into qna values (qna_seq.nextval,?,?,?,sysdate)";
+	="insert into qna values (qna_seq.nextval,?,?,?,sysdate,qna_seq.currval,0,0)";
+	
+	private static final String Q_REPLY_SQL
+	="insert into qna values (qna_seq.nextval,?,?,?,sysdate,?,1,0)";
 	
 	private static final String Q_SELECTALL_SQL
-	="select * from qna order by no desc";
+	="select * from qna order by grp desc, lvl asc, wdate";
 	
 	private static final String Q_SELECTBYNO_SQL
 	="select * from qna where no = ?";
@@ -27,7 +30,10 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	="update qna set content=? where no=?";
 	
 	private static final String Q_PAGE_SQL
-	="select * from (select rownum rn, q.* from (select * from qna order by no desc) q) where rn BETWEEN ? and ?";
+	="select * from (select rownum rn, q.* from (select * from qna order by no desc) q) where rn BETWEEN ? and ? order by grp desc, lvl asc, wdate";
+	
+	private static final String Q_VISTIED_SQL
+	="update qna set visited = visited+1 where no=?";
 	
 	@Override
 	public List<Qna> selectall() {
@@ -209,6 +215,50 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 		}
 		
 		return qna;
+	}
+
+	@Override
+	public void insertReply(Qna qna) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(Q_REPLY_SQL);
+			
+			preparedStatement.setString(1, qna.getSubject());
+			preparedStatement.setString(2, qna.getContent());
+			preparedStatement.setString(3, qna.getWriter());
+			preparedStatement.setInt(4, qna.getGrp());
+			
+			preparedStatement.executeUpdate();
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}			
+	
+		}
+
+	@Override
+	public void updateVisited(int no) {
+		Connection connection = null;
+		PreparedStatement preparedStatement =null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(Q_VISTIED_SQL);
+			
+			preparedStatement.setInt(1, no);
+			
+			preparedStatement.executeUpdate();
+
+			}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}
 	}	
 
 }

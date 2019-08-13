@@ -7,6 +7,7 @@
 <title>Detail QnA</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
 
 
@@ -23,10 +24,27 @@ $(function(){
 	});
 });
 
+$(function(){
+	//alert("sfsdf");
+	$("#form1").validate({
+		debug : false,
+		
+		rules:{
+			content : "required"
+		
+			},
+			
+		messages:{
+			content : "required"
+					
+		}	
+	});
+});
+
  $(function(){
 	$("#modify").click(function(){
 	var result = confirm("${q.no }번 게시글을 수정하시겠습니까?");
-	var con = document.form1.modify;
+	var con = document.form1.content;
 	
 	if(result){
 		
@@ -34,7 +52,7 @@ $(function(){
 		return false;
 	}/* ,
 	
-	if(con == null){
+	if(con==null){
 		alert("입력 부탁");
 		return false;
 	} */
@@ -67,7 +85,8 @@ $(function(){
 </head>
 <body>
 	<h3>Detail QnA</h3>
-	<form action="q_update?no=${q.no }" method="post" name="form1">
+	<form action="q_update?no=${q.no }" method="post" id="form1" name="form1">
+
 	
 	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>
@@ -75,11 +94,12 @@ $(function(){
 	Content : <input type="text" name="content" value="${q.content }">
 	<!-- <button type="button" id="modify">modify</button> -->
 	<input type="submit" value="modify" id="modify">
+	
 	</form>
 	
+	<a href="q_reply_page?grp=${q.grp }">리플달기^^</a>
 	<button type="button" id="delete">delete</button>
-	<button type="button" id="write">write</button>
-	<button type="button" onclick="history.back()">back to list</button>
+	<button type="button" id="write">write</button>	<button type="button" onclick="history.back()">back to list</button>
 
 </body>
 </html>
