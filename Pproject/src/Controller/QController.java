@@ -52,15 +52,6 @@ public class QController extends HttpServlet {
 			
 			resp.sendRedirect("q_req_list?reqPage=1");
 			
-		}else if(action.equals("q_list")) {
-			
-			QnaDAO dao = new QnaDAOImpl();
-			List<Qna> qList = dao.selectall();
-			req.setAttribute("q", qList);
-			
-			RequestDispatcher rd = req.getRequestDispatcher("/q_list.jsp");//출력할 페이지로 이동
-			rd.forward(req, resp);
-			
 		}else if(action.equals("q_detail")) {
 			
 			int no = Integer.parseInt(req.getParameter("no"));
@@ -112,6 +103,15 @@ public class QController extends HttpServlet {
 			req.setAttribute("q", qList);//memoList화면으로 보내고자하는거 .  memos는 맘대로
 			
 			req.setAttribute("pageGroupResult", pm.getPageGroupResult(PageSQL.QNA_SELECT_ALL_COUNT));
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/q_list.jsp");//출력할 페이지로 이동
+			rd.forward(req, resp);
+			
+		}else if(action.equals("q_list")) {
+			
+			QnaDAO dao = new QnaDAOImpl();
+			List<Qna> qList = dao.selectall();
+			req.setAttribute("q", qList);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/q_list.jsp");//출력할 페이지로 이동
 			rd.forward(req, resp);

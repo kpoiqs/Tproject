@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>QnA</title>
-<style>
-	
-#select {font-size: 30px;
-		font-color: red;}
 
-</style>
 </head>
 <body>
 <h3>AIR Q&A</h3>
@@ -30,12 +26,12 @@
 						<td>${qq.no}</td>
 						
 						<td>
-						<c:if test="${qq.lvl > 0}">
-						<c:forEach begin="1" end="${qq.lvl }">
-						 &nbsp;&nbsp;
+						<c:if test="${qq.lvl >0}">
+                   		<c:forEach begin="1" end="${qq.lvl}">
+                            &nbsp;&nbsp; RE : <!-- 답변글일경우 글 제목 앞에 공백을 준다. -->
                         </c:forEach>
-                        RE : 
-                    </c:if>	
+                        
+                    </c:if>
 						<a href="/q_visited"></a><a href="q_detail?no=${qq.no}">${qq.subject}</a>
 						</td>
 						

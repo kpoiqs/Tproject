@@ -54,7 +54,8 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				q.setSubject(resultSet.getString("subject"));
 				q.setWriter(resultSet.getString("writer"));
 				q.setWdate(resultSet.getString("wdate"));
-				
+				q.setGrp(resultSet.getInt("grp"));
+				q.setLvl(resultSet.getInt("lvl"));
 				qna.add(q);
 			}
 					
@@ -91,6 +92,8 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			qna.setWriter(resultSet.getString("writer"));
 			qna.setSubject(resultSet.getString("subject"));
 			qna.setContent(resultSet.getString("content"));
+			qna.setGrp(resultSet.getInt("grp"));
+			qna.setLvl(resultSet.getInt("lvl"));
 		}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -204,7 +207,8 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				q.setContent(resultSet.getString("content"));
 				q.setWriter(resultSet.getString("writer"));
 				q.setWdate(resultSet.getString("wdate"));
-				
+				q.setGrp(resultSet.getInt("grp"));
+				q.setLvl(resultSet.getInt("lvl"));
 			
 				qna.add(q);
 			}
