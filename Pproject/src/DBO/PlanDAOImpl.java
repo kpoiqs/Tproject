@@ -42,8 +42,13 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String BOOK_LIST_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) and id = ? order by day asc";
 
+<<<<<<< HEAD
 
 	private static final String CHECKSEAT_SQL = "select seat from book where day = ?  and sno=?";
+=======
+	private static final String BOOK_SEQ_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) order by day asc";
+	
+>>>>>>> branch 'master' of https://github.com/kpoiqs/Tproject
 	@Override
 
 	public List<plan> selectname12(String depa, String arva) {
@@ -303,6 +308,38 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			connection = getConnection();
 			preparedstatement = connection.prepareStatement(BOOK_LIST_ALL);
 			preparedstatement.setString(1,id);
+			resultSet = preparedstatement.executeQuery();
+			while (resultSet.next()) {
+
+				book book1 = new book();
+				book1.setId(resultSet.getString("id"));
+				book1.setBno(resultSet.getInt("bno"));
+				book1.setDay(resultSet.getString("day"));
+				book1.setPay(resultSet.getInt("pay"));
+				book1.setSno(resultSet.getString("sno"));
+
+				
+				planlist.add(book1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseDBObjects(resultSet, preparedstatement, connection);
+		}
+		return planlist;
+	}
+
+	
+	@Override
+	public List<book> bookselectall() {
+		List<book> planlist = new ArrayList<book>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = getConnection();
+			preparedstatement = connection.prepareStatement(BOOK_SEQ_ALL);
 			resultSet = preparedstatement.executeQuery();
 			while (resultSet.next()) {
 
