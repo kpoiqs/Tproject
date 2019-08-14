@@ -215,10 +215,16 @@ $(function() {
   		<c:when test="${account !=null}">
 			<form action="logout" style="text-align:right">
 			<input type = "submit" class="btn btn-primary" value = "logout"/>&nbsp;&nbsp;&nbsp;
-			</form> 	
+			</form>
+			<div style="text-align:right">
+			<input type = "button" onclick="location.href='iddetail.jsp'" class="btn btn-primary" value = "detail"/>&nbsp;&nbsp;&nbsp;
+			</div>
+			<div style="text-align:right">
+			<input type = "button" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>&nbsp;&nbsp;&nbsp;
+			</div> 	
   		</c:when>
   		<c:otherwise>
-  			<form action = 'login' style="text-align:right">
+  			<form action = 'login_input' style="text-align:right">
  			<input type = "submit" class="btn btn-primary" value = "login"/>&nbsp;&nbsp;&nbsp;
  			</form>
   		</c:otherwise>

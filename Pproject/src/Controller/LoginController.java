@@ -19,7 +19,7 @@ import Model.Account;
 
 
  
-@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd"})
+@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd" , "/detail" , "/Withdrawal" , "/delete"})
 public class LoginController extends HttpServlet {
 
 	@Override
@@ -44,6 +44,7 @@ public class LoginController extends HttpServlet {
 			
 			String id = req.getParameter("id");
 			String password = req.getParameter("password");
+			
 			
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.selectById(id, password);
@@ -79,7 +80,7 @@ public class LoginController extends HttpServlet {
 			
 			dao.insert(account);
 			
-			resp.sendRedirect("/Pproject/index.jsp");		
+			resp.sendRedirect("/Pproject/signupcheck.jsp");		
 		
 		}else if(action.equals("find")) {
 			
@@ -95,12 +96,15 @@ public class LoginController extends HttpServlet {
 			AccountDAO dao = new AccountDAOImpl();
 			int count = dao.checkById(req.getParameter("inputid"));
 			
+			req.setAttribute("count", count);
+			
 			if(count==0) {
 				req.setAttribute("idcheck", "The ID is available for use.");
 			}else {
 				req.setAttribute("idcheck", "This ID cannot be used.");
+				
 			}
-
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);	
 			
@@ -108,7 +112,7 @@ public class LoginController extends HttpServlet {
 					
 			AccountDAO dao = new AccountDAOImpl();
 			int count = dao.checkByemail(req.getParameter("inputemail"));
-			
+			req.setAttribute("count", count);
 			if(count==0) {
 				req.setAttribute("email", "This is an email you can use.");
 			}else {
@@ -122,14 +126,54 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
 			rd.forward(req, resp);	
 			
-		}
-		else if (action.equals("findpwd")) {
+		}else if (action.equals("findpwd")) {
 			String id = req.getParameter("id");
 			String email = req.getParameter("email");
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.findByPwd(id, email);
 			req.setAttribute("account", account);
 			RequestDispatcher rd = req.getRequestDispatcher("/findpwd.jsp");
+			rd.forward(req, resp);
+		
+		}else if (action.equals("detail")) {
+			Account account = new Account();
+			
+			account.setPwd(req.getParameter("inputpassword"));
+			account.setEmail(req.getParameter("inputemail"));
+			account.setId(req.getParameter("id"));
+			AccountDAO dao = new AccountDAOImpl();
+			boolean result = dao.update(account);
+			HttpSession session = req.getSession();
+			session.setAttribute("account", account);
+			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+			rd.forward(req, resp);	
+		}else if(action.equals("Withdrawal")) {
+			String id = req.getParameter("checkid");
+			String password = req.getParameter("checkpassword");
+			
+			AccountDAO dao = new AccountDAOImpl();
+			Account account = dao.selectById(id, password);
+			
+				if(account != null) {
+					RequestDispatcher rd = req.getRequestDispatcher("/Withdrawal.jsp");
+					rd.forward(req, resp);
+				}
+				else{
+					req.setAttribute("message", "discord");
+					RequestDispatcher rd = req.getRequestDispatcher("/Withdrawalcheck.jsp");
+					rd.forward(req, resp);
+				}
+				
+		}else if(action.equals("delete")) {
+			String id = req.getParameter("id");
+			AccountDAO dao = new AccountDAOImpl();
+			boolean result = dao.deleteByAccount(id);
+			req.setAttribute("id", id);
+			
+			HttpSession session = req.getSession();
+			session.removeAttribute("account");
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);
 		}
 	

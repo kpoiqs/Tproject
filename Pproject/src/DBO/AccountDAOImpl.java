@@ -21,6 +21,12 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 	="select count(*) as overlap from account where email=?";
 	private static final String ACCOUNT_PWD_CHECK
 	="select pwd from account where id=? and email=?";
+	private static final String ACCOUNT_UPDATE
+	="update account set pwd=? ,email=? where id =?";
+	private static final String ACCOUNT_CHECKPWD
+	="select * from account where id=? and pwd=?";
+	private static final String ACCOUNT_DELETE
+	="delete from account where id=?";
 	@Override
 	public Account selectById(String id, String pwd) {
 		Account account = null;
@@ -168,5 +174,60 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 			CloseDBObjects(resultSet, preparedStatement, connection);
 		}return account;
 	}
+
+	@Override
+	public boolean update(Account account) {
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(ACCOUNT_UPDATE);
+			
+			preparedStatement.setString(1, account.getPwd());
+			preparedStatement.setString(2, account.getEmail());
+			preparedStatement.setString(3, account.getId());
+			
+			int rowCount = preparedStatement.executeUpdate();
+			if(rowCount > 0) {
+				result = true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+		}
+		return result;
+	}
+
+	
+
+	@Override
+	public boolean deleteByAccount(String id) {
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(ACCOUNT_DELETE);
+			
+			preparedStatement.setString(1, id);
+
+			int rowCount = preparedStatement.executeUpdate();
+			
+			if(rowCount>0) {
+				result = true;
+			}
+			}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}			
+		return result;
+	}
+
+
 
 }

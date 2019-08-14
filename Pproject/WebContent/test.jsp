@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<style type="text/css">
-		#singupForm input.error, #singupForm textarea.error{
+		#singupForm input.error, #singupForm textarea.error{1
 			 border : 1px dashed red;
 		}
 	</style>
@@ -58,6 +58,7 @@ $(function (){
 var idck=0;
 $(function(){
 	$("#checkid").click(function(){	
+		
 		var input_val = $("#id").val();
 	if(!input_val){
 		alert("Please enter your ID.");
@@ -69,11 +70,9 @@ $(function(){
 		var count = $(xml).find("count").text();
 		$(".console").html(result);
 		if(count>0){
-			idck = 0;
 			return false;
 		}else{
 			idck=1;
-			return true;
 		}
 		});	
 
@@ -93,11 +92,9 @@ $(function(){
 		var count = $(xml).find("count").text();
 		$(".console1").html(result);
 		if(count>0){
-			emailck = 0;
 			return false;
 		}else{
 			emailck=1;
-			return true;
 		}
 		});
 	});		
@@ -115,21 +112,12 @@ function noSpaceForm(obj) {
 $(function(){
 	$("#jointest").click(function(){
 	var result = confirm("Would you like to sign up?");
-	if( result == true ){
-		if(idck==0||emailck ==0 ){
-			alert("please double-check the ID or Email");
-	        return false;
-		}
-		
-		else if (idck==1||emailck ==1 ){
-			 alert("Congratulations on your membership.");
-		}
-	   }else if( result == false ){
-
-	      alert("취소선택!");
-		return false;
-	   }
-	
+	if(idck==0 || emailck==0){
+		alert("please double-check the ID or Email");
+        return false;
+	}else{
+		 alert("Congratulations on your membership.");
+	}
 	});
 });
 </script>
@@ -146,7 +134,6 @@ Email<input type="email" placeholder="Input Email" name="inputemail" id="email">
 <input type="button" id="checkemail" value="Email Check" /><br />
 <div class="console1"></div>
 <input type="submit" value="join" id="jointest"/>
-<input type="hidden" id="checkemail" value="${idcheck}" />
 </form>
 </body>
 </html>

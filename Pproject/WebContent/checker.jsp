@@ -6,4 +6,5 @@
 	<result>${message}</result>
 	<result>${email}</result>
 	<result>${idcheck}</result>
+	<count>${count}</count>
 </idcheck>
