@@ -42,19 +42,23 @@
 	<ul id="airplane">
 	
 	
-	
-	 <li class="seat_01 A"><p><input type="radio" id="seat" name = "seat" value='1A' >01A</p></li>
+<%-- 	
+	 
 	<c:forEach var="book" items="${booklist}">
   		<c:if test = "${book.seat eq '1A'}">
   		<li class="seat_01 A"><p><input type="radio" id="seat" name="seat" value='1A' disabled='true'>01A</p></li>
   		</c:if>
-  	</c:forEach>
-  	
+  	</c:forEach> --%>
+  	<script>
+  		if(seat1.equals("1A")){
+  			seat1.disabled=true;
+  		}
+  	</script>
   	
   
 		
 		
-		
+		<li class="seat_01 A"><p><input type="radio" id="seat1" name = "seat" value='1A' >01A</p></li>
 		<li class="seat_01 B"><p><input type="radio" name="seat" value='1B'></p></li>
 		<li class="seat_01 C"><p><input type="radio" name="seat" value='1C'></p></li>
 		<li class="seat_01 D"><p><input type="radio" name="seat" value='1D'></p></li>

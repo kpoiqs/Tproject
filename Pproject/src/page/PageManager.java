@@ -25,6 +25,7 @@ public class PageManager extends PageInfo {
 	
 	public PageGroupResult getPageGroupResult(String sql) {
 		PageGroupResult pageGroupResult = new PageGroupResult();
+		PageRowResult pageRowResult = new PageRowResult();
 		//PageGroupResult의 객체변수 값 셋팅
 		
 		//0부터 시작할때
@@ -33,7 +34,7 @@ public class PageManager extends PageInfo {
 		//pageGroupResult.setGroupEndNumber((requestPageGroupNumber+1) * Show_Page_Count);
 		
 		//1부터 시작할때
-		int requestPageGroupNumber = (int)Math.ceil((double)requestPage/3);//올림
+		int requestPageGroupNumber = (int)Math.ceil((double)requestPage/ Show_Page_Count);//올림
 		pageGroupResult.setGroupStartNumber(requestPageGroupNumber * Show_Page_Count -(Show_Page_Count-1));
 		pageGroupResult.setGroupEndNumber(requestPageGroupNumber * Show_Page_Count);
 		//System.out.println(requestPageGroupNumber);

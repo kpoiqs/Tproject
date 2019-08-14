@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Detail QnA</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
 
 
@@ -23,10 +25,29 @@ $(function(){
 	});
 });
 
+$(function(){
+	//alert("sfsdf");
+	$("#form1").validate({
+		debug : false,
+		
+		rules:{
+			content : "required"
+		
+			},
+			
+		messages:{
+			content : "required"
+					
+		}	
+	});
+});
+
+
+
  $(function(){
 	$("#modify").click(function(){
 	var result = confirm("${q.no }번 게시글을 수정하시겠습니까?");
-	var con = document.form1.modify;
+	var con = document.form1.content;
 	
 	if(result){
 		
@@ -34,7 +55,7 @@ $(function(){
 		return false;
 	}/* ,
 	
-	if(con == null){
+	if(con==null){
 		alert("입력 부탁");
 		return false;
 	} */
@@ -67,19 +88,22 @@ $(function(){
 </head>
 <body>
 	<h3>Detail QnA</h3>
-	<form action="q_update?no=${q.no }" method="post" name="form1">
+	<form action="q_update?no=${q.no }" method="post" id="form1" name="form1">
+
 	
 	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>
 	Subject : ${q.subject }<br/>
 	Content : <input type="text" name="content" value="${q.content }">
 	<!-- <button type="button" id="modify">modify</button> -->
-	<input type="submit" value="modify" id="modify">
-	</form>
+	<input type="submit" value="modify" id="modify" >
 	
+	</form>
+	<c:if test="${q.lvl == 0}">
+	<a href="q_reply_page?grp=${q.grp }">리플달기^^</a>
+	</c:if>
 	<button type="button" id="delete">delete</button>
-	<button type="button" id="write">write</button>
-	<button type="button" onclick="history.back()">back to list</button>
+	<button type="button" id="write">write</button>	<button type="button" onclick="history.back()">back to list</button>
 
 </body>
 </html>

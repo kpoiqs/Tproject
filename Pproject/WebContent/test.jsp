@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<style type="text/css">
-		#singupForm input.error, #singupForm textarea.error{1
+		#singupForm input.error, #singupForm textarea.error{
 			 border : 1px dashed red;
 		}
 	</style>
