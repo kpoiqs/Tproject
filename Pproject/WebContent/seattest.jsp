@@ -35,27 +35,7 @@
 <script type="text/javascript">
   		
   	</script>
-  	<style>
-  	input[type="radio"] {
-  /* remove standard background appearance */
- 
-  /* create custom radiobutton appearance */
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding: 6px;
   
-  background-clip: content-box;
-  border: 2px solid #bbbbbb;
-  background-color: #e7e6e7;
-  border-radius: 50%;
-}
-
-input[type="radio"]:checked {
-  background-color: #93e026;
-}
-  	
-  	</style>
 <title>Air</title>
 </head>
 <body>
@@ -63,12 +43,12 @@ input[type="radio"]:checked {
 <div id="container" >
 
 	<ul id="airplane" class="radio-wrap">
-	<c:forEach var="book" items="${booklist}">
-		<c:if test = "${book.seat ne '1A'}">
-	 <li class="seat_01 A"><p><input type="radio" id="seat" name = "seat" value='1A' >01A</p></li>
-		 </c:if>
+	
+
+		 <li class="seat_01 A"><p><input type="radio" id="seat" name = "seat" value='1A'  >01A</p></li>
+		<c:forEach var="book" items="${booklist}">
   		<c:if test = "${book.seat eq '1A'}">
-  		<li class="seat_01 A"><p><input type="radio" id="seat" name="seat" value='1A' disabled=true>01A</p></li>
+  		<li class="seat_01 A"><p><input type="radio" id="seat" name="seat" value='1A' disabled='true' >01A</p></li>
   		</c:if>
   	</c:forEach> 
   	
