@@ -5,11 +5,6 @@
 <head>
 <meta charset="utf-8">
 <title>login</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script type = "text/javascript">
-
-</script>
 </head>
 <body>
 	<form action="login" method ="post">

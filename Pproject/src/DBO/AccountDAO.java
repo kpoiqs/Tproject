@@ -10,4 +10,6 @@ public interface AccountDAO {
 	Account selectByEmail(String email);
 	int checkByemail(String email);
 	Account findByPwd(String id , String email);
+	boolean update(Account account);
+	boolean deleteByAccount(String id);
 }
