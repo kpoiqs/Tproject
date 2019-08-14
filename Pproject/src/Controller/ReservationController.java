@@ -170,6 +170,10 @@ public class ReservationController extends HttpServlet {
 			String check3 = req.getParameter("check3");
 			String fromdate = req.getParameter("fromdate");
 
+			PlanDAO dao = new PlanDAOImpl();
+			plan plan1 = dao.selectbysno(check3);
+			List<book> book1 = dao.seatselectall(fromdate,check3);
+
 			req.setAttribute("fromdate", fromdate);
 			req.setAttribute("plan1", plan1);
 			req.setAttribute("booklist", book1);
