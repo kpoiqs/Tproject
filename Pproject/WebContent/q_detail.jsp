@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -98,8 +99,9 @@ $(function(){
 	<input type="submit" value="modify" id="modify" >
 	
 	</form>
-	
+	<c:if test="${q.lvl == 0}">
 	<a href="q_reply_page?grp=${q.grp }">리플달기^^</a>
+	</c:if>
 	<button type="button" id="delete">delete</button>
 	<button type="button" id="write">write</button>	<button type="button" onclick="history.back()">back to list</button>
 
