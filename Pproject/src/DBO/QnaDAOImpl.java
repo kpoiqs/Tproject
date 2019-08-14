@@ -30,7 +30,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	="update qna set content=? where no=?";
 	
 	private static final String Q_PAGE_SQL
-	="select * from (select rownum rn, q.* from (select * from qna order by no desc) q) where rn BETWEEN ? and ? order by grp desc, lvl asc, wdate";
+	="select * from (select rownum rn, q.* from (select * from qna order by no desc) q order by grp desc, wdate) where rn BETWEEN ? and ?";
 	
 	private static final String Q_VISTIED_SQL
 	="update qna set visited = visited+1 where no=?";

@@ -6,7 +6,12 @@
 <head>
 <meta charset="utf-8">
 <title>QnA</title>
+<style>
+#select {font-size: 30px;
+		font-color: red;}
 
+
+</style>
 </head>
 <body>
 <h3>AIR Q&A</h3>

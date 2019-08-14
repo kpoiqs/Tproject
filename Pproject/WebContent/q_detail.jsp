@@ -41,6 +41,8 @@ $(function(){
 	});
 });
 
+
+
  $(function(){
 	$("#modify").click(function(){
 	var result = confirm("${q.no }번 게시글을 수정하시겠습니까?");
@@ -93,7 +95,7 @@ $(function(){
 	Subject : ${q.subject }<br/>
 	Content : <input type="text" name="content" value="${q.content }">
 	<!-- <button type="button" id="modify">modify</button> -->
-	<input type="submit" value="modify" id="modify">
+	<input type="submit" value="modify" id="modify" >
 	
 	</form>
 	
