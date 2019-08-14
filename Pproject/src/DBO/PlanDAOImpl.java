@@ -40,7 +40,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String CHECKBOOK_SQL = "select count(sno) as cnt from book where day = ?  and sno=?";
 
-	
+	private static final String BOOK_LIST_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) and id = ? order by day asc";
 
 	@Override
 
@@ -283,6 +283,44 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 		return a;
 
+	}
+
+
+
+
+
+
+
+	@Override
+	public List<book> bookselectall(String id) {
+		List<book> planlist = new ArrayList<book>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = getConnection();
+			preparedstatement = connection.prepareStatement(BOOK_LIST_ALL);
+			preparedstatement.setString(1,id);
+			resultSet = preparedstatement.executeQuery();
+			while (resultSet.next()) {
+
+				book book1 = new book();
+				book1.setId(resultSet.getString("id"));
+				book1.setBno(resultSet.getInt("bno"));
+				book1.setDay(resultSet.getString("day"));
+				book1.setPay(resultSet.getInt("pay"));
+				book1.setSno(resultSet.getString("sno"));
+
+				
+				planlist.add(book1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			CloseDBObjects(resultSet, preparedstatement, connection);
+		}
+		return planlist;
 	}
 
 
