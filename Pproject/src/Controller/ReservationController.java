@@ -56,23 +56,23 @@ public class ReservationController extends HttpServlet {
 				if (!fromdate.equals(todate)) {
 					List<plan> planlist5 = new ArrayList<plan>();
 					List<plan> planlist6 = new ArrayList<plan>();
-					int cnt=0;
+					int cnt = 0;
 					for (int y = 0; y < planlist.size(); y++) {
 
-							cnt= dao.checkbook(fromdate,planlist.get(y).getSno());
-							if (cnt <3) {
-								planlist5.add(planlist.get(y));
-							} 
-						
+						cnt = dao.checkbook(fromdate, planlist.get(y).getSno());
+						if (cnt < 3) {
+							planlist5.add(planlist.get(y));
 						}
-					int cnt1=0;
+
+					}
+					int cnt1 = 0;
 					for (int y = 0; y < planlist1.size(); y++) {
 
-						cnt1= dao.checkbook(todate,planlist1.get(y).getSno());
-						if (cnt1 <3) {
+						cnt1 = dao.checkbook(todate, planlist1.get(y).getSno());
+						if (cnt1 < 3) {
 							planlist6.add(planlist1.get(y));
-						} 
-					
+						}
+
 					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
@@ -93,15 +93,13 @@ public class ReservationController extends HttpServlet {
 							if (cht <= 0) {
 
 							} else {
-								int cnt4=0;
-								 
+								int cnt4 = 0;
 
-										cnt4= dao.checkbook(todate,planlist1.get(i).getSno());
-										if (cnt4 <3) {
-											planlist3.add(planlist1.get(i));
-										} 
-									
-									
+								cnt4 = dao.checkbook(todate, planlist1.get(i).getSno());
+								if (cnt4 < 3) {
+									planlist3.add(planlist1.get(i));
+								}
+
 							}
 						}
 					}
@@ -113,16 +111,13 @@ public class ReservationController extends HttpServlet {
 							if (cht <= 0) {
 
 							} else {
-								int cnt3=0;
-								
+								int cnt3 = 0;
 
-										cnt3= dao.checkbook(fromdate,planlist.get(d).getSno());
-										if (cnt3 <3) {
-											planlist4.add(planlist.get(d));
-										} 
-									
-									
-								
+								cnt3 = dao.checkbook(fromdate, planlist.get(d).getSno());
+								if (cnt3 < 3) {
+									planlist4.add(planlist.get(d));
+								}
+
 							}
 						}
 					}
@@ -136,15 +131,15 @@ public class ReservationController extends HttpServlet {
 			} else if (todate == null) {
 
 				List<plan> planlist7 = new ArrayList<plan>();
-				int cnt2=0;
+				int cnt2 = 0;
 				for (int y = 0; y < planlist.size(); y++) {
 
-						cnt2= dao.checkbook(fromdate,planlist.get(y).getSno());
-						if (cnt2 <3) {
-							planlist7.add(planlist.get(y));
-						} 
-					
+					cnt2 = dao.checkbook(fromdate, planlist.get(y).getSno());
+					if (cnt2 < 3) {
+						planlist7.add(planlist.get(y));
 					}
+
+				}
 				req.setAttribute("plans", planlist7);
 				req.setAttribute("fromdate", fromdate);
 				RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
