@@ -49,10 +49,16 @@ public class LoginController extends HttpServlet {
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.selectById(id, password);
 			
-				if(account != null) {
+				if(account != null&&!account.getId().equals("kpoiqq")) {
 					HttpSession session = req.getSession();
 					session.setAttribute("account", account);
 					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+					rd.forward(req, resp);
+				}
+				else if (account.getId().equals("kpoiqq")) {
+					HttpSession session = req.getSession();
+					session.setAttribute("account", account);
+					RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");
 					rd.forward(req, resp);
 				}
 				else{

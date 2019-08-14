@@ -15,7 +15,11 @@ li{
 #a{
   font-size: 150%;
 }
+
+#abbd{display:inline}
+#abbd{text-align:right}
 </style>
+
   <meta charset="utf-8">
   
 <meta charset="utf-8">
@@ -211,24 +215,33 @@ $(function() {
 
 <div id = "a" >
   <h2>&nbsp;&nbsp;&nbsp;Board</h2>
+  
   	<c:choose>
   		<c:when test="${account !=null}">
-			<form action="logout" style="text-align:right">
-			<input type = "submit" class="btn btn-primary" value = "logout"/>&nbsp;&nbsp;&nbsp;
+			
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;Welcome ${account.id}</li>
+			<form action="logout" style="text-align:right" style="width: 21px;" id = 'abbd'>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type = "submit" class="btn btn-primary" value = "logout"/>
 			</form>
-			<div style="text-align:right">
-			<input type = "button" onclick="location.href='iddetail.jsp'" class="btn btn-primary" value = "detail"/>&nbsp;&nbsp;&nbsp;
+			<form action="mybook" method = "post" style="text-align:right" style="width: 21px;" id = 'abbd'>
+			<input type = 'hidden' id = 'accountid' name = 'accountid' value = "${account.id}" />
+			<input type = "submit" id = 'mybook' class="btn btn-primary" value = "Mybook"/>
+			</form>
+			<div style="text-align:right" id = 'abbd'>
+			<input type = "button" onclick="location.href='iddetail.jsp'" class="btn btn-primary" value = "detail"/>
 			</div>
-			<div style="text-align:right">
-			<input type = "button" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>&nbsp;&nbsp;&nbsp;
+			<div style="text-align:right" id = 'abbd'>
+			<input type = "button" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>
 			</div> 	
   		</c:when>
+  		
   		<c:otherwise>
   			<form action = 'login_input' style="text-align:right">
  			<input type = "submit" class="btn btn-primary" value = "login"/>&nbsp;&nbsp;&nbsp;
  			</form>
   		</c:otherwise>
   	</c:choose>
+  	
   </div>
    
     
@@ -256,6 +269,5 @@ $(function() {
 		</form>
 		<button type="button" onclick="location.href='q_req_list?reqPage=1'">QnA</button>
 	
-		
 </body>
 </html>
