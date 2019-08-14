@@ -42,13 +42,11 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String BOOK_LIST_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) and id = ? order by day asc";
 
-<<<<<<< HEAD
 
 	private static final String CHECKSEAT_SQL = "select seat from book where day = ?  and sno=?";
-=======
+
 	private static final String BOOK_SEQ_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) order by day asc";
-	
->>>>>>> branch 'master' of https://github.com/kpoiqs/Tproject
+
 	@Override
 
 	public List<plan> selectname12(String depa, String arva) {
@@ -331,7 +329,6 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 	}
 
 	
-	@Override
 	public List<book> bookselectall() {
 		List<book> planlist = new ArrayList<book>();
 		Connection connection = null;
@@ -378,7 +375,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			connection = getConnection();
 			preparedstatement = connection.prepareStatement(CHECKSEAT_SQL);
 			preparedstatement.setString(1,day);
-			preparedstatement.setString(1,sno);
+			preparedstatement.setString(2,sno);
 			resultSet = preparedstatement.executeQuery();
 			while (resultSet.next()) {
 

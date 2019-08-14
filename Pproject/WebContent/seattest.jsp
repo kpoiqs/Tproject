@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +8,6 @@
 
 <link rel="stylesheet" type="text/css" media="all" href='css/jquery_air.css' />
 <script type="text/javascript" src="preset.js"></script>
-<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="global.js"></script>
 
 
@@ -40,8 +40,18 @@
 <div id="container">
 
 	<ul id="airplane">
-
-		<li class="seat_01 A"><p><input type="radio" name="seat" value='1A' disabled='true'>01A</p></li>
+	
+	<c:forEach var="book" items="${booklist}">
+  		<c:if test = "${book.seat eq '1A'}">
+  		<li class="seat_01 A"><p><input type="radio" name="seat" value='1A' disabled='true'>01A</p></li>
+  		</c:if>
+  	
+  	 <c:if test = "${book.seat ne '1A'}">
+  	 <li class="seat_01 A"><p><input type="radio" id="seat" name = "seat" value='1A' >01A</p></li>
+  </c:if>
+		</c:forEach>
+		
+		
 		<li class="seat_01 B"><p><input type="radio" name="seat" value='1B'></p></li>
 		<li class="seat_01 C"><p><input type="radio" name="seat" value='1C'></p></li>
 		<li class="seat_01 D"><p><input type="radio" name="seat" value='1D'></p></li>
