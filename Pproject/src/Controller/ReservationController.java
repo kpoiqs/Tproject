@@ -173,9 +173,8 @@ public class ReservationController extends HttpServlet {
 			PlanDAO dao = new PlanDAOImpl();
 			plan plan1 = dao.selectbysno(check3);
 			List<book> book1 = dao.seatselectall(fromdate,check3);
+			 
 
-			System.out.println(fromdate);
-			System.out.println(check3);
 
 			req.setAttribute("fromdate", fromdate);
 			req.setAttribute("plan1", plan1);

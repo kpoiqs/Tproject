@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -32,34 +32,58 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript">
+  		
+  	</script>
+  	<style>
+  	input[type="radio"] {
+  /* remove standard background appearance */
+ 
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 6px;
+  
+  background-clip: content-box;
+  border: 2px solid #bbbbbb;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+}
 
+input[type="radio"]:checked {
+  background-color: #93e026;
+}
+  	
+  	</style>
 <title>Air</title>
 </head>
 <body>
 	<form action = "insert_book1" method = "post">
-<div id="container">
+<div id="container" >
 
-	<ul id="airplane">
-	
-	
-<%-- 	
-	 
+	<ul id="airplane" class="radio-wrap">
 	<c:forEach var="book" items="${booklist}">
+		<c:if test = "${book.seat ne '1A'}">
+	 <li class="seat_01 A"><p><input type="radio" id="seat" name = "seat" value='1A' >01A</p></li>
+		 </c:if>
   		<c:if test = "${book.seat eq '1A'}">
-  		<li class="seat_01 A"><p><input type="radio" id="seat" name="seat" value='1A' disabled='true'>01A</p></li>
+  		<li class="seat_01 A"><p><input type="radio" id="seat" name="seat" value='1A' disabled=true>01A</p></li>
   		</c:if>
-  	</c:forEach> --%>
-  	<script>
-  		if(seat1.equals("1A")){
-  			seat1.disabled=true;
-  		}
-  	</script>
+  	</c:forEach> 
+  	
+  	<li class="seat_01 B"><p><input type="radio" id="seat" name = "seat" value='1B' >01B</p></li>
+	<c:forEach var="book" items="${booklist}">
+  		<c:if test = "${book.seat eq '1B'}">
+  		<li class="seat_01 B"><p><input type="radio" id="seat" name="seat" value='1B' disabled='true'>01B</p></li>
+  		</c:if>
+  	</c:forEach> 
   	
   
 		
 		
-		<li class="seat_01 A"><p><input type="radio" id="seat1" name = "seat" value='1A' >01A</p></li>
-		<li class="seat_01 B"><p><input type="radio" name="seat" value='1B'></p></li>
+		
+		
 		<li class="seat_01 C"><p><input type="radio" name="seat" value='1C'></p></li>
 		<li class="seat_01 D"><p><input type="radio" name="seat" value='1D'></p></li>
 		<li class="seat_01 E"><p><input type="radio" name="seat" value='1E'></p></li>
