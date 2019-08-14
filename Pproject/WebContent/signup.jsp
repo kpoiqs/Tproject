@@ -56,9 +56,11 @@ $(function (){
 	});
 });
 var idck=0;
+var idch1=0;
 $(function(){
 	$("#checkid").click(function(){	
 		var input_val = $("#id").val();
+		
 	if(!input_val){
 		alert("Please enter your ID.");
 		return false;
@@ -70,16 +72,19 @@ $(function(){
 		$(".console").html(result);
 		if(count>0){
 			idck = 0;
+			idck1 = document.getElementById("id").value;
 			return false;
 		}else{
 			idck=1;
+			idck1 = document.getElementById("id").value;
 			return true;
 		}
 		});	
 
 	});
 });
-var emailck=0
+var emailck=0;
+var emailch1 = 0;
 $(function(){	
 	$("#checkemail").click(function(){		
 		var input_val = $("#email").val();
@@ -94,9 +99,11 @@ $(function(){
 		$(".console1").html(result);
 		if(count>0){
 			emailck = 0;
+			emailck1 = document.getElementById("email").value;
 			return false;
 		}else{
 			emailck=1;
+			emailck1 = document.getElementById("email").value;
 			return true;
 		}
 		});
@@ -116,7 +123,7 @@ $(function(){
 	$("#jointest").click(function(){
 	var result = confirm("Would you like to sign up?");
 	if( result == true ){
-		if(idck==0||emailck ==0 ){
+		if(idck==0||emailck ==0 || emailck1 != document.getElementById("email").value || idck1 != document.getElementById("id").value){
 			alert("please double-check the ID or Email");
 	        return false;
 		}
