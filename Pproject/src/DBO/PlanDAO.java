@@ -14,5 +14,5 @@ public interface PlanDAO {
 	plan selectbysno(String sno);
 	
 	boolean insert(book book);
-	List<plan> checkbook(String fromdate, String depa, String arva);
+	int checkbook(String fromdate, String sno);
 }
