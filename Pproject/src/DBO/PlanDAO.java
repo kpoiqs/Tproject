@@ -17,10 +17,9 @@ public interface PlanDAO {
 	int checkbook(String fromdate, String sno);
 	
 	List<book> bookselectall(String id);
-<<<<<<< HEAD
+
 	List<book> seatselectall(String day, String sno);
-=======
+
 	
 	List<book> bookselectall();
->>>>>>> branch 'master' of https://github.com/kpoiqs/Tproject
 }
