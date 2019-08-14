@@ -7,6 +7,7 @@ public class book {
 	private int pay;
 	private String sno;
 	private int bno;
+	private String seat;
 	
 	public String getId() {
 		return id;
@@ -37,6 +38,13 @@ public class book {
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
+	}
+	
+	public String getSeat() {
+		return seat;
+	}
+	public void setSeat(String seat) {
+		this.seat = seat;
 	}
 	@Override
 	public String toString() {
