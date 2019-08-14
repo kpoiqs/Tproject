@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
@@ -13,7 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import DBO.AccountDAO;
 import DBO.AccountDAOImpl;
+import DBO.PlanDAO;
+import DBO.PlanDAOImpl;
 import Model.Account;
+import Model.book;
 
 
 
@@ -58,6 +62,10 @@ public class LoginController extends HttpServlet {
 				else if (account.getId().equals("kpoiqq")) {
 					HttpSession session = req.getSession();
 					session.setAttribute("account", account);
+					req.setCharacterEncoding("utf-8");
+					PlanDAO dao1 = new PlanDAOImpl();
+					List<book> booklist = dao1.bookselectall();
+					req.setAttribute("list", booklist);
 					RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");
 					rd.forward(req, resp);
 				}
