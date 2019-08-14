@@ -169,19 +169,7 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			String check3 = req.getParameter("check3");
 			String fromdate = req.getParameter("fromdate");
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> branch 'master' of https://github.com/kpoiqs/Tproject
-			PlanDAO dao = new PlanDAOImpl();
-			plan plan1 = dao.selectbysno(check3);
-			List<book> book1 = dao.seatselectall(fromdate,check3);
-<<<<<<< HEAD
-			System.out.println(fromdate);
-			System.out.println(check3);
-=======
->>>>>>> branch 'master' of https://github.com/kpoiqs/Tproject
 			req.setAttribute("fromdate", fromdate);
 			req.setAttribute("plan1", plan1);
 			req.setAttribute("booklist", book1);
