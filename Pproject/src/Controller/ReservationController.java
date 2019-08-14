@@ -18,7 +18,7 @@ import Model.book;
 import Model.plan;
 
 @WebServlet(name = "ReservationController", urlPatterns = { "/reservation", "/book.do", "/book1.do", "/insert_book",
-		"/insert_book1","/mybook" })
+		"/insert_book1" })
 public class ReservationController extends HttpServlet {
 
 	@Override
@@ -169,13 +169,16 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			String check3 = req.getParameter("check3");
 			String fromdate = req.getParameter("fromdate");
+			String sno = req.getParameter("sno");
 
 			PlanDAO dao = new PlanDAOImpl();
 			plan plan1 = dao.selectbysno(check3);
+			List<book> book1 = dao.seatselectall(fromdate,sno);
 			req.setAttribute("fromdate", fromdate);
 			req.setAttribute("plan1", plan1);
+			req.setAttribute("book1", book1);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/book1.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/seattest.jsp");
 			rd.forward(req, resp);
 		} else if (action.equals("insert_book1")) {
 			req.setCharacterEncoding("utf-8");
@@ -222,14 +225,6 @@ public class ReservationController extends HttpServlet {
 			boolean result2 = dao.insert(book2);
 
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
-			rd.forward(req, resp);
-		}else if (action.equals("mybook")) {
-			req.setCharacterEncoding("utf-8");
-			PlanDAO dao = new PlanDAOImpl();
-			String id = req.getParameter("accountid");
-			List<book> booklist = dao.bookselectall(id);
-			req.setAttribute("list", booklist);
-			RequestDispatcher rd = req.getRequestDispatcher("/booklist.jsp");
 			rd.forward(req, resp);
 		}
 

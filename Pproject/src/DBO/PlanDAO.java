@@ -17,6 +17,5 @@ public interface PlanDAO {
 	int checkbook(String fromdate, String sno);
 	
 	List<book> bookselectall(String id);
-	
-	List<book> bookselectall();
+	List<book> seatselectall(String day, String sno);
 }
