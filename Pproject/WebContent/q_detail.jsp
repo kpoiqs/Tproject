@@ -94,14 +94,13 @@ $(function(){
 	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>
 	Subject : ${q.subject }<br/>
-	Content : ${q.content }
+	Content : ${q.content } <input type="submit" value="modify" id="modify" ><br /><br />
 	<!-- <button type="button" id="modify">modify</button> -->
-	<input type="submit" value="modify" id="modify" >
-	
-	</form>
 	<c:if test="${q.lvl == 0}">
 	<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" value="reply^^">
 	</c:if>
+	</form>
+	
 	<input type="button" id="delete" value="delete">
 	<input type="button" id="write" value="write">	<button type="button" onclick="history.back()">back to list</button>
 

@@ -21,7 +21,7 @@
 				<tr>
 					<td>NO</td>
 					<td>Subject</td>
-					<td></td>
+					
 					<td>Writer</td>
 					<td>date</td>
 					<td>visited</td>
@@ -33,12 +33,12 @@
 						<td>${qq.no}</td>
 						
 						<td>
-						<c:if test="${qq.lvl >0}">
+						<%-- <c:if test="${qq.lvl >0}">
                    		<c:forEach begin="1" end="${qq.lvl}">
                             &nbsp;&nbsp; RE : <!-- 답변글일경우 글 제목 앞에 공백을 준다. -->
                         </c:forEach>
                         
-                    </c:if>
+                    </c:if> --%>
 						<a href="/q_visited"></a><a href="q_detail?no=${qq.no}">${qq.subject}</a>
 						</td>
 						
