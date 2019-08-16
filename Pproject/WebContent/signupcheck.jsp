@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>signupcheck</title>
+<title>sign up check</title>
 </head>
 <body>
 Congratulations on your membership.<br />

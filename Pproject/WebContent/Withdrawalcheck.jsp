@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Withdrawalcheck</title>
+<title>Withdrawal check</title>
 </head>
 <body>
 <form method="post" action="Withdrawal">

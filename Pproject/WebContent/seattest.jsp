@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <link rel="stylesheet" type="text/css" media="all" href='css/jquery_air.css' />
 <script type="text/javascript" src="preset.js"></script>
-<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="global.js"></script>
 
 
@@ -32,17 +32,38 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
+<script type="text/javascript">
+  		
+  	</script>
+  
 <title>Air</title>
 </head>
 <body>
 	<form action = "insert_book1" method = "post">
-<div id="container">
+<div id="container" >
 
-	<ul id="airplane">
+	<ul id="airplane" class="radio-wrap">
+	
 
-		<li class="seat_01 A"><p><input type="radio" name="seat" value='1A' disabled='true'>01A</p></li>
-		<li class="seat_01 B"><p><input type="radio" name="seat" value='1B'></p></li>
+		 <li class="seat_01 A"><p><input type="radio" id="seat" name = "seat" value='1A'  >01A</p></li>
+		<c:forEach var="book" items="${booklist}">
+  		<c:if test = "${book.seat eq '1A'}">
+  		<li class="seat_01 A"><p><input type="radio" id="seat" name="seat" value='1A' disabled='true' >01A</p></li>
+  		</c:if>
+  	</c:forEach> 
+  	
+  	<li class="seat_01 B"><p><input type="radio" id="seat" name = "seat" value='1B' >01B</p></li>
+	<c:forEach var="book" items="${booklist}">
+  		<c:if test = "${book.seat eq '1B'}">
+  		<li class="seat_01 B"><p><input type="radio" id="seat" name="seat" value='1B' disabled='true'>01B</p></li>
+  		</c:if>
+  	</c:forEach> 
+  	
+  
+		
+		
+		
+		
 		<li class="seat_01 C"><p><input type="radio" name="seat" value='1C'></p></li>
 		<li class="seat_01 D"><p><input type="radio" name="seat" value='1D'></p></li>
 		<li class="seat_01 E"><p><input type="radio" name="seat" value='1E'></p></li>

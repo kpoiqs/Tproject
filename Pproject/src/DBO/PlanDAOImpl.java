@@ -36,7 +36,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String PLAN_SQL_SELECT_BY_SNO = "select depa,arva,dept,arvt,sno,cost From plan where sno = ?";
 
-	private static final String INSERT_BOOK = "insert into book values(?,?,?,?,book_seq1.nextval)";
+	private static final String INSERT_BOOK = "insert into book values(?,?,?,?,book_seq1.nextval,?)";
 
 	private static final String CHECKBOOK_SQL = "select count(sno) as cnt from book where day = ?  and sno=?";
 
@@ -202,6 +202,8 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			preparedstatement.setInt(3,book.getPay());
 
 			preparedstatement.setString(4,book.getSno());
+			
+			preparedstatement.setString(5,book.getSeat());
 
 			int rownum = preparedstatement.executeUpdate();
 
@@ -375,7 +377,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			connection = getConnection();
 			preparedstatement = connection.prepareStatement(CHECKSEAT_SQL);
 			preparedstatement.setString(1,day);
-			preparedstatement.setString(1,sno);
+			preparedstatement.setString(2,sno);
 			resultSet = preparedstatement.executeQuery();
 			while (resultSet.next()) {
 

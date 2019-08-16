@@ -169,14 +169,16 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			String check3 = req.getParameter("check3");
 			String fromdate = req.getParameter("fromdate");
-			String sno = req.getParameter("sno");
 
 			PlanDAO dao = new PlanDAOImpl();
 			plan plan1 = dao.selectbysno(check3);
-			List<book> book1 = dao.seatselectall(fromdate,sno);
+			List<book> book1 = dao.seatselectall(fromdate,check3);
+			 
+
+
 			req.setAttribute("fromdate", fromdate);
 			req.setAttribute("plan1", plan1);
-			req.setAttribute("book1", book1);
+			req.setAttribute("booklist", book1);
 
 			RequestDispatcher rd = req.getRequestDispatcher("/seattest.jsp");
 			rd.forward(req, resp);
@@ -187,12 +189,14 @@ public class ReservationController extends HttpServlet {
 			String fromdate = req.getParameter("fromdate");
 			int plan1cost = Integer.parseInt(req.getParameter("plan1cost"));
 			String plan1sno = req.getParameter("plan1sno");
+			String seat = req.getParameter("seat");
 
 			book book1 = new book();
 			book1.setId(id);
 			book1.setDay(fromdate);
 			book1.setPay(plan1cost);
 			book1.setSno(plan1sno);
+			book1.setSeat(seat);
 
 			boolean result1 = dao.insert(book1);
 
