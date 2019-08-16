@@ -21,8 +21,10 @@
 				<tr>
 					<td>NO</td>
 					<td>Subject</td>
+					<td></td>
 					<td>Writer</td>
 					<td>date</td>
+					<td>visited</td>
 					<!-- <td>상세보기</td> -->
 					
 				</tr>
@@ -45,6 +47,7 @@
 						<td>${qq.no}</td>	
 						<td>${qq.writer}</td>
 						<td>${qq.wdate}</td>
+						<td>${qq.visited }</td>
 						<!-- <td><a href="memo_detail?memoid=${memo.memoid}">상세보기</a></td> -->
 					</tr>
 			</c:forEach>
