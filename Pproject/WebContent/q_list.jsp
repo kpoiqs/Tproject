@@ -40,8 +40,9 @@
 						<a href="/q_visited"></a><a href="q_detail?no=${qq.no}">${qq.subject}</a>
 						</td>
 						
-						<td><a href="q_detail?no=${qq.no}">${qq.subject}</td>
 						
+						<%-- <td><a href="q_detail?no=${qq.no}">${qq.subject}</td> --%>
+						<td>${qq.no}</td>	
 						<td>${qq.writer}</td>
 						<td>${qq.wdate}</td>
 						<!-- <td><a href="memo_detail?memoid=${memo.memoid}">상세보기</a></td> -->

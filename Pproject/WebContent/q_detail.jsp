@@ -88,22 +88,22 @@ $(function(){
 </head>
 <body>
 	<h3>Detail QnA</h3>
-	<form action="q_update?no=${q.no }" method="post" id="form1" name="form1">
+	<form action="q_modify?no=${q.no }" method="post" id="form1" name="form1">
 
 	
 	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>
 	Subject : ${q.subject }<br/>
-	Content : <input type="text" name="content" value="${q.content }">
+	Content : ${q.content }
 	<!-- <button type="button" id="modify">modify</button> -->
 	<input type="submit" value="modify" id="modify" >
 	
 	</form>
 	<c:if test="${q.lvl == 0}">
-	<a href="q_reply_page?grp=${q.grp }">리플달기^^</a>
+	<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" value="reply^^">
 	</c:if>
-	<button type="button" id="delete">delete</button>
-	<button type="button" id="write">write</button>	<button type="button" onclick="history.back()">back to list</button>
+	<input type="button" id="delete" value="delete">
+	<input type="button" id="write" value="write">	<button type="button" onclick="history.back()">back to list</button>
 
 </body>
 </html>

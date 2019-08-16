@@ -16,7 +16,7 @@ import Model.Qna;
 import page.PageManager;
 import page.PageSQL;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list","/q_reply","/q_reply_page","/q_visited"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list","/q_reply","/q_reply_page","/q_visited","/q_modify"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -66,6 +66,23 @@ public class QController extends HttpServlet {
 			req.setAttribute("q", qna);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/q_detail.jsp");//출력할 페이지로 이동
+			rd.forward(req, resp);
+			
+		}else if(action.equals("q_modify")) {
+			
+			
+			int no = Integer.parseInt(req.getParameter("no"));
+			
+			QnaDAO dao = new QnaDAOImpl();
+			Qna qna = dao.selectByNo(no);
+			
+			dao.updateVisited(no);
+			
+			System.out.println(qna);
+						
+			req.setAttribute("q", qna);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/q_modify.jsp");//출력할 페이지로 이동
 			rd.forward(req, resp);
 			
 		}else if(action.equals("q_delete")) {
@@ -129,7 +146,7 @@ public class QController extends HttpServlet {
 			dao.insertReply(qna);
 			req.setAttribute("q", qna);
 			
-			resp.sendRedirect("/Pproject/q_list");
+			resp.sendRedirect("/Pproject/q_req_list?reqPage=1");
 			
 		}else if(action.equals("q_reply_page")) {
 			req.setCharacterEncoding("utf-8");
