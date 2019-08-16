@@ -7,15 +7,10 @@
 	<head>
 	<style>
 	#h{
-		background-image:url("img/airplane9.gif");
+		background-image:url("img/airplane1.gif");
 		background-repeat:no-repeat;
 	}
-	
 
-  
-  
-
-	
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -34,7 +29,9 @@
 	<div id = "h" style="text-align:center">
 	<br/><br/>
 		 <c:forEach begin = "1" end = "6" step = "1" var="i">
+		 
     <c:forEach begin = "1" end = "25" step = "1" var="j">
+     &nbsp;
      <input type="radio" id="${j}${i}" name="seat" value="${j}${i}"/>
     </c:forEach>
   <br/>
@@ -52,9 +49,9 @@
      </script> 
 
         </c:forEach> 
-
-</div>
 <br/><br/><br/>
+</div>
+<br/><br/>
 <div id='a'>
 	Depart ${fromdate} ${plan1.depa} ${plan1.dept} ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
 <br>
