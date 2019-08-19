@@ -7,7 +7,7 @@
 	<head>
 	<style>
 	#h{
-		background-image:url("img/airplane7.gif");
+		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;
 	}
 	#a {
