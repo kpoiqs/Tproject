@@ -9,6 +9,7 @@
 	#h{
 		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;
+		background-position: center
 	}
 	#a {
   border: 1px solid black;
@@ -38,7 +39,7 @@
    	
    	
    		if(document.frm.seat.value==""){//id가 공백인 경우(true)
-			alert('아이디를 입력하세요.');//알림창
+			alert('Please select a seat.');//알림창
 			return false;//다음 태그 동작을 차단시킴
 		}
    		
