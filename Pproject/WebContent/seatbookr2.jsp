@@ -10,8 +10,18 @@
 		background-image:url("img/airplane7.gif");
 		background-repeat:no-repeat;
 	}
+	#a {
+  border: 1px solid black;
+  padding-top: 50px;
+  padding-right: 10px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  width: 90%;
+  margin-left: 100px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;
+}
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
@@ -24,7 +34,7 @@
 		
 	</head>
 	<body>
-	<form action = "insert_book1" method = "post" >
+	<form action = "insert_book" method = "post" >
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
 	<c:forEach begin = "1" end = "6" step = "1" var="i">
@@ -52,8 +62,12 @@
 <br/><br/><br/>
 </div>
 <br/>
+
+<div style="text-align:center">
 <div id='a' style="text-align:center">
-    Return<br>
+<fieldset>
+  <legend>Return</legend>
+    <br>
 	Depart : ${todate}${plan2.depa} ${plan2.dept} <br> Arrives : ${todate} ${plan2.arva} ${plan2.arvt} <br/>
 <br>
 &nbsp;¡ØFare details
@@ -74,11 +88,17 @@
 <input type = "hidden" id = 'plan2sno' name = 'plan2sno' value = "${plan2.sno}">
 <input type = "hidden" id = 'plan1cost' name = 'plan1cost' value = "${plan1.cost}">
 <input type = "hidden" id = 'plan2cost' name = 'plan2cost' value = "${plan2.cost}">
-
+<input type = "hidden" id = 'plan1seat' name = 'plan1seat' value = "${seat1}">
+<input type = "hidden" id = 'check1' name = 'check1' value = "${check1}">
+<input type = "hidden" id = 'check2' name = 'check2' value = "${check2}">
 		<p>
-			Total price: ${pluscost} $ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
+			
 		</p>
+		</fieldset>
 </div>
+Total price: ${pluscost} $ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
+</div>
+
 	</form>
 </body>
 </html>
