@@ -224,7 +224,7 @@ $(function() {
 <body>
 
 <div id = "a" >
-  <img id="b" src="img/airlogo.jpg">
+  <img id="b" src="img/airlogo.jpg" onclick="location.href='index.jsp'">
   
   	<c:choose>
   		<c:when test="${account !=null}">

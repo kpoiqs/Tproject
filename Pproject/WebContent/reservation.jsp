@@ -103,6 +103,7 @@
 </script>
 </head>
 <body>
+<img id="b" src="img/airlogo.jpg" onclick="location.href='index.jsp'"><br/>
 	Depart air ${fromdate}
 	<hr />
 	<form action='book.do' method='post'>
