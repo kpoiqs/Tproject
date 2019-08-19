@@ -39,9 +39,7 @@
 					<td>${booklist.day}</td>
 					<td>${booklist.pay}</td>
 					<td>${booklist.sno}</td>
-					<td>${booklist.bno}</td>
-					<input type = "text" id = "booklist_bno" name = "booklist_bno" value = "${booklist.bno}"/>
-					<input type = "button" onclick="location.href='booklist_delete?bno=${booklist.bno}'" class="btn btn-primary" value = "delete"/>
+					<td><a href="booklist_detail?bno=${booklist.bno}">${booklist.bno}</a></td>
 				</tr>
 				
 						

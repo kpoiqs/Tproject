@@ -24,5 +24,7 @@ public interface PlanDAO {
 	List<book> bookselectall();
 	
 	boolean delete(int bno);
+	
+	book selectbybno(int bno);
 
 }

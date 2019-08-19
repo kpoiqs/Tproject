@@ -49,6 +49,8 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String BOOK_DELETE_BNO = "DELETE FROM book WHERE bno = ?";
 	
+	private static final String SELECT_BY_BNO = "select id, day, pay, sno, bno, seat from book where bno = ?";
+	
 	@Override
 
 	public List<plan> selectname12(String depa, String arva) {
@@ -437,6 +439,42 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			CloseDBObjects(null, preparedStatement, connection);
 		}
 		return result;
+	}
+
+
+
+
+
+
+
+	@Override
+	public book selectbybno(int bno) {
+		book book1 = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = getConnection();
+			preparedstatement = connection.prepareStatement(SELECT_BY_BNO);
+			preparedstatement.setInt(1, bno);
+			resultSet = preparedstatement.executeQuery();
+
+			if (resultSet.next()) {
+				book1 = new book();
+				book1.setId(resultSet.getString("id"));
+				book1.setBno(resultSet.getInt("bno"));
+				book1.setDay(resultSet.getString("day"));
+				book1.setPay(resultSet.getInt("pay"));
+				book1.setSno(resultSet.getString("sno"));
+				book1.setSeat(resultSet.getString("seat"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			CloseDBObjects(resultSet, preparedstatement, connection);
+		}
+		return book1;
 	}
 
 
