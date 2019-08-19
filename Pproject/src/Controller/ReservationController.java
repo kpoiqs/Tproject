@@ -163,7 +163,7 @@ public class ReservationController extends HttpServlet {
 			req.setAttribute("todate", todate);
 			req.setAttribute("plan1", plan1);
 			req.setAttribute("plan2", plan2);
-			RequestDispatcher rd = req.getRequestDispatcher("/book.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/seatbookr1.jsp");
 			rd.forward(req, resp);
 		} else if (action.equals("book1.do")) {
 			req.setCharacterEncoding("utf-8");
@@ -180,7 +180,7 @@ public class ReservationController extends HttpServlet {
 			req.setAttribute("plan1", plan1);
 			req.setAttribute("booklist", book1);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/seattest.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/seatbook.jsp");
 			rd.forward(req, resp);
 		} else if (action.equals("insert_book1")) {
 			req.setCharacterEncoding("utf-8");

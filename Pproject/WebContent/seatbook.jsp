@@ -7,10 +7,9 @@
 	<head>
 	<style>
 	#h{
-		background-image:url("img/airplane1.gif");
+		background-image:url("img/airplane7.gif");
 		background-repeat:no-repeat;
 	}
-
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -27,8 +26,8 @@
 	<body>
 	<form action = "insert_book1" method = "post" >
 	<div id = "h" style="text-align:center">
-	<br/><br/>
-		 <c:forEach begin = "1" end = "6" step = "1" var="i">
+	<br/><br/><br/><br/>
+	<c:forEach begin = "1" end = "6" step = "1" var="i">
 		 
     <c:forEach begin = "1" end = "25" step = "1" var="j">
      &nbsp;
@@ -37,6 +36,7 @@
   <br/>
   
    </c:forEach>
+     <br/>
         
     <c:forEach var = "book" items = "${booklist}">
        <script>
@@ -51,9 +51,9 @@
         </c:forEach> 
 <br/><br/><br/>
 </div>
-<br/><br/>
-<div id='a'>
-	Depart ${fromdate} ${plan1.depa} ${plan1.dept} ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
+<br/>
+<div id='a' style="text-align:center">
+	Depart : ${fromdate} ${plan1.depa} ${plan1.dept}<br> Arrives : ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
 <br>
 &nbsp;¡ØFare details
 <li>Cancellation</li>
@@ -70,15 +70,10 @@
 <input type = "hidden" id = 'fromdate' name = 'fromdate' value = "${fromdate}">
 <input type = "hidden" id = 'plan1sno' name = 'plan1sno' value = "${plan1.sno}">
 <input type = "hidden" id = 'plan1cost' name = 'plan1cost' value = "${plan1.cost}">
-${plan1.cost} 
-
-
 		<p>
-			<input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
+			Total price: ${plan1.cost}$ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
 		</p>
 </div>
 	</form>
-
-<!-- end #container -->
 </body>
 </html>
