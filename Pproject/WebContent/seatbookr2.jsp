@@ -53,7 +53,8 @@
 </div>
 <br/>
 <div id='a' style="text-align:center">
-	Depart : ${fromdate} ${plan1.depa} ${plan1.dept}<br> Arrives : ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
+    Return<br>
+	Depart : ${todate}${plan2.depa} ${plan2.dept} <br> Arrives : ${todate} ${plan2.arva} ${plan2.arvt} <br/>
 <br>
 &nbsp;¡ØFare details
 <li>Cancellation</li>
@@ -68,10 +69,14 @@
 <br/>
 <input type = "hidden" id = 'id' name = 'id' value = "${account.id}">
 <input type = "hidden" id = 'fromdate' name = 'fromdate' value = "${fromdate}">
+<input type = "hidden" id = 'todate' name = 'todate' value = "${todate}">
 <input type = "hidden" id = 'plan1sno' name = 'plan1sno' value = "${plan1.sno}">
+<input type = "hidden" id = 'plan2sno' name = 'plan2sno' value = "${plan2.sno}">
 <input type = "hidden" id = 'plan1cost' name = 'plan1cost' value = "${plan1.cost}">
+<input type = "hidden" id = 'plan2cost' name = 'plan2cost' value = "${plan2.cost}">
+
 		<p>
-			Total price: ${plan1.cost}$ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
+			Total price: ${pluscost} $ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
 		</p>
 </div>
 	</form>

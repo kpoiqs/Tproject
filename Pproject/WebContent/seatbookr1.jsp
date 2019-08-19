@@ -53,6 +53,7 @@
 </div>
 <br/>
 <div id='a' style="text-align:center">
+    Outbound<br>
 	Depart : ${fromdate} ${plan1.depa} ${plan1.dept}<br> Arrives : ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
 <br>
 &nbsp;¡ØFare details
@@ -75,7 +76,7 @@
 <input type = "hidden" id = 'plan2cost' name = 'plan2cost' value = "${plan2.cost}">
 
 		<p>
-			Total price: ${pluscost} $ <input type = "submit" class="btn btn-primary"  id = 'next' value = "next">
+			<input type = "submit" class="btn btn-primary"  id = 'next' value = "next">
 		</p>
 </div>
 	</form>
