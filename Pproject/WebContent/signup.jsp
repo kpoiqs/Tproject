@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -9,10 +8,54 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<style type="text/css">
-		#singupForm input.error, #singupForm textarea.error{
-			 border : 1px dashed red;
+		#checkid{
+			border: 1px solid skyblue;
+			background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+            cursor:pointer;
+            border-top-left-radius : 5px;
+			border-bottom-left-radius : 5px;
+			border-top-right-radius : 5px;
+			border-bottom-right-radius : 5px;
 		}
+		#checkid:hover{
+			background-color: skyblue;
+			color:white;
+		}
+		#checkemail{
+			border: 1px solid skyblue;
+			background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+            cursor:pointer;
+            border-top-left-radius : 5px;
+			border-bottom-left-radius : 5px;
+			border-top-right-radius : 5px;
+			border-bottom-right-radius : 5px;
+		}
+		#checkemail:hover{
+			background-color: skyblue;
+			color:white;
+		}
+		#jointest{
+			border: 1px solid skyblue;
+			background-color: rgba(0,0,0,0);
+            color: white;
+            padding: 5px;
+            background-color: skyblue;
+            cursor:pointer;
+            border-top-left-radius : 5px;
+			border-bottom-left-radius : 5px;
+			border-top-right-radius : 5px;
+			border-bottom-right-radius : 5px;
+		}
+		
+		body {
+  			background-color: rgb(240,240,240);
+		}	
 	</style>
+
 <script type = "text/javascript">
 
 $(function (){
@@ -129,11 +172,11 @@ $(function(){
 		}
 		
 		else if (idck==1||emailck ==1 ){
-			 alert("Congratulations on your membership.");
+			"#singupForm"
 		}
 	   }else if( result == false ){
 
-	      alert("취소선택!");
+	      alert("cancel!");
 		return false;
 	   }
 	
@@ -144,12 +187,13 @@ $(function(){
 <body>
 
 <form method="post" action="join" id="singupForm" name="form">
-ID<input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
+ID<br />
+<input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
 <input type="button" id="checkid" value="ID check" name="idcheck" /><br />
 <div class="console" id="consoletest"></div>
-Password<input type="password" placeholder="Input Password" name="inputpassword" id="pwd"><br />
-Password check<input type="password" placeholder="Input Password" name="repwd"><br />
-Email<input type="email" placeholder="Input Email" name="inputemail" id="email">
+Password<br /><input type="password" placeholder="Input Password" name="inputpassword" id="pwd"><br />
+Password check<br /><input type="password" placeholder="Input Password" name="repwd"><br />
+Email<br /><input type="email" placeholder="Input Email" name="inputemail" id="email">
 <input type="button" id="checkemail" value="Email Check" /><br />
 <div class="console1"></div>
 <input type="submit" value="join" id="jointest"/>

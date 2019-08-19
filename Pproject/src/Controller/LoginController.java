@@ -58,6 +58,10 @@ public class LoginController extends HttpServlet {
 					session.setAttribute("account", account);
 					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 					rd.forward(req, resp);
+				}else if (account == null){
+					req.setAttribute("message", "discord");
+					RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
+					rd.forward(req, resp);
 				}
 				else if (account.getId().equals("kpoiqq")) {
 					HttpSession session = req.getSession();
@@ -69,11 +73,7 @@ public class LoginController extends HttpServlet {
 					RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");
 					rd.forward(req, resp);
 				}
-				else{
-					req.setAttribute("message", "discord");
-					RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-					rd.forward(req, resp);
-				}
+				
 				
 		}else if(action.equals("logout")) {
 			
