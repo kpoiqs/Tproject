@@ -68,6 +68,7 @@
 		
 		body {
   			background-color: rgb(240,240,240);
+  			text-align: center;
 		}	
 	</style>
 <script type = "text/javascript">
@@ -89,16 +90,16 @@ $(function(){
 </script>
 </head>
 <body>
-text
+<h1>AIR LINE</h1>
 	<form action="login" method ="post">
-		<input type="text" placeholder="ID" name="id" id="idcheck"><br />
-		<input type="password" placeholder="Password" name="password" id="passwordcheck"><br /><br />
-		<input type="submit" id="check" value="login"><br />
+		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:295px; height:30px;"><br /><br />
+		<input type="password" placeholder="Password" name="password" id="passwordcheck" style="width:295px; height:30px;"><br /><br />
+		<input type="submit" id="check" value="login"  style="height:50px; width:300px;"><br />
 	</form>
 	
 	<br />
-	<button onclick="location.href='signup.jsp'" id="sign">sign up</button>
 	<button onclick="location.href='find.jsp'" id="find">find id</button>
 	<button onclick="location.href='findpwd.jsp'" id="findpwd">find password</button>
+	<button onclick="location.href='signup.jsp'" id="sign">sign up</button>
 </body>
 </html>
