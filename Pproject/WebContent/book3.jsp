@@ -32,6 +32,7 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
+<form action = "book3_delete" method = "post">
 <c:forEach var="booklist" items="${list}">
 				<tr>
 					<td>${booklist.id}</td>
@@ -39,10 +40,13 @@
 					<td>${booklist.pay}</td>
 					<td>${booklist.sno}</td>
 					<td>${booklist.bno}</td>
-					
 				</tr>
+				
+				<input type = "submit" id = 'delete' value = 'delete'>		
 				<hr/>
 
 			</c:forEach>
+			
+</form>
 </body>
 </html>
