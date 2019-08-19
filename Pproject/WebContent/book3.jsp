@@ -40,6 +40,7 @@
 					<td>${booklist.pay}</td>
 					<td>${booklist.sno}</td>
 					<td>${booklist.bno}</td>
+					<input type = "hidden" id = 'book_bon' name = 'book_bno' value = "${booklist.bno}" />
 				</tr>
 				
 				<input type = "submit" id = 'delete' value = 'delete'>		
