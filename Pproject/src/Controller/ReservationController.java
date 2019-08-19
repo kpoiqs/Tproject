@@ -18,7 +18,7 @@ import Model.book;
 import Model.plan;
 
 @WebServlet(name = "ReservationController", urlPatterns = { "/reservation", "/book.do", "/book1.do", "/insert_book",
-		"/insert_book1","/book3_delete","/mybook","/insert_book_wan" })
+		"/insert_book1","/booklist_detail","/mybook","/insert_book_wan","/book_delete" })
 public class ReservationController extends HttpServlet {
 
 	@Override
@@ -260,11 +260,17 @@ public class ReservationController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/booklist.jsp");
 			rd.forward(req, resp);
-		}else if (action.equals("book3_delete")) {
+		}else if (action.equals("booklist_detail")) {
 			req.setCharacterEncoding("utf-8");
-			String bno = req.getParameter("book_bno");
+			int bno = Integer.parseInt(req.getParameter("bno"));
+			PlanDAO dao = new PlanDAOImpl();
+			book book1 = new book();
 			
-			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+			book1 = dao.selectbybno(bno);
+			
+			req.setAttribute("book", book1);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/book4.jsp");
 			rd.forward(req, resp);
 		}else if (action.equals("insert_book_wan")) {
 			req.setCharacterEncoding("utf-8");
@@ -295,7 +301,17 @@ public class ReservationController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/seatbookr2.jsp");
 			rd.forward(req, resp);
-		} 
+		}else if (action.equals("book_delete")) {
+			req.setCharacterEncoding("utf-8");
+			int bno = Integer.parseInt(req.getParameter("book_1bno"));
+			PlanDAO dao = new PlanDAOImpl();
+			
+			boolean result = dao.delete(bno);
+			
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");
+			rd.forward(req, resp);
+		}
 
 	}
 
