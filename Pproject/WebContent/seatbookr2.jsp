@@ -9,6 +9,7 @@
 	#h{
 		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;
+		background-position: center
 	}
 	#a {
   border: 1px solid black;
@@ -34,20 +35,20 @@
 
    $(function(){
    	$("#book").click(function(){
-   	var result = confirm("Would you like to sign up?");
+   	var result = confirm("Have you checked your seat?");
    	
    	if(result == true){
    		if(document.frm.seat.value==""){//id가 공백인 경우(true)
-			alert('아이디를 입력하세요.');//알림창
+			alert('Please select a seat.');//알림창
 			return false;//다음 태그 동작을 차단시킴
 		}
    		
    		else{
-   			alert("Congratulations on your membership.");  			
+   			alert("Booking completed");  			
    		}
    	   }else if( result == false ){
 
-   	      alert("취소선택!");
+   	      alert("Cancel!");
    		return false;
    	   }
    	
