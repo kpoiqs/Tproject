@@ -85,9 +85,9 @@ public class ReservationController extends HttpServlet {
 
 					List<plan> planlist3 = new ArrayList<plan>();
 					List<plan> planlist4 = new ArrayList<plan>();
-					for (plan a : planlist) {
+					for (int d = 0; d < planlist.size(); d++) {
 						for (int i = 0; i < planlist1.size(); i++) {
-							int aarvt = Integer.parseInt(a.getArvt().replaceAll("[^0-9]", ""));
+							int aarvt = Integer.parseInt(planlist.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlist1.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
 							if (cht <= 0) {
