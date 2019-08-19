@@ -105,6 +105,10 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 			e.printStackTrace();
 
+		}finally {
+
+			CloseDBObjects(resultSet, preparedstatement, connection);
+
 		}
 
 		return planlist;
@@ -170,8 +174,11 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 			e.printStackTrace();
 
-		}
+		}finally {
 
+			CloseDBObjects(resultSet, preparedstatement, connection);
+
+		}
 		return pla;
 
 	}
@@ -285,6 +292,10 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+
+		}finally {
+
+			CloseDBObjects(resultSet, preparedstatement, connection);
 
 		}
 

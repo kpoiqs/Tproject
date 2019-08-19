@@ -30,11 +30,30 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
+   <script type="text/javascript">
+
+   $(function(){
+   	$("#next").click(function(){
+   	
+   	
+   	
+   		if(document.frm.seat.value==""){//id가 공백인 경우(true)
+			alert('아이디를 입력하세요.');//알림창
+			return false;//다음 태그 동작을 차단시킴
+		}
+   		
+   		else{
+   			 			
+   		}
+   	  
+   	
+   	});
+   });
+   </script>
 		
 	</head>
 	<body>
-	<form action = "insert_book_wan" method = "post" >
+	<form name = "frm" action = "insert_book_wan" method = "post" >
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
 	<c:forEach begin = "1" end = "6" step = "1" var="i">
