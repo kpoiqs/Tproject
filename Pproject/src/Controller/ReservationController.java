@@ -18,7 +18,7 @@ import Model.book;
 import Model.plan;
 
 @WebServlet(name = "ReservationController", urlPatterns = { "/reservation", "/book.do", "/book1.do", "/insert_book",
-		"/insert_book1","/book3_delete","/mybook","/insert_book_wan" })
+		"/insert_book1","/booklist_delete","/mybook","/insert_book_wan" })
 public class ReservationController extends HttpServlet {
 
 	@Override
@@ -248,9 +248,12 @@ public class ReservationController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/booklist.jsp");
 			rd.forward(req, resp);
-		}else if (action.equals("book3_delete")) {
+		}else if (action.equals("booklist_delete")) {
 			req.setCharacterEncoding("utf-8");
-			String bno = req.getParameter("book_bno");
+			int bno = Integer.parseInt(req.getParameter("booklist_bno"));
+			PlanDAO dao = new PlanDAOImpl();
+			System.out.println(bno);
+			boolean result = dao.delete(bno);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);
@@ -283,7 +286,7 @@ public class ReservationController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/seatbookr2.jsp");
 			rd.forward(req, resp);
-		} 
+		}
 
 	}
 

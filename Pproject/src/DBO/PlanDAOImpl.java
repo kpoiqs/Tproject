@@ -47,7 +47,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String BOOK_SEQ_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) order by day asc";
 
-	
+	private static final String BOOK_DELETE_BNO = "DELETE FROM book WHERE bno = ?";
 	
 	@Override
 
@@ -408,6 +408,35 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			CloseDBObjects(resultSet, preparedstatement, connection);
 		}
 		return planlist;
+	}
+
+
+
+
+
+
+
+	@Override
+	public boolean delete(int bno) {
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(BOOK_DELETE_BNO);
+			preparedStatement.setInt(1, bno);
+			int rownum= preparedStatement.executeUpdate();
+			if(rownum > 0) {
+				result = true;
+				System.out.println("성공이염ㅋ");
+			}
+		} catch (SQLException e) {
+			System.out.println("DB연결실패");
+			e.printStackTrace();
+		} finally {
+			CloseDBObjects(null, preparedStatement, connection);
+		}
+		return result;
 	}
 
 
