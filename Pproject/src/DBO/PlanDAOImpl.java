@@ -47,6 +47,8 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String BOOK_SEQ_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) order by day asc";
 
+	
+	
 	@Override
 
 	public List<plan> selectname12(String depa, String arva) {
