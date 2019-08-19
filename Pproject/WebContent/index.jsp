@@ -214,7 +214,7 @@ $(function() {
 <body>
 
 <div id = "a" >
-  <h2>&nbsp;&nbsp;&nbsp;AIRLINE</h2>
+  <h2><img src="img/airlogo.jpg"></h2>
   
   	<c:choose>
   		<c:when test="${account !=null}">
