@@ -7,18 +7,10 @@
 	<head>
 	<style>
 	#h{
-		background-image:url("img/airplane7.gif");
+		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;
+		background-position: center
 	}
-	#a {
-  border: 1px solid black;
-  padding-top: 50px;
-  padding-right: 10px;
-  padding-bottom: 30px;
-  padding-left: 10px;
-  width: 90%;
-  margin-left: 100px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;
-}
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -37,7 +29,7 @@
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
 	<c:forEach begin = "1" end = "6" step = "1" var="i">
-		 
+	  
     <c:forEach begin = "1" end = "25" step = "1" var="j">
      &nbsp;
      <input type="radio" id="${j}${i}" name="seat" value="${j}${i}"/>
@@ -61,10 +53,7 @@
 <br/><br/><br/>
 </div>
 <br/>
-<div style="text-align:center">
 <div id='a' style="text-align:center">
-<fieldset>
-  <legend>Outbound</legend>
 	Depart : ${fromdate} ${plan1.depa} ${plan1.dept}<br> Arrives : ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
 <br>
 &nbsp;¡ØFare details
@@ -82,9 +71,6 @@
 <input type = "hidden" id = 'fromdate' name = 'fromdate' value = "${fromdate}">
 <input type = "hidden" id = 'plan1sno' name = 'plan1sno' value = "${plan1.sno}">
 <input type = "hidden" id = 'plan1cost' name = 'plan1cost' value = "${plan1.cost}">
-		</fieldset>
-		</div>
-		
 		<p>
 			Total price: ${plan1.cost}$ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
 		</p>
