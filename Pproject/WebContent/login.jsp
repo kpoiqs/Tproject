@@ -89,6 +89,7 @@ $(function(){
 </script>
 </head>
 <body>
+text
 	<form action="login" method ="post">
 		<input type="text" placeholder="ID" name="id" id="idcheck"><br />
 		<input type="password" placeholder="Password" name="password" id="passwordcheck"><br /><br />
