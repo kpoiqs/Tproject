@@ -157,6 +157,7 @@ public class ReservationController extends HttpServlet {
 			plan plan1 = dao.selectbysno(check1);
 			plan plan2 = dao.selectbysno(check2);
 			int a = plan1.getCost() + plan2.getCost();
+			List<book> book1 = dao.seatselectall(fromdate,check1);
 
 			req.setAttribute("pluscost", a);
 			req.setAttribute("fromdate", fromdate);
@@ -165,6 +166,7 @@ public class ReservationController extends HttpServlet {
 			req.setAttribute("plan2", plan2);
 			req.setAttribute("check1", check1);
 			req.setAttribute("check2", check2);
+			req.setAttribute("booklist", book1);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/seatbookr1.jsp");
 			rd.forward(req, resp);
@@ -264,6 +266,7 @@ public class ReservationController extends HttpServlet {
 			int plan1cost = Integer.parseInt(req.getParameter("plan1cost"));
 			int plan2cost = Integer.parseInt(req.getParameter("plan2cost"));
 			int a = plan1cost+plan2cost;
+			List<book> book1 = dao.seatselectall(todate,check2);
 
 			String seat = req.getParameter("seat");
 
@@ -276,7 +279,8 @@ public class ReservationController extends HttpServlet {
 			req.setAttribute("seat1", seat);
 			req.setAttribute("check1", check1);
 			req.setAttribute("check2", check2);
-
+			req.setAttribute("booklist", book1);
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/seatbookr2.jsp");
 			rd.forward(req, resp);
 		} 
