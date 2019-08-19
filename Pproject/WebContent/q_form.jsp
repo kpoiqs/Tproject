@@ -15,7 +15,14 @@
 		border : 1px dashed red;
 	}
 
-
+.all {
+  width: 800px;
+  padding: 500px;
+  margin: auto;
+  width: 50%;
+  background-color:WHITE;
+  
+}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -41,6 +48,8 @@
 	</script>
 </head>
 <body>
+
+	<div class="all">
 	<form id="form" method="post" action="q_save">
 	
 	Writer<input type="text" name="writer" id="writer"><br />
@@ -48,7 +57,8 @@
 	Subject<input type="text" name="subject" id="subject"><br />
 	<textarea rows="10" cols="50" name="content" id="content"></textarea><br/>
 	<input type="submit">
-	</form>
 	
+	</form>
+	</div>
 </body>
 </html>

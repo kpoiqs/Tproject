@@ -10,15 +10,67 @@
 #select {font-size: 30px;
 		font-color: red;}
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+h3 {
+  text-align: center;
+}
+
+
+#write {
+  background-color: white;
+  font-size: 24px;
+  color: skyblue;
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  cursor: pointer;
+  float: right;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+#write:hover{
+	background-color: skyblue;
+	color: white;
+}
+
+tr.sub{
+	font-weight: bold
+}
+
+.all {
+  width: 800px;
+  padding: 50px;
+  margin: auto;
+  width: 50%;
+  background-color:WHITE;
+  
+}
+
+body{
+	background-color:#EEEEEE;
+}
 </style>
 </head>
 <body>
 <h3>AIR Q&A</h3>
-		
+		<div class="all">
 		<c:if test="${!empty q}">
 			<table id="q">
-				<tr>
+				
+				<tr class="sub">
 					<td>NO</td>
 					<td>Subject</td>
 					
@@ -28,23 +80,24 @@
 					<!-- <td>상세보기</td> -->
 					
 				</tr>
+				</table>
+				<table id="qq">
 			<c:forEach var="qq" items="${q}">
 					<tr>
 						<td>${qq.no}</td>
 						
 						<td>
-						<%-- <c:if test="${qq.lvl >0}">
+						<c:if test="${qq.lvl >0}">
                    		<c:forEach begin="1" end="${qq.lvl}">
                             &nbsp;&nbsp; RE : <!-- 답변글일경우 글 제목 앞에 공백을 준다. -->
                         </c:forEach>
                         
-                    </c:if> --%>
+                    </c:if>
 						<a href="/q_visited"></a><a href="q_detail?no=${qq.no}">${qq.subject}</a>
 						</td>
 						
 						
 						<%-- <td><a href="q_detail?no=${qq.no}">${qq.subject}</td> --%>
-						<td>${qq.no}</td>	
 						<td>${qq.writer}</td>
 						<td>${qq.wdate}</td>
 						<td>${qq.visited }</td>
@@ -56,7 +109,8 @@
 			</c:if>
 			
 				<!-- 페이지 처리 부분 -->
-			<c:if test="${pageGroupResult.beforPage }">	
+		<h3>	
+		<c:if test="${pageGroupResult.beforPage }">	
 				<a href="q_req_list?reqPage=${pageGroupResult.groupStartNumber-1 }">&#171;</a>
 			</c:if>
 			
@@ -76,7 +130,8 @@
 			<c:if test="${pageGroupResult.afterPage }">
 			<a href="q_req_list?reqPage=${pageGroupResult.groupEndNumber+1 }">&#187;</a>
 			
-			</c:if>
-			<a href="q_form.jsp">write</a>
+			</c:if></h3>
+			<input type="button" id="write" onclick="location.href='q_form.jsp'" value="write">
+			</div>
 </body>
 </html>
