@@ -57,7 +57,7 @@ li{
         });
 		$("#check1").click(function(){
 			$("ul").empty();
-				var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>종료일</label><input type='text' name='toDate' id='toDate'>");
+				var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>INCHEON</option><option value='nrt'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn' >INCHEON</option><option value='nrt' selected = 'selected'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp;<label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>Return</label><input type='text' name='toDate' id='toDate'>");
 			
 				$("ul").append(li);
 				$("#datepicker1, #datepicker2").datepicker({
@@ -103,7 +103,7 @@ li{
 		});
 		$("#check2").click(function(){
 			$("ul").empty();
-			var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn' selected = 'selected'>ICN</option><option value='nrt'>NRT</option><option value='kix'>KIX</option></select>&nbsp; <label for='fromDate'>시작일</label><input type='text' name='fromDate' id='fromDate'>");
+			var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>INCHEON</option><option value='nrt'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn'>INCHEON</option><option value='nrt' selected = 'selected'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp; <label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'>");
 			
 			$("ul").append(li);
 			$("#datepicker1, #datepicker2").datepicker({
@@ -214,7 +214,7 @@ $(function() {
 <body>
 
 <div id = "a" >
-  <h2>&nbsp;&nbsp;&nbsp;Board</h2>
+  <h2>&nbsp;&nbsp;&nbsp;AIRLINE</h2>
   
   	<c:choose>
   		<c:when test="${account !=null}">
@@ -244,30 +244,37 @@ $(function() {
   	
   </div>
    
-    
+    <div id = "a" >
     <form style="text-align: center" action = 'reservation' method = "post" >
 			<input type = "radio" id = "check1" name = "check1" value = "c1" checked = "checked">return
+			&nbsp;&nbsp;
 			<input type = "radio" id = "check2" name = "check1" value = "c2">one way
-		<br/>
+		<br/><br/>
 		
 		<ul class = "a"><li>
-		From
+		From&nbsp;
 		<select name = 'from' id = 'from' >
-			<option value='icn' selected = 'selected'>ICN</option>
-			<option value='nrt'>NRT</option>
-			<option value='kix'>KIX</option>
+			<option value='icn' selected = 'selected'>INCHEON</option>
+			<option value='nrt'>TOKYO</option>
+			<option value='kix'>OSAKA</option>
+			<option value='cju'>JEJU</option>
+			<option value='hkg'>HONGKONG</option>
+			
 		</select>
-		TO
+		TO&nbsp;
 		<select name = 'to' id = 'to'>
-			<option value='icn' selected = 'selected'>ICN</option>
-			<option value='nrt'>NRT</option>
-			<option value='kix'>KIX</option>
+			<option value='icn'>INCHEON</option>
+			<option value='nrt' selected = 'selected'>TOKYO</option>
+			<option value='kix'>OSAKA</option>
+			<option value='cju'>JEJU</option>
+			<option value='hkg'>HONGKONG</option>
 		</select>
-          <label for="fromDate">Depart</label><input type="text" name="fromDate" id="fromDate"> ~ <label for="toDate">Return</label><input type="text" name="toDate" id="toDate">
+		&nbsp;&nbsp;
+          <label for="fromDate">Depart</label><input type="text" name="fromDate" id="fromDate">   <label for="toDate">Return</label><input type="text" name="toDate" id="toDate">
 		</li></ul>
-		<input type = "submit" class="btn btn-primary" id="reservation" value = "reservation"/>
+		<input type = "submit" class="btn btn-primary" id="reservation" value = "Search Flight"/>
 		</form>
 		<button type="button" onclick="location.href='q_req_list?reqPage=1'">QnA</button>
-	
+	</div>
 </body>
 </html>

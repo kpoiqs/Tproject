@@ -7,8 +7,9 @@
 	<head>
 	<style>
 	#h{
-		background-image:url("img/airplane7.gif");
+		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;
+		background-position: center
 	}
 	#a {
   border: 1px solid black;
@@ -30,11 +31,34 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
+   <script type="text/javascript">
+
+   $(function(){
+   	$("#book").click(function(){
+   	var result = confirm("Have you checked your seat?");
+   	
+   	if(result == true){
+   		if(document.frm.seat.value==""){//id가 공백인 경우(true)
+			alert('Please select a seat.');//알림창
+			return false;//다음 태그 동작을 차단시킴
+		}
+   		
+   		else{
+   			alert("Booking completed");  			
+   		}
+   	   }else if( result == false ){
+
+   	      alert("Cancel!");
+   		return false;
+   	   }
+   	
+   	});
+   });
+   </script>
 		
 	</head>
 	<body>
-	<form action = "insert_book" method = "post" >
+	<form name = "frm" action = "insert_book" method = "post" >
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
 	<c:forEach begin = "1" end = "6" step = "1" var="i">

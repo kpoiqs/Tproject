@@ -22,5 +22,9 @@ public interface PlanDAO {
 	List<book> seatselectall(String day, String sno);
 
 	List<book> bookselectall();
+	
+	boolean delete(int bno);
+	
+	book selectbybno(int bno);
 
 }

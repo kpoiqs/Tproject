@@ -18,7 +18,7 @@ import Model.book;
 import Model.plan;
 
 @WebServlet(name = "ReservationController", urlPatterns = { "/reservation", "/book.do", "/book1.do", "/insert_book",
-		"/insert_book1","/book3_delete","/mybook","/insert_book_wan" })
+		"/insert_book1","/booklist_detail","/mybook","/insert_book_wan","/book_delete" })
 public class ReservationController extends HttpServlet {
 
 	@Override
@@ -85,19 +85,26 @@ public class ReservationController extends HttpServlet {
 
 					List<plan> planlist3 = new ArrayList<plan>();
 					List<plan> planlist4 = new ArrayList<plan>();
-					for (plan a : planlist) {
+					List<plan> planlist33 = new ArrayList<plan>();
+					List<plan> planlist44 = new ArrayList<plan>();
+					for (int d = 0; d < planlist.size(); d++) {
 						for (int i = 0; i < planlist1.size(); i++) {
-							int aarvt = Integer.parseInt(a.getArvt().replaceAll("[^0-9]", ""));
+							int aarvt = Integer.parseInt(planlist.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlist1.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
-							if (cht <= 0) {
+							if (cht <= 200) {
 
 							} else {
 								int cnt4 = 0;
 
 								cnt4 = dao.checkbook(todate, planlist1.get(i).getSno());
-								if (cnt4 < 3) {
+								if (cnt4 < 3) {								
 									planlist3.add(planlist1.get(i));
+									for (int j = 0; j< planlist3.size(); j++) {
+										if(!planlist33.contains(planlist3.get(j))) {
+											planlist33.add(planlist3.get(j));
+										}
+									}
 								}
 
 							}
@@ -108,7 +115,7 @@ public class ReservationController extends HttpServlet {
 							int aarvt = Integer.parseInt(planlist.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlist1.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
-							if (cht <= 0) {
+							if (cht <= 200) {
 
 							} else {
 								int cnt3 = 0;
@@ -116,6 +123,11 @@ public class ReservationController extends HttpServlet {
 								cnt3 = dao.checkbook(fromdate, planlist.get(d).getSno());
 								if (cnt3 < 3) {
 									planlist4.add(planlist.get(d));
+									for (int j = 0; j< planlist4.size(); j++) {
+										if(!planlist44.contains(planlist4.get(j))) {
+											planlist44.add(planlist4.get(j));
+										}
+									}
 								}
 
 							}
@@ -123,8 +135,8 @@ public class ReservationController extends HttpServlet {
 					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
-					req.setAttribute("plans", planlist4);
-					req.setAttribute("plan2", planlist3);
+					req.setAttribute("plans", planlist44);
+					req.setAttribute("plan2", planlist33);
 					RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 					rd.forward(req, resp);
 				}
@@ -248,11 +260,17 @@ public class ReservationController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/booklist.jsp");
 			rd.forward(req, resp);
-		}else if (action.equals("book3_delete")) {
+		}else if (action.equals("booklist_detail")) {
 			req.setCharacterEncoding("utf-8");
-			String bno = req.getParameter("book_bno");
+			int bno = Integer.parseInt(req.getParameter("bno"));
+			PlanDAO dao = new PlanDAOImpl();
+			book book1 = new book();
 			
-			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+			book1 = dao.selectbybno(bno);
+			
+			req.setAttribute("book", book1);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/book4.jsp");
 			rd.forward(req, resp);
 		}else if (action.equals("insert_book_wan")) {
 			req.setCharacterEncoding("utf-8");
@@ -283,7 +301,17 @@ public class ReservationController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/seatbookr2.jsp");
 			rd.forward(req, resp);
-		} 
+		}else if (action.equals("book_delete")) {
+			req.setCharacterEncoding("utf-8");
+			int bno = Integer.parseInt(req.getParameter("book_1bno"));
+			PlanDAO dao = new PlanDAOImpl();
+			
+			boolean result = dao.delete(bno);
+			
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");
+			rd.forward(req, resp);
+		}
 
 	}
 

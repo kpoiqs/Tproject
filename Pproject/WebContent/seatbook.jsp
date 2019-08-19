@@ -7,8 +7,9 @@
 	<head>
 	<style>
 	#h{
-		background-image:url("img/airplane7.gif");
+		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;
+		background-position: center
 	}
 	#a {
   border: 1px solid black;
@@ -29,15 +30,38 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
+   <script type="text/javascript">
+
+   $(function(){
+   	$("#book").click(function(){
+   	var result = confirm("Would you like to sign up?");
+   	
+   	if(result == true){
+   		if(document.frm.seat.value==""){//id가 공백인 경우(true)
+			alert('아이디를 입력하세요.');//알림창
+			return false;//다음 태그 동작을 차단시킴
+		}
+   		
+   		else{
+   			alert("Congratulations on your membership.");  			
+   		}
+   	   }else if( result == false ){
+
+   	      alert("취소선택!");
+   		return false;
+   	   }
+   	
+   	});
+   });
+   </script>
 		
 	</head>
 	<body>
-	<form action = "insert_book1" method = "post" >
+	<form name = "frm" action = "insert_book1" method = "post" >
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
 	<c:forEach begin = "1" end = "6" step = "1" var="i">
-		 
+	  
     <c:forEach begin = "1" end = "25" step = "1" var="j">
      &nbsp;
      <input type="radio" id="${j}${i}" name="seat" value="${j}${i}"/>
@@ -82,12 +106,11 @@
 <input type = "hidden" id = 'fromdate' name = 'fromdate' value = "${fromdate}">
 <input type = "hidden" id = 'plan1sno' name = 'plan1sno' value = "${plan1.sno}">
 <input type = "hidden" id = 'plan1cost' name = 'plan1cost' value = "${plan1.cost}">
-		</fieldset>
-		</div>
-		
 		<p>
-			Total price: ${plan1.cost}$ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
+			
 		</p>
+		</fieldset></div>
+		Total price: ${plan1.cost}$ <input type = "submit" class="btn btn-primary"  id = 'book' value = "book">
 </div>
 	</form>
 </body>
