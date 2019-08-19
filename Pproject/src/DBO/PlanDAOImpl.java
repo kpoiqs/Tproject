@@ -32,7 +32,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 
 
-	private static final String PLAN_SQL_SELECTNAME1 = "select DEPA , ARVA , DepT, ARVT , SNO, cost From plan where depa = ? and arva = ?";
+	private static final String PLAN_SQL_SELECTNAME1 = "select DEPA , ARVA , DepT, ARVT , SNO, cost From plan where depa = ? and arva = ? order by dept asc";
 
 	private static final String PLAN_SQL_SELECT_BY_SNO = "select depa,arva,dept,arvt,sno,cost From plan where sno = ?";
 
@@ -221,7 +221,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 			if (rownum > 0) {
 
-				System.out.println("성공이염");
+				System.out.println("Complete");
 
 				result = true;
 
@@ -229,7 +229,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 		} catch (SQLException e) {
 
-			System.out.println("출력실패");
+			System.out.println("Failed");
 
 			e.printStackTrace();
 
