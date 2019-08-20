@@ -101,7 +101,7 @@ img{display:inline}
   	
   </div>
   <hr/>
->>>>>>> branch 'master' of https://github.com/kpoiqs/Tproject
+
 	<form name = "frm" action = "insert_book1" method = "post" >
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
