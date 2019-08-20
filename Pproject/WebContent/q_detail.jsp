@@ -28,7 +28,7 @@ $(function(){
 
 $(function(){
 	//alert("sfsdf");
-	$("#form1").validate({
+	$("#form").validate({
 		debug : false,
 		
 		rules:{
@@ -86,14 +86,7 @@ $(function(){
 
 <style type="text/css">
 
-body{
-	width:800px;
-	height:600px;
-	margin: 0 auto;
-	border: 1px solid #000;
-}
-
-h1 {
+h1,h2 {
 	text-align: center;
 }
 
@@ -197,27 +190,21 @@ tr.sub{
 	
 }
 
-.all {
-  width: 800px;
-  padding: 50px;
-  margin: auto;
-  width: 50%;
-  background-color:WHITE;
-  
-}
-	
-.detail{
-  width: 800px;
-  padding: 50px;
-  margin: auto;
-  width: 50%;
+body {
+	width: 800px;
+	margin: 0 auto;
+
 }
 
 .tb{
  width: 500px;
-  padding: 50px;
   margin: auto;
 }
+
+td{
+	 float: left;
+}
+
 
 </style>
 
@@ -227,27 +214,45 @@ tr.sub{
 	
 	
 	<h1>AIR Q&A</h1>
-	<div class="detail">
+	<h2>DETAIL</h2>
+	<div class="all">
+	
+	<form action="q_modify?no=${q.no }" method="post" id="form" name="form">
 	<table class="tb">
 	
-	
-	<form action="q_modify?no=${q.no }" method="post" id="form1" name="form1">
+					<tr>
+					<th>NO</th>
+					<td><input type="text" id="no" name="no" value="${q.no}" readonly></td>
+						
+				</tr>
+				
+				<tr>
+					<th>WRITER</th>
+					<td><input type="text" id="writer" name="writer" value="${q.writer }"
+						maxlength="10"></td>
+				</tr>
 
-	
-	No : ${q.no}<br/>
-	Writer : ${q.writer }<br/>
-	Subject : ${q.subject }<br/>
-	Content : ${q.content } <input type="submit" value="MODIFY" id="modify" ><br /><br />
-	<!-- <button type="button" id="modify">modify</button> -->
+				<tr>
+					<th>SUBJECT</th>
+
+					<td><input type="text" id="subject" name="subject" value="${q.subject }" style="width: 345px" 
+						maxlength="40"></td>
+				</tr>
+				<tr>
+					<th>CONTENT</th>
+					<td><textarea id="content" name="content" value=""
+							style="width: 345px; height: 300px">${q.content }</textarea>
+							<input type="submit" value="MODIFY" id="modify" > <br /></td>
+					</tr>
+			</table>
+		</form>	
+		
 	<c:if test="${q.lvl == 0}">
 	<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
 	</c:if>
-	
-	</form>
-	
 	<input type="button" id="delete" value="DELETE">
 	<input type="button" id="write" value="WRITE">	<button type="button" onclick="history.back()" id="bl">BACK TO LIST</button>
-	</table>
+	
 	</div>
 	
 </body>

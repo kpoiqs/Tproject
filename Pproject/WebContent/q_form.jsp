@@ -8,6 +8,10 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <!-- 유효성 검사 plugin -->
 <script type="text/javascript"
@@ -37,13 +41,6 @@
 
 
 <style type="text/css">
-body {
-	width: 800px;
-	height: 600px;
-	margin: 0 auto;
-	border: 1px solid #000;
-}
-
 h1 {
 	text-align: center;
 }
@@ -53,11 +50,11 @@ form input.error, #form textarea.error {
 }
 
 #write {
-	background-color: white;
+	background-color: skyblue;
 	font-size: 24px;
-	color: skyblue;
+	color: white;
 	display: inline-block;
-	border: 1px solid skyblue;
+	border: 1px solid white;
 	padding: 5px;
 	cursor: pointer;
 	float: right;
@@ -67,10 +64,27 @@ form input.error, #form textarea.error {
 	border-bottom-right-radius: 5px;
 }
 
-#write:hover {
-	background-color: skyblue;
-	color: white;
+.all {
+	margin: auto;
+	width: 100%;
+	background-color: WHITE;
+	overflow: auto;
+	text-align: center;
 }
+
+body {
+	width: 800px;
+	margin: 0 auto;
+
+}
+.tb{
+	margin: 0 auto;
+}
+
+td{
+	 float: left;
+}
+
 </style>
 
 
@@ -93,16 +107,16 @@ form input.error, #form textarea.error {
 				<tr>
 					<th>SUBJECT</th>
 
-					<td><input type="text" id="subject" name="subject" value=""
+					<td><input type="text" id="subject" name="subject" style="width: 345px"
 						maxlength="40"></td>
 				</tr>
 				<tr>
 					<th>CONTENT</th>
-					<td><textarea title="내용입력 " id="content" name="content"></textarea>
-						<br /></td>
+					<td><textarea id="content" name="content"
+							style="width: 345px; height: 300px"></textarea> <br /></td>
 				</tr>
 			</table>
-			<input type="submit">
+			<input type="submit" id="write" value="WRITE">
 		</form>
 	</div>
 
