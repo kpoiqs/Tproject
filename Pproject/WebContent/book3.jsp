@@ -13,6 +13,9 @@ align:right;
 }
 #abbd{text-align:right}
 img{display:inline}
+#b{
+  font-size: 150%;
+}
 </style>
 <meta charset="utf-8">
 
@@ -78,6 +81,7 @@ img{display:inline}
 <form action = "index.jsp" method = "post" style="text-align:center">
 <c:forEach var="booklist" items="${list}">
 				<tr>
+					<td>${booklist.id}</td>
 					<td>${booklist.day}</td>
 					<td>${booklist.pay}</td>
 					<td>${booklist.sno}</td>
@@ -87,13 +91,7 @@ img{display:inline}
 				<hr/>
 
 			</c:forEach>
-Important Information
-• 1. Passengers should arrive at the airport at least 2 hours before departure to ensure they have enough
-time to check in. During various procedures in the airport, passengers must provide the valid ID used to
-purchase their ticket. Their boarding pass or itinerary may also be required.
-• 2. Please note that tickets must be used in the sequence set out in the itinerary, otherwise airlines
-reserve the right to refuse carriage. Trip.com bears no responsibility if passengers are unable to board a
-plane due to not complying with airline policies and regulations.
+
 			<input type = "submit" id = 'logout' value = 'home' class="btn btn-primary">
 </form>
 </body>

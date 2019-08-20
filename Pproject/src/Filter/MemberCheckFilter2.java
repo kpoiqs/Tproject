@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName="FilterController" , urlPatterns = {"*.admin"})
+@WebFilter(filterName="FilterController2" , urlPatterns = {"*.admin"})
 public class MemberCheckFilter2 implements Filter {
 
 	@Override
@@ -33,7 +33,7 @@ public class MemberCheckFilter2 implements Filter {
 		if(login) {
 			chain.doFilter(req, res);
 		}else {
-			((HttpServletResponse)res).sendRedirect("/Pproject/index.jsp");
+			((HttpServletResponse)res).sendRedirect("/Pproject");
 		}
 	}
 }

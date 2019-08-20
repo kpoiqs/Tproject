@@ -17,9 +17,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-
-
-
+import Model.Book2;
 import Model.book;
 
 import Model.plan;
@@ -40,8 +38,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String CHECKBOOK_SQL = "select count(sno) as cnt from book where day = ?  and sno=?";
 
-	private static final String BOOK_LIST_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) and id = ? order by day asc";
-
+	private static final String BOOK_LIST_ALL = "select p.depa,p.arva,b.id, b.day, b.pay, b.sno, b.bno, b.seat from book b inner join plan p on b.sno = p.sno where sysdate < to_date(day) and b.id = ? order by day asc";
 
 	private static final String CHECKSEAT_SQL = "select seat from book where day = ?  and sno=?";
 
@@ -315,8 +312,8 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 
 	@Override
-	public List<book> bookselectall(String id) {
-		List<book> planlist = new ArrayList<book>();
+	public List<Book2> bookselectall(String id) {
+		List<Book2> planlist = new ArrayList<Book2>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultSet = null;
@@ -327,13 +324,15 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 			resultSet = preparedstatement.executeQuery();
 			while (resultSet.next()) {
 
-				book book1 = new book();
+				Book2 book1 = new Book2();
 				book1.setId(resultSet.getString("id"));
 				book1.setBno(resultSet.getInt("bno"));
 				book1.setDay(resultSet.getString("day"));
 				book1.setPay(resultSet.getInt("pay"));
 				book1.setSno(resultSet.getString("sno"));
-
+				book1.setSeat(resultSet.getString("seat"));
+				book1.setDepa(resultSet.getString("depa"));
+				book1.setArva(resultSet.getString("arva"));
 				
 				planlist.add(book1);
 			}
@@ -477,6 +476,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 		}
 		return book1;
 	}
+
 
 
 

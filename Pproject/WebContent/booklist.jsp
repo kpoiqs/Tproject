@@ -13,6 +13,18 @@ align:right;
 }
 #abbd{text-align:right}
 img{display:inline}
+#a {
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  width: 90%;
+  margin-left: 100px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;
+}
+#b{
+  font-size: 150%;
+}
 </style>
 <meta charset="utf-8">
 
@@ -76,18 +88,29 @@ img{display:inline}
   </div>
   <hr/>
   <form action = 'index.jsp' style="text-align:center">
-<c:forEach var="booklist" items="${list}">
-				<tr>
-					<td>${booklist.id}</td>
+  <c:forEach var="booklist" items="${list}">
+  <tr>
+  					<td>${booklist.depa}</td>
+					<td>${booklist.arva}</td>
+
 					<td>${booklist.day}</td>
 					<td>${booklist.pay}</td>
-					<td>${booklist.sno}</td>
 					<td>${booklist.bno}</td>
-					
+					<td>${booklist.seat}</td>
 				</tr>
 				<hr/>
+  </c:forEach>
+			<div id='a' style="text-align:center">
+			Important Information
+<li> Passengers should arrive at the airport at least 2 hours before departure to ensure they have enough
+time to check in.<br/> During various procedures in the airport, passengers must provide the valid ID used to
+purchase their ticket.<br/> Their boarding pass or itinerary may also be required.</li>
+<li> Please note that tickets must be used in the sequence set out in the itinerary, otherwise airlines
+reserve the right to refuse carriage.<br/> Trip.com bears no responsibility if passengers are unable to board a
+plane due to not complying with airline policies and regulations.</li>
 
-			</c:forEach>
+</div>
+<br/>
 			<input type = "submit" value = "home" class="btn btn-primary">
 			</form>
 </body>

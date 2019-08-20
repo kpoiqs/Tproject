@@ -28,6 +28,12 @@ align:right;
 }
 #abbd{text-align:right}
 img{display:inline}
+body {
+  background-image: url("img/tokyo-japan.jpg");
+  background-repeat: repeat-x;
+ 
+  
+}
 </style>
 
   <meta charset="utf-8">
@@ -67,7 +73,7 @@ img{display:inline}
         });
 		$("#check1").click(function(){
 			$("ul").empty();
-				var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='ICN' selected = 'selected'>INCHEON</option><option value='NRT'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='ICN' >INCHEON</option><option value='NRT' selected = 'selected'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>Return</label><input type='text' name='toDate' id='toDate'>");
+				var li = $("<li>").css("color" , "black").html("From&nbsp;<select name = 'from' id = 'from'> <option value='ICN' selected = 'selected'>INCHEON</option><option value='NRT'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;TO&nbsp;<select name = 'to' id = 'to'><option value='ICN' >INCHEON</option><option value='NRT' selected = 'selected'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'><label for='toDate'>Return</label><input type='text' name='toDate' id='toDate'>");
 			
 				$("ul").append(li);
 				$("#datepicker1, #datepicker2").datepicker({
@@ -113,7 +119,7 @@ img{display:inline}
 		});
 		$("#check2").click(function(){
 			$("ul").empty();
-			var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='ICN' selected = 'selected'>INCHEON</option><option value='NRT'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='ICN'>INCHEON</option><option value='NRT' selected = 'selected'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp; <label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'>");
+			var li = $("<li>").css("color" , "black").html("From&nbsp;<select name = 'from' id = 'from'> <option value='ICN' selected = 'selected'>INCHEON</option><option value='NRT'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;TO&nbsp;<select name = 'to' id = 'to'><option value='ICN'>INCHEON</option><option value='NRT' selected = 'selected'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp; <label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'>");
 			
 			$("ul").append(li);
 			$("#datepicker1, #datepicker2").datepicker({
@@ -157,12 +163,29 @@ $(function() {
                 });
             });
 	});
+		 
 		$(function(){                
             $("#reservation").click(function(){              
              var input_val = $("#fromDate").val();
              var input_val2 = $("#toDate").val();
              var from = $("#from").val();
              var to = $("#to").val();
+             
+             var today = new Date();
+             var dd = today.getDate();
+             var mm = today.getMonth()+1;
+             var yyyy = today.getFullYear();
+             
+             
+             if((mm+"").length < 2){
+            	 mm = "0" + mm;
+             }
+             
+             if((dd+"").length < 2){
+            	 dd = "0" + dd;
+             }
+             var todate = yyyy+'-'+mm+'-'+dd;
+            
              //alert(input_val);
               if(!input_val){
               alert("Plz insert the Date of Departure");
@@ -175,7 +198,15 @@ $(function() {
               if(from==to){
                   alert("Searching from and to the same city is not possible");
                   return false;
-                 }    
+                 }
+              if(input_val<=todate){
+                  alert("It's impossible to select the day before today");
+                  return false;
+                 }  
+              if(input_val2<=todate){
+                  alert("It's impossible to select the day before today");
+                  return false;
+                 }
   			
             });                
            });
@@ -277,7 +308,7 @@ $(function() {
 			<option value='HKG'>HONGKONG</option>
 			
 		</select>
-		TO&nbsp;
+		TO
 		<select name = 'to' id = 'to'>
 			<option value='ICN'>INCHEON</option>
 			<option value='NRT' selected = 'selected'>TOKYO</option>

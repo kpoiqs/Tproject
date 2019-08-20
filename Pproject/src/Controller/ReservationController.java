@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import DBO.PlanDAO;
 import DBO.PlanDAOImpl;
+import Model.Book2;
 import Model.book;
 import Model.plan;
 
@@ -255,7 +256,7 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			PlanDAO dao = new PlanDAOImpl();
 			String id = req.getParameter("accountid");
-			List<book> booklist = dao.bookselectall(id);
+			List<Book2> booklist = dao.bookselectall(id);
 			req.setAttribute("list", booklist);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/booklist.jsp");
