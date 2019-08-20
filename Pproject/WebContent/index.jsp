@@ -246,7 +246,7 @@ $(function() {
 			<button type="button" onclick="location.href='q_req_list.do?reqPage=1'">QnA</button>
 			<form action="logout" style="float:right" method = "post" id='abbd'>
 			<input type = 'submit' style="float: right" class='btn btn-primary' value = 'logout'>
-			</form>
+			</form>a
 			
   		</c:when>
   		
