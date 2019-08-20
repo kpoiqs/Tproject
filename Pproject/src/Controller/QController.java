@@ -16,7 +16,7 @@ import Model.Qna;
 import page.PageManager;
 import page.PageSQL;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list","/q_reply","/q_reply_page","/q_visited","/q_modify"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list.do","/q_reply","/q_reply_page","/q_visited","/q_modify"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -50,7 +50,7 @@ public class QController extends HttpServlet {
 								
 			dao.insert(qna);
 			
-			resp.sendRedirect("q_req_list?reqPage=1");
+			resp.sendRedirect("q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_detail")) {
 			
@@ -92,7 +92,7 @@ public class QController extends HttpServlet {
 			
 			req.setAttribute("q", no);
 			
-			resp.sendRedirect("q_req_list?reqPage=1");
+			resp.sendRedirect("q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_update")) {
 
@@ -107,9 +107,9 @@ public class QController extends HttpServlet {
 			System.out.println(c);
 			System.out.println(req.getParameter("content"));
 
-			resp.sendRedirect("q_req_list?reqPage=1");
+			resp.sendRedirect("q_req_list.do?reqPage=1");
 			
-		}else if(action.equals("q_req_list")) {
+		}else if(action.equals("q_req_list.do")) {
 			
 			int requestPage = Integer.parseInt(req.getParameter("reqPage"));
 			PageManager pm = new PageManager(requestPage);
@@ -146,7 +146,7 @@ public class QController extends HttpServlet {
 			dao.insertReply(qna);
 			req.setAttribute("q", qna);
 			
-			resp.sendRedirect("/Pproject/q_req_list?reqPage=1");
+			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_reply_page")) {
 			req.setCharacterEncoding("utf-8");

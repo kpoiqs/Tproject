@@ -224,7 +224,7 @@ $(function() {
 <body>
 
 <div id = "a" >
-  <a href='index.jsp'"><img id="b" src="img/airlogo.jpg"></a>
+  <a href='index.jsp'><img id="b" src="img/airlogo.jpg"></a>
   
   	<c:choose>
   		<c:when test="${account !=null}">
@@ -243,6 +243,7 @@ $(function() {
 			<div style="text-align:right" id = 'abbd' >
 			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>
 			</div>
+			<button type="button" onclick="location.href='q_req_list.do?reqPage=1'">QnA</button>
 			<form action="logout" style="float:right" method = "post" id='abbd'>
 			<input type = 'submit' style="float: right" class='btn btn-primary' value = 'logout'>
 			</form>
@@ -288,7 +289,7 @@ $(function() {
 		</li></ul>
 		<input type = "submit" class="btn btn-primary" id="reservation" value = "Search Flight"/>
 		</form>
-		<button type="button" onclick="location.href='q_req_list?reqPage=1'">QnA</button>
+		
 	</div>
 </body>
 </html>
