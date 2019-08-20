@@ -83,11 +83,17 @@ img{display:inline}
 					<td>${booklist.sno}</td>
 					<td><a href="booklist_detail.admin?bno=${booklist.bno}">${booklist.bno}</a></td>
 				</tr>
-				
-						
+
 				<hr/>
 
 			</c:forEach>
+Important Information
+• 1. Passengers should arrive at the airport at least 2 hours before departure to ensure they have enough
+time to check in. During various procedures in the airport, passengers must provide the valid ID used to
+purchase their ticket. Their boarding pass or itinerary may also be required.
+• 2. Please note that tickets must be used in the sequence set out in the itinerary, otherwise airlines
+reserve the right to refuse carriage. Trip.com bears no responsibility if passengers are unable to board a
+plane due to not complying with airline policies and regulations.
 			<input type = "submit" id = 'logout' value = 'home' class="btn btn-primary">
 </form>
 </body>
