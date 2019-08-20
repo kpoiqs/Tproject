@@ -68,7 +68,9 @@
 		
 		body {
   			text-align: center;
-		}	
+		}
+		#font {font-size: 70px;} 
+			
 	</style>
 <script type = "text/javascript">
 $(function(){	
@@ -89,11 +91,11 @@ $(function(){
 </script>
 </head>
 <body>
-<h1>AIR LINE </h1>
+	<p id="font">AIR LINE</p>
 	<form action="login" method ="post">
-		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:295px; height:30px;"><br /><br />
-		<input type="password" placeholder="Password" name="password" id="passwordcheck" style="width:295px; height:30px;"><br /><br />
-		<input type="submit" id="check" value="login"  style="height:50px; width:300px;"><br />
+		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:345px; height:45px;"><br /><br />
+		<input type="password" placeholder="Password" name="password" id="passwordcheck" style="width:345px; height:45px;"><br /><br />
+		<input type="submit" id="check" value="login"  style="height:50px; width:350px;"><br />
 	</form>
 	
 	<br />

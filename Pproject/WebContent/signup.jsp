@@ -18,7 +18,7 @@
 			border-bottom-left-radius : 5px;
 			border-top-right-radius : 5px;
 			border-bottom-right-radius : 5px;
-			height:35px;
+			height:50px;
 		}
 		#checkid:hover{
 			background-color: skyblue;
@@ -34,7 +34,7 @@
 			border-bottom-left-radius : 5px;
 			border-top-right-radius : 5px;
 			border-bottom-right-radius : 5px;
-			height:35px;
+			height:50px;
 		}
 		#checkemail:hover{
 			background-color: skyblue;
@@ -54,7 +54,8 @@
 		}
 		body {
   			text-align: center;
-		}	
+		}
+		#font {font-size: 70px;} 	
 	</style>
 
 <script type = "text/javascript">
@@ -186,17 +187,17 @@ $(function(){
 </script>
 </head>
 <body>
-<h1 style="text-align: center";>AIR LINE</h1>
+<p id="font">SING UP</P>
 <form method="post" action="join" id="singupForm" name="form">
-ID<br />
-<input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" style="width:295px; height:30px;" />
+<input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" style="width:345px; height:45px;" />
 <input type="button" id="checkid" value="ID check" name="idcheck" style="vertical-align: bottom;" /><br />
-<div class="console" id="consoletest"></div>
-Password<br /><input type="password" placeholder="Input Password" name="inputpassword" id="pwd" style="width:295px; height:30px;" /><br />
-Password check<br /><input type="password" placeholder="Input Password" name="repwd" style="width:295px; height:30px;" /><br />
-Email<br /><input type="email" placeholder="Input Email" name="inputemail" id="email" style="width:295px; height:30px;" />
-<input type="button" id="checkemail" value="Email Check" style="vertical-align: bottom;" /><br /><br />
+<div class="console" id="consoletest"></div><br />
+<input type="password" placeholder="Input Password" name="inputpassword" id="pwd" style="width:345px; height:45px;" /><br /><br />
+<input type="password" placeholder="Input Re Password" name="repwd" style="width:345px; height:45px;" /><br /><br />
+<input type="email" placeholder="Input Email" name="inputemail" id="email" style="width:345px; height:45px;" />
+<input type="button" id="checkemail" value="Email Check" style="vertical-align: bottom;" />
 <div class="console1"></div>
+<br /><br />
 <input type="submit" value="join" id="jointest" style="height:50px; width:300px;" />
 <input type="hidden" id="checkemail" value="${idcheck}" />
 </form>

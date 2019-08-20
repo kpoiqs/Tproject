@@ -8,32 +8,27 @@
 #find{
 			border: 1px solid skyblue;
 			background-color: rgba(0,0,0,0);
-            color: skyblue;
+            color: white;
             padding: 5px;
+            background-color: skyblue;
             cursor:pointer;
             border-top-left-radius : 5px;
 			border-bottom-left-radius : 5px;
 			border-top-right-radius : 5px;
 			border-bottom-right-radius : 5px;
-			height:30px;
-			width:50px;
-		}
-		#find:hover{
-			background-color: skyblue;
-			color:white;
 		}
 		body {
   			text-align: center;
 		}
-	
+		#font {font-size: 70px;}
 </style>
 </head>
 <body>
-<h1>FIND YOUR PASSWORD</h1>
+<p id="font">FIND PASSWORD</P>
 <form method="post" action="findpwd">
-id<input type="text" name="id" style="width:295px; height:30px;" /> <br /> <br />
-Email <input type="text" name="email" style="width:295px; height:30px;" />
-<input type="submit" value="find" id="find" /><br /><br />
+<input type="text" name="id" style="width:345px; height:45px;" placeholder="ID"/><br /><br />
+<input type="text" name="email" style="width:345px; height:45px;" placeholder="Email" /><br /><br />
+<input type="submit" value="find" id="find" style="height:50px; width:350px;" /><br /><br />
 </form>
 ${account.pwd}
 </body>
