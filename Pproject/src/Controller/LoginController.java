@@ -65,7 +65,7 @@ public class LoginController extends HttpServlet {
 				}
 				else if (account.getId().equals("kpoiqq")) {
 					HttpSession session = req.getSession();
-					session.setAttribute("account", account);
+					session.setAttribute("admin", account);
 					req.setCharacterEncoding("utf-8");
 					PlanDAO dao1 = new PlanDAOImpl();
 					List<book> booklist = dao1.bookselectall();
