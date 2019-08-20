@@ -148,9 +148,10 @@ img{display:inline}
   	</c:choose>
   	
   </div>
+  <form action='book.do' method='post' style="text-align:center">
 	Depart air ${fromdate}
 	<hr />
-	<form action='book.do' method='post'>
+	
 		<c:if test="${empty plans&&plan2 != null}">
 	sorry, we found no results on this date.<br />
 	Please select another date.<br />
@@ -205,7 +206,7 @@ img{display:inline}
 	</form>
 
 
-	<form action='book1.do' method='post'>
+	<form action='book1.do' method='post' style="text-align:center">
 		<c:if test="${plan2 == null}">
 			<c:forEach var="planlist" items="${plans}">
 

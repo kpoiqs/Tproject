@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
 <style>
 #abbd{display:inline;
 text-align:center;
@@ -25,6 +31,64 @@ img{display:inline}
 #b{
   font-size: 150%;
 }
+
+.all {
+	overflow:auto;
+  
+}
+
+h1 {
+	text-align: center;
+}
+h3{
+	text-align: center;	
+}
+
+table{
+	width:100%;
+	margine:0 auto;
+	
+
+}
+
+thead{
+	font-weight: bold;
+	text-align: center;	
+	border-bottom: 10px solid #EEEEEE;
+ 	background-color: skyblue;
+}
+
+
+tbody{
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;	
+}
+
+td {
+  height: 40px;
+}
+#write {
+	background-color: skyblue;
+	font-size: 24px;
+	color: white;
+	display: inline-block;
+	border: 1px solid white;
+	padding: 5px;
+	cursor: pointer;
+	float: right;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+
+#title{
+	cursor: pointer underline;
+}
+
+
 </style>
 <meta charset="utf-8">
 
@@ -52,9 +116,9 @@ img{display:inline}
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
-<div id = "b" >
+<div id = "b">
   <a href='index.jsp'><img id="b" src="img/airlogo.jpg"></a>
-  
+
   	<c:choose>
   		<c:when test="${account !=null}">
 			
@@ -86,9 +150,30 @@ img{display:inline}
   	</c:choose>
   	
   </div>
-  <hr/>
-  <form action = 'index.jsp' style="text-align:center">
+  <div  class="all" >
+  <table class="title">
+				<colgroup>
+				<col style="width:15%">
+				<col style="width:15%">
+				<col style="width:15%">
+				<col style="width:15%">
+				<col style="width:15%">
+				<col style="width:25%">
+				</colgroup>
+				<thead>
+				<tr>
+					<td scope="col">NO</td>
+					<td scope="col">TITLE</td>
+					<td scope="col">WRITER</td>
+					<td scope="col">DATE</td>
+					<td scope="col">VIEW</td>
+					<td scope="col">VIEW1</td>
+				</tr>
+				</thead>
+				
+  
   <c:forEach var="booklist" items="${list}">
+  <tbody>
   <tr>
   					<td>${booklist.depa}</td>
 					<td>${booklist.arva}</td>
@@ -98,8 +183,12 @@ img{display:inline}
 					<td>${booklist.bno}</td>
 					<td>${booklist.seat}</td>
 				</tr>
-				<hr/>
+			</tbody>	
+				
   </c:forEach>
+  </table>
+				</div>
+				<br/>
 			<div id='a' style="text-align:center">
 			Important Information
 <li> Passengers should arrive at the airport at least 2 hours before departure to ensure they have enough
@@ -111,6 +200,7 @@ plane due to not complying with airline policies and regulations.</li>
 
 </div>
 <br/>
+<form action = 'index.jsp' style="text-align:center">
 			<input type = "submit" value = "home" class="btn btn-primary">
 			</form>
 </body>
