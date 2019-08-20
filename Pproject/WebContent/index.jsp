@@ -237,11 +237,8 @@ $(function() {
 			<input type = 'hidden' id = 'accountid' name = 'accountid' value = "${account.id}" />
 			<input type = "submit" style="float: right" id = 'mybook' class="btn btn-primary" value = "Mybook"/>
 			</form>
-			<div style="text-align:right" id = 'abbd'>
-			<input type = "button" style="float: right" onclick="location.href='iddetail.jsp'" class="btn btn-primary" value = "detail"/>
-			</div>
 			<div style="text-align:right" id = 'abbd' >
-			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>
+			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "detail"/>
 			</div>
 			<button type="button" style="float: right" class="btn btn-primary" onclick="location.href='q_req_list.do?reqPage=1'">QnA</button>
 			<form action="logout" style="float:right" method = "post" id='abbd'>

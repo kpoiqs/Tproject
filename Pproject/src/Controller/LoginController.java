@@ -169,7 +169,7 @@ public class LoginController extends HttpServlet {
 			Account account = dao.selectById(id, password);
 			
 				if(account != null) {
-					RequestDispatcher rd = req.getRequestDispatcher("/Withdrawal.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher("/iddetail.jsp");
 					rd.forward(req, resp);
 				}
 				else{
