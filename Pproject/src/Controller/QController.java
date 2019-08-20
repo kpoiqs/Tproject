@@ -40,7 +40,7 @@ public class QController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/q_form.jsp");
 			rd.forward(req, resp);
 		}else if(action.equals("q_save")) {
-			a
+			
 			QnaDAO dao = new QnaDAOImpl();
 			Qna qna = new Qna();
 			
