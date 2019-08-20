@@ -67,7 +67,7 @@ img{display:inline}
         });
 		$("#check1").click(function(){
 			$("ul").empty();
-				var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>INCHEON</option><option value='nrt'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn' >INCHEON</option><option value='nrt' selected = 'selected'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp;<label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>Return</label><input type='text' name='toDate' id='toDate'>");
+				var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='ICN' selected = 'selected'>INCHEON</option><option value='NRT'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='ICN' >INCHEON</option><option value='NRT' selected = 'selected'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'> ~ <label for='toDate'>Return</label><input type='text' name='toDate' id='toDate'>");
 			
 				$("ul").append(li);
 				$("#datepicker1, #datepicker2").datepicker({
@@ -113,7 +113,7 @@ img{display:inline}
 		});
 		$("#check2").click(function(){
 			$("ul").empty();
-			var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='icn' selected = 'selected'>INCHEON</option><option value='nrt'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='icn'>INCHEON</option><option value='nrt' selected = 'selected'>TOKYO</option><option value='kix'>OSAKA</option><option value='cju'>JEJU</option><option value='hkg'>HONGKONG</option></select>&nbsp; <label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'>");
+			var li = $("<li>").css("color" , "black").html("<select name = 'from' id = 'from'> <option value='ICN' selected = 'selected'>INCHEON</option><option value='NRT'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp;<select name = 'to' id = 'to'><option value='ICN'>INCHEON</option><option value='NRT' selected = 'selected'>TOKYO</option><option value='KIX'>OSAKA</option><option value='CJU'>JEJU</option><option value='HKG'>HONGKONG</option></select>&nbsp; <label for='fromDate'>Depart</label><input type='text' name='fromDate' id='fromDate'>");
 			
 			$("ul").append(li);
 			$("#datepicker1, #datepicker2").datepicker({
@@ -270,20 +270,20 @@ $(function() {
 		<ul class = "a"><li>
 		From&nbsp;
 		<select name = 'from' id = 'from' >
-			<option value='icn' selected = 'selected'>INCHEON</option>
-			<option value='nrt'>TOKYO</option>
-			<option value='kix'>OSAKA</option>
-			<option value='cju'>JEJU</option>
-			<option value='hkg'>HONGKONG</option>
+			<option value='ICN' selected = 'selected'>INCHEON</option>
+			<option value='NRT'>TOKYO</option>
+			<option value='KIX'>OSAKA</option>
+			<option value='CJU'>JEJU</option>
+			<option value='HKG'>HONGKONG</option>
 			
 		</select>
 		TO&nbsp;
 		<select name = 'to' id = 'to'>
-			<option value='icn'>INCHEON</option>
-			<option value='nrt' selected = 'selected'>TOKYO</option>
-			<option value='kix'>OSAKA</option>
-			<option value='cju'>JEJU</option>
-			<option value='hkg'>HONGKONG</option>
+			<option value='ICN'>INCHEON</option>
+			<option value='NRT' selected = 'selected'>TOKYO</option>
+			<option value='KIX'>OSAKA</option>
+			<option value='CJU'>JEJU</option>
+			<option value='HKG'>HONGKONG</option>
 		</select>
 		&nbsp;&nbsp;
           <label for="fromDate">Depart</label><input type="text" name="fromDate" id="fromDate">   <label for="toDate">Return</label><input type="text" name="toDate" id="toDate">
