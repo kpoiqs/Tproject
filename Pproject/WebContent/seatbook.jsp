@@ -65,8 +65,6 @@ img{display:inline}
 	
 	<body>
 
-	  <a href='index.jsp'"><img id="b" src="img/airlogo.jpg"></a><hr>
-
 	
 	<div id = "b" >
   <a href='index.jsp'><img id="b" src="img/airlogo.jpg"></a>
