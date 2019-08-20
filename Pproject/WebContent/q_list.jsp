@@ -6,11 +6,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
 <title>AIR Q&A</title>
 <style type="text/css">
 body{
 	width:800px;
+	height: 600px;
 	margin: 0 auto;
+}
+
+.all {
+	overflow:auto;
+  
 }
 
 h1 {
@@ -28,9 +39,10 @@ table{
 }
 
 thead{
-	background-color: skyblue;
 	font-weight: bold;
 	text-align: center;	
+	border-bottom: 10px solid #EEEEEE;
+ 	background-color: skyblue;
 }
 
 
@@ -40,12 +52,15 @@ tbody{
 	text-align: center;	
 }
 
+td {
+  height: 40px;
+}
 #write {
-	background-color: white;
+	background-color: skyblue;
 	font-size: 24px;
-	color: skyblue;
+	color: white;
 	display: inline-block;
-	border: 1px solid skyblue;
+	border: 1px solid white;
 	padding: 5px;
 	cursor: pointer;
 	float: right;
@@ -55,10 +70,6 @@ tbody{
 	border-bottom-right-radius: 5px;
 }
 
-#write:hover {
-	background-color: skyblue;
-	color: white;
-}
 
 A:link {text-decoration:none; color:#646464;}
 A:visited {text-decoration:none; color:#646464;}
@@ -82,7 +93,7 @@ a:active {
 
 	<h1>AIR Q&A</h1>
 	
-
+	<div class="all">
 		<c:if test="${!empty q}">
 
 			<table class="title">
@@ -126,31 +137,32 @@ a:active {
 		</c:if>
 
 		<!-- 페이지 처리 부분 -->
+		<br/>
 		<h3>
 			<c:if test="${pageGroupResult.beforPage }">
-				<a href="q_req_list?reqPage=${pageGroupResult.groupStartNumber-1 }">&#171;</a>
+				<a href="q_req_list.do?reqPage=${pageGroupResult.groupStartNumber-1 }">&#171;</a>
 			</c:if>
 
 			<c:forEach var="index" begin="${pageGroupResult.groupStartNumber }"
 				end="${pageGroupResult.groupEndNumber }">
 				<c:choose>
 					<c:when test="${pageGroupResult.selectPageNumger==index}">
-						<a href="q_req_list?reqPage=${index }">[${index }]</a>
+						<a href="q_req_list.do?reqPage=${index }">[${index }]</a>
 					</c:when>
 
 					<c:otherwise>
-						<a href="q_req_list?reqPage=${index }">${index }</a>
+						<a href="q_req_list.do?reqPage=${index }">${index }</a>
 					</c:otherwise>
 				</c:choose>
 
 			</c:forEach>
 
 			<c:if test="${pageGroupResult.afterPage }">
-				<a href="q_req_list?reqPage=${pageGroupResult.groupEndNumber+1 }">&#187;</a>
+				<a href="q_req_list.do?reqPage=${pageGroupResult.groupEndNumber+1 }">&#187;</a>
 
 			</c:if>
 			<input type="button" id="write" onclick="location.href='q_form.jsp'" value="WRITE">
 		</h3>
-
+	</div>
 </body>
 </html>
