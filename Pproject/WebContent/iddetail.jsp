@@ -82,6 +82,20 @@ $(function(){
 	
 	});
 });
+
+
+$(function(){
+	$("#delete").click(function(){
+	var result = confirm("Are you sure you're leaving?");
+	if(result){
+		location.href = "delete?id=${account.id}";
+	}else{
+		return;
+	}
+	
+	
+	});
+});
 </script>
 </head>
 <body>
@@ -95,7 +109,11 @@ Email<input type="email" placeholder="Input Email" name="inputemail" id="email" 
 <input type="button" id="checkemail" value="Email Check" /><br />
 <div class="console1"></div>
 <input type="submit" value="submit" id="jointest"/>
+<input type="hidden" value="${account.id}" />
+<br /><br /><br />
+The name of the ID leaving is : ${account.id}<br />
+Would you like to leave?
+<button type="button" id="delete">delete</button>
 </form>
-
 </body>
 </html>
