@@ -13,6 +13,9 @@ align:right;
 }
 #abbd{text-align:right}
 img{display:inline}
+#b{
+  font-size: 150%;
+}
 </style>
 <meta charset="utf-8">
 
@@ -75,20 +78,21 @@ img{display:inline}
   	
   </div>
   <hr/>
-<form action = "logout" method = "post" style="text-align:center">
+<form action = "index.jsp" method = "post" style="text-align:center">
 <c:forEach var="booklist" items="${list}">
 				<tr>
+					<td>${booklist.id}</td>
 					<td>${booklist.day}</td>
 					<td>${booklist.pay}</td>
 					<td>${booklist.sno}</td>
-					<td><a href="booklist_detail?bno=${booklist.bno}">${booklist.bno}</a></td>
+					<td><a href="booklist_detail.admin?bno=${booklist.bno}">${booklist.bno}</a></td>
 				</tr>
-				
-						
+
 				<hr/>
 
 			</c:forEach>
-			<input type = "submit" id = 'logout' value = 'logout' class="btn btn-primary">
+
+			<input type = "submit" id = 'logout' value = 'home' class="btn btn-primary">
 </form>
 </body>
 </html>

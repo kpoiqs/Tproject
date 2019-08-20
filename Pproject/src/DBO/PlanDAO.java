@@ -3,6 +3,7 @@ package DBO;
 import java.awt.print.Book;
 import java.util.List;
 
+import Model.Book2;
 import Model.book;
 import Model.plan;
 
@@ -16,8 +17,8 @@ public interface PlanDAO {
 	boolean insert(book book);
 	int checkbook(String fromdate, String sno);
 	
-	List<book> bookselectall(String id);
-
+	List<Book2> bookselectall(String id);
+	
 
 	List<book> seatselectall(String day, String sno);
 

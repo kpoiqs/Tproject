@@ -12,6 +12,9 @@ align:right;
 }
 #abbd{text-align:right}
 img{display:inline}
+#b{
+  font-size: 150%;
+}
 </style>
 <meta charset="utf-8">
 

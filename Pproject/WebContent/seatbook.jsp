@@ -20,6 +20,9 @@
   width: 90%;
   margin-left: 100px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;
 }
+#b{
+  font-size: 150%;
+}
 #abbd{display:inline;
 text-align:right;
 align:right;
