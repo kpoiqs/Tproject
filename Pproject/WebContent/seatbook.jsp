@@ -15,7 +15,7 @@
   border: 1px solid black;
   padding-top: 10px;
   padding-right: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   padding-left: 10px;
   width: 90%;
   margin-left: 100px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;
@@ -57,7 +57,7 @@
 		
 	</head>
 	<body>
-	  <a href='index.jsp'"><img id="b" src="img/airlogo.jpg"></a>
+	  <a href='index.jsp'"><img id="b" src="img/airlogo.jpg"></a><hr>
 	<form name = "frm" action = "insert_book1" method = "post" >
 	<div id = "h" style="text-align:center">
 	<br/><br/><br/><br/>
