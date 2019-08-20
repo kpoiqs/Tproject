@@ -52,10 +52,9 @@
 			border-top-right-radius : 5px;
 			border-bottom-right-radius : 5px;
 		}
-		
 		body {
-  			background-color: rgb(240,240,240);	
-		}
+  			text-align: center;
+		}	
 	</style>
 
 <script type = "text/javascript">
