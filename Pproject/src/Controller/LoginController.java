@@ -79,6 +79,7 @@ public class LoginController extends HttpServlet {
 			
 			HttpSession session = req.getSession();
 			session.removeAttribute("account");
+			session.removeAttribute("admin");
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 			rd.forward(req, resp);

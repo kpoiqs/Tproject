@@ -227,7 +227,7 @@ $(function() {
   <a href='index.jsp'><img id="b" src="img/airlogo.jpg"></a>
   
   	<c:choose>
-  		<c:when test="${account !=null}">
+  		<c:when test="${account !=null || admin != null}">
 			
 			
 			
@@ -253,7 +253,7 @@ $(function() {
  			</form>
   		</c:otherwise>
   	</c:choose>
-  	<c:if test = "${account !=null && account.id eq 'kpoiqq'}">
+  	<c:if test = "${account ==null && admin != null}">
   	<form action = 'adminbooklist.admin' id = 'abbd'>
  			<input type = "submit" class="btn btn-primary" value = "admin" style="float: right"/>
  			</form>
