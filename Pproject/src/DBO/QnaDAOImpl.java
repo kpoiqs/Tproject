@@ -206,9 +206,13 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				q.setSubject(resultSet.getString("subject"));
 				q.setContent(resultSet.getString("content"));
 				q.setWriter(resultSet.getString("writer"));
+				
 				q.setWdate(resultSet.getString("wdate"));
+				String s2 = q.getWdate().substring(0,q.getWdate().length()-9);
+				q.setWdate(s2);
 				q.setGrp(resultSet.getInt("grp"));
 				q.setLvl(resultSet.getInt("lvl"));
+				q.setVisited(resultSet.getInt("visited"));
 			
 				qna.add(q);
 			}

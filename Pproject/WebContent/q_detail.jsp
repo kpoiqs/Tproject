@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Detail QnA</title>
+<title>AIR Q&A</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
+
 
 
 $(function(){
@@ -83,27 +84,171 @@ $(function(){
 </script>
 
 
+<style type="text/css">
 
+body{
+	width:800px;
+	height:600px;
+	margin: 0 auto;
+	border: 1px solid #000;
+}
+
+h1 {
+	text-align: center;
+}
+
+#write {
+  background-color: white;
+  font-size: 24px;
+  color: skyblue;
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+#write:hover{
+	background-color: skyblue;
+	color: white;
+}
+
+#delete {
+  background-color: white;
+  font-size: 24px;
+  color: skyblue;
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+#delete:hover{
+	background-color: skyblue;
+	color: white;
+}
+#reply {
+  background-color: white;
+  font-size: 24px;
+  color: skyblue;
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+#reply:hover{
+	background-color: skyblue;
+	color: white;
+}
+
+#modify {
+  background-color: white;
+  font-size: 24px;
+  color: skyblue;
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+#modify:hover{
+	background-color: skyblue;
+	color: white;
+}
+
+#bl {
+  background-color: white;
+  font-size: 24px;
+  color: skyblue;
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+#bl:hover{
+	background-color: skyblue;
+	color: white;
+}
+
+tr.sub{
+	font-weight: bold;
+	background-color: skyblue;
+	
+}
+
+.all {
+  width: 800px;
+  padding: 50px;
+  margin: auto;
+  width: 50%;
+  background-color:WHITE;
+  
+}
+	
+.detail{
+  width: 800px;
+  padding: 50px;
+  margin: auto;
+  width: 50%;
+}
+
+.tb{
+ width: 500px;
+  padding: 50px;
+  margin: auto;
+}
+
+</style>
 
 </head>
 <body>
-	<h3>Detail QnA</h3>
+
+	
+	
+	<h1>AIR Q&A</h1>
+	<div class="detail">
+	<table class="tb">
+	
+	
 	<form action="q_modify?no=${q.no }" method="post" id="form1" name="form1">
 
 	
 	No : ${q.no}<br/>
 	Writer : ${q.writer }<br/>
 	Subject : ${q.subject }<br/>
-	Content : ${q.content }
+	Content : ${q.content } <input type="submit" value="MODIFY" id="modify" ><br /><br />
 	<!-- <button type="button" id="modify">modify</button> -->
-	<input type="submit" value="modify" id="modify" >
+	<c:if test="${q.lvl == 0}">
+	<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
+	</c:if>
 	
 	</form>
-	<c:if test="${q.lvl == 0}">
-	<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" value="reply^^">
-	</c:if>
-	<input type="button" id="delete" value="delete">
-	<input type="button" id="write" value="write">	<button type="button" onclick="history.back()">back to list</button>
-
+	
+	<input type="button" id="delete" value="DELETE">
+	<input type="button" id="write" value="WRITE">	<button type="button" onclick="history.back()" id="bl">BACK TO LIST</button>
+	</table>
+	</div>
+	
 </body>
 </html>
