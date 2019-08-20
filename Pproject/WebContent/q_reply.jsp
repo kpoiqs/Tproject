@@ -52,7 +52,7 @@
 	overflow:auto;
 } */
 
-h1 {
+h1,h2 {
 	text-align: center;
 }
 
@@ -83,7 +83,7 @@ form input.error, #form textarea.error {
 body {
 	width: 800px;
 	margin: 0 auto;
-
+	border: 1px;
 }
 
 .tb{
@@ -104,7 +104,7 @@ td{
 
 	<div class="all">
 		<h1>AIR Q&A</h1>
-		
+		<h2>REPLY</h2>
 		<form id="form" method="post" action="q_reply">
 			<table class="tb">
 

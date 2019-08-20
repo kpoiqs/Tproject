@@ -29,20 +29,7 @@
 </script>
 
 <style type="text/css">
-body {
-	width: 800px;
-	height: 600px;
-	margin: 0 auto;
-}
 
-.all {
-	width: 800px;
-	padding: 50px;
-	margin: auto;
-	width: 50%;
-	background-color: WHITE;
-	overflow:auto;
-}
 
 h1,h2 {
 	text-align: center;
@@ -70,6 +57,31 @@ form input.error, #form textarea.error {
 #write:hover {
 	background-color: skyblue;
 	color: white;
+}
+
+body {
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	border: 1px;
+}
+
+.all {
+	width: 800px;
+	padding: 50px;
+	margin: auto;
+	width: 50%;
+	background-color: WHITE;
+	overflow:auto;
+}
+
+.tb{
+ width: 500px;
+  margin: auto;
+}
+
+td{
+	 float: left;
 }
 </style>
 </head>

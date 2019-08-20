@@ -193,7 +193,7 @@ tr.sub{
 body {
 	width: 800px;
 	margin: 0 auto;
-
+	border: 1px;
 }
 
 .tb{
@@ -238,10 +238,10 @@ td{
 					<td><input type="text" id="subject" name="subject" value="${q.subject }" style="width: 345px" 
 						maxlength="40"></td>
 				</tr>
+				
 				<tr>
 					<th>CONTENT</th>
-					<td><textarea id="content" name="content" value=""
-							style="width: 345px; height: 300px">${q.content }</textarea>
+					<td><textarea id="content" name="content" style="width: 345px; height: 300px">${q.content }</textarea>
 							<input type="submit" value="MODIFY" id="modify" > <br /></td>
 					</tr>
 			</table>

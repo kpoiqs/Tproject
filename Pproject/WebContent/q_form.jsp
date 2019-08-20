@@ -28,19 +28,18 @@
 				subject : "required",
 				content : "required"
 			},
-
-			messages : {
-				writer : "Please enter a valid first name.",
+			messages:{
+				writer  : "Please enter a valid name.",
 				subject : "Please enter a subject.",
 				content : "Please enter a content."
 			}
-
 		});
 	});
 </script>
 
 
 <style type="text/css">
+
 h1 {
 	text-align: center;
 }
@@ -64,18 +63,20 @@ form input.error, #form textarea.error {
 	border-bottom-right-radius: 5px;
 }
 
-.all {
-	margin: auto;
-	width: 100%;
-	background-color: WHITE;
-	overflow: auto;
-	text-align: center;
-}
-
 body {
 	width: 800px;
+	height: 600px;
 	margin: 0 auto;
+	border: 1px solid;
+}
 
+.all {
+	width: 800px;
+
+	margin: auto;
+	width: 50%;
+	background-color: WHITE;
+	overflow:auto;
 }
 .tb{
 	margin: 0 auto;
@@ -92,7 +93,6 @@ td{
 
 <body>
 
-
 	<div class="all">
 		<h1>AIR Q&A</h1>
 		<form id="form" method="post" action="q_save">
@@ -103,17 +103,36 @@ td{
 					<td><input type="text" id="writer" name="writer" value=""
 						maxlength="10"></td>
 				</tr>
-
+					
+					<tr>
+					<th></th>
+					<td>
+					<label class="error" for="writer" generated="true" style="display:none;"></label></td>
+					</td>
+					</tr>
 				<tr>
 					<th>SUBJECT</th>
 
 					<td><input type="text" id="subject" name="subject" style="width: 345px"
 						maxlength="40"></td>
+						
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+					<label class="error" for="subject" generated="true" style="display:none;"></label></td>
+					</td>
 				</tr>
 				<tr>
 					<th>CONTENT</th>
 					<td><textarea id="content" name="content"
 							style="width: 345px; height: 300px"></textarea> <br /></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+					<label class="error" for="content" generated="true" style="display:none;"></label></td>
+					</td>
 				</tr>
 			</table>
 			<input type="submit" id="write" value="WRITE">
