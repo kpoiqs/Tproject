@@ -70,7 +70,7 @@ public class LoginController extends HttpServlet {
 					PlanDAO dao1 = new PlanDAOImpl();
 					List<book> booklist = dao1.bookselectall();
 					req.setAttribute("list", booklist);
-					RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 					rd.forward(req, resp);
 				}
 				

@@ -78,7 +78,6 @@ img{display:inline}
 <form action = "logout" method = "post" style="text-align:center">
 <c:forEach var="booklist" items="${list}">
 				<tr>
-					<td>${booklist.id}</td>
 					<td>${booklist.day}</td>
 					<td>${booklist.pay}</td>
 					<td>${booklist.sno}</td>
