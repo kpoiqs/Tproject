@@ -67,7 +67,6 @@
 		}
 		
 		body {
-  			background-color: rgb(240,240,240);
   			text-align: center;
 		}	
 	</style>
@@ -90,7 +89,7 @@ $(function(){
 </script>
 </head>
 <body>
-<h1>AIR LINE</h1>
+<h1>AIR LINE </h1>
 	<form action="login" method ="post">
 		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:295px; height:30px;"><br /><br />
 		<input type="password" placeholder="Password" name="password" id="passwordcheck" style="width:295px; height:30px;"><br /><br />

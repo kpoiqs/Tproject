@@ -104,7 +104,7 @@ public class LoginController extends HttpServlet {
 			req.setAttribute("account", account);
 			RequestDispatcher rd = req.getRequestDispatcher("/find.jsp");
 			rd.forward(req, resp);
-		
+			
 		}else if(action.equals("idcheck")) {
 		
 			AccountDAO dao = new AccountDAOImpl();
