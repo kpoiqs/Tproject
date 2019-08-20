@@ -160,10 +160,10 @@ img{display:inline}
 
 				<tr>
 					<td>${planlist.depa}</td>
-					<td>${planlist.dept}</td> &#61;&#61;&#62;
+					<td>${planlist.dept}</td> <img id="b" src="img/arrow3.PNG">
 					<td>${planlist.arva}</td>
 					<td>${planlist.arvt}</td>
-					<td>${planlist.cost}</td>&#165;
+					<td>${planlist.cost}</td>$
 					<input type="radio" id="check1" name="check1"
 						value="${planlist.sno}">
 
@@ -186,10 +186,10 @@ img{display:inline}
 			<c:forEach var="planlists" items="${plan2}">
 				<tr>
 					<td>${planlists.depa}</td>
-					<td>${planlists.dept}</td> &#61;&#61;&#62;
+					<td>${planlists.dept}</td><img id="b" src="img/arrow3.PNG">
 					<td>${planlists.arva}</td>
 					<td>${planlists.arvt}</td>
-					<td>${planlists.cost}</td>&#165;
+					<td>${planlists.cost}</td>$
 					<input type="radio" id="check2" name="check2"
 						value="${planlists.sno}">
 					<hr />
@@ -208,10 +208,10 @@ img{display:inline}
 
 				<tr>
 					<td>${planlist.depa}</td>
-					<td>${planlist.dept}</td> &#61;&#61;&#62;
+					<td>${planlist.dept}</td> <img id="b" src="img/arrow3.PNG">
 					<td>${planlist.arva}</td>
 					<td>${planlist.arvt}</td>
-					<td>${planlist.cost}</td>&#165;
+					<td>${planlist.cost}</td>$
 					<input type="radio" id="check3" name="check3"
 						value="${planlist.sno}">
 					<hr />
