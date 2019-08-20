@@ -243,7 +243,7 @@ $(function() {
 			<div style="text-align:right" id = 'abbd' >
 			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>
 			</div>
-			<button type="button" onclick="location.href='q_req_list.do?reqPage=1'">QnA</button>
+			<button type="button" style="float: right" class="btn btn-primary" onclick="location.href='q_req_list.do?reqPage=1'">QnA</button>
 			<form action="logout" style="float:right" method = "post" id='abbd'>
 			<input type = 'submit' style="float: right" class='btn btn-primary' value = 'logout'>
 			</form>
