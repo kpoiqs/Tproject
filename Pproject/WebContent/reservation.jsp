@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<style>
+#abbd{display:inline;
+text-align:right;
+align:right;
+}
+#abbd{text-align:right}
+img{display:inline}
+</style>
 <meta charset="utf-8">
 
 <meta charset="utf-8">
@@ -103,7 +111,40 @@
 </script>
 </head>
 <body>
-  <a href='index.jsp'"><img id="b" src="img/airlogo.jpg"></a><br/>
+  <div id = "a" >
+  <a href='index.jsp'><img id="b" src="img/airlogo.jpg"></a>
+  
+  	<c:choose>
+  		<c:when test="${account !=null}">
+			
+			
+			
+			<p style="text-align:right" id = 'abbd' >Welcome ${account.id}</p>
+			
+			<form action="mybook" style="float: right" method = "post" id = 'abbd'>
+			<input type = 'hidden' id = 'accountid' name = 'accountid' value = "${account.id}" />
+			<input type = "submit" style="float: right" id = 'mybook' class="btn btn-primary" value = "Mybook"/>
+			</form>
+			<div style="text-align:right" id = 'abbd'>
+			<input type = "button" style="float: right" onclick="location.href='iddetail.jsp'" class="btn btn-primary" value = "detail"/>
+			</div>
+			<div style="text-align:right" id = 'abbd' >
+			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>
+			</div>
+			<form action="logout" style="float:right" method = "post" id='abbd'>
+			<input type = 'submit' style="float: right" class='btn btn-primary' value = 'logout'>
+			</form>
+			
+  		</c:when>
+  		
+  		<c:otherwise>
+  			<form action = 'login_input' id = 'abbd'>
+ 			<input type = "submit" class="btn btn-primary" value = "login" style="float: right"/>
+ 			</form>
+  		</c:otherwise>
+  	</c:choose>
+  	
+  </div>
 	Depart air ${fromdate}
 	<hr />
 	<form action='book.do' method='post'>
