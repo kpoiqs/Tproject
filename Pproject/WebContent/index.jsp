@@ -253,7 +253,7 @@ $(function() {
  			</form>
   		</c:otherwise>
   	</c:choose>
-  	<c:if test = "${account ==null && admin != null}">
+  	<c:if test = "${account !=null && admin != null}">
   	<form action = 'adminbooklist.admin' id = 'abbd'>
  			<input type = "submit" class="btn btn-primary" value = "admin" style="float: right"/>
  			</form>
