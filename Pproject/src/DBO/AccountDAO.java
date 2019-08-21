@@ -2,7 +2,6 @@ package DBO;
 
 import Model.Account;
 
-
 public interface AccountDAO {
 	Account selectById(String id , String pwd);
 	boolean insert(Account account);
@@ -12,4 +11,5 @@ public interface AccountDAO {
 	Account findByPwd(String id , String email);
 	boolean update(Account account);
 	boolean deleteByAccount(String id);
+	int checkByEmaildetail(String id ,String email);
 }

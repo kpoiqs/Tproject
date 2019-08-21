@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding=""%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -214,7 +214,7 @@ function mykeydown1() {
 </script>
 </head>
 <body>
-<p id="font">SING UP</P>
+<p id="font">SIGN UP</P>
 <form method="post" action="join" id="singupForm" name="form">
 <input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" onkeydown="mykeydown()" style="width:345px; height:45px; position: relative; left: 52.5px;" />
 <input type="button" id="checkid" value="ID check" name="idcheck" style="vertical-align: bottom;" /><br />
