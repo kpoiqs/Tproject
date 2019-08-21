@@ -42,7 +42,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 
 	private static final String CHECKSEAT_SQL = "select seat from book where day = ?  and sno=?";
 
-	private static final String BOOK_SEQ_ALL = "select id,day,pay,sno,bno from book where sysdate < to_date(day) order by day asc";
+	private static final String BOOK_SEQ_ALL = "select id,day,pay,sno,bno,seat from book where sysdate < to_date(day) order by day asc";
 
 	private static final String BOOK_DELETE_BNO = "DELETE FROM book WHERE bno = ?";
 	
@@ -363,6 +363,7 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 				book1.setDay(resultSet.getString("day"));
 				book1.setPay(resultSet.getInt("pay"));
 				book1.setSno(resultSet.getString("sno"));
+				book1.setSeat(resultSet.getString("seat"));
 
 				
 				planlist.add(book1);
