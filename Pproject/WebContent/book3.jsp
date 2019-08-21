@@ -161,11 +161,11 @@ td {
 				</colgroup>
 				<thead>
 				<tr>
-					<td scope="col">NO</td>
-					<td scope="col">TITLE</td>
-					<td scope="col">WRITER</td>
+					<td scope="col">ID</td>
 					<td scope="col">DATE</td>
-					<td scope="col">VIEW</td>
+					<td scope="col">PRICE</td>
+					<td scope="col">Reservation no</td>
+					<td scope="col">Seat no</td>
 				</tr>
 				</thead>
 				
