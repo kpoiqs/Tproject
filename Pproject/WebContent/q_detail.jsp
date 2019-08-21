@@ -211,6 +211,7 @@ td{
 </head>
 <body>
 
+
 	
 	
 	<h1>AIR Q&A</h1>
@@ -228,14 +229,13 @@ td{
 				
 				<tr>
 					<th>WRITER</th>
-					<td><input type="text" id="writer" name="writer" value="${q.writer }"
-						maxlength="10"></td>
+					<td><input type="text" id="writer" name="writer" value="${q.writer}" maxlength="100" readonly></td>
 				</tr>
 
 				<tr>
 					<th>SUBJECT</th>
 
-					<td><input type="text" id="subject" name="subject" value="${q.subject }" style="width: 345px" 
+					<td><input type="text" id="subject" name="subject" value="${q.subject}" style="width: 345px" 
 						maxlength="40"></td>
 				</tr>
 				
