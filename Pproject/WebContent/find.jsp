@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,43 +24,45 @@
 		body {
   			text-align: center;
 		}
-		#font {font-size: 70px;} 
+		#font {font-size: 70px;}
+		#emailerror{font-size:25px;} 
 </style>
 <script type = "text/javascript">
-$(function(){
-	$("#find").click(function(){	
-		var input_val = $("#mailcheck").val();
-		
-	if(!input_val){
-		alert("Please enter your Eamil.");
-		return false;
-	}
-	var url = "find";
-	$.get(url, {"email":input_val},function(xml){
-		var result = $(xml).find("result").text();
-		var count = $(xml).find("count").text();
-		$(".console").html(result);
-		if(count>0){
-			idck = 0;
-			idck1 = document.getElementById("id").value;
-			return false;
-		}else{
-			idck=1;
-			idck1 = document.getElementById("id").value;
-			return true;
+$(function (){
+	$("#findid").validate({
+		debug : false,		
+		rules:{
+			email : "required"
+		},
+		messages:{
+			email : "Email is required."			
 		}
-		});	
-
+	});
+});
+$(function (){
+	$("#findid").validate({
+		debug : false,		
+		rules:{
+			email : "required"
+		},
+		messages:{
+			email : "Email is required."			
+		},
 	});
 });
 </script>
 </head>
 <body>
 <p id="font">FIND ID</P>
-<form method="post" action="find">
-<input type="text" id="mailcheck" name="email" style="width:345px; height:45px;" placeholder="Email"/><br /><br />
+<form method="post" action="find" id="findid">
+<input type="text" id="mailcheck" name="email" style="width:345px; height:45px;" placeholder="Email"/><br />
+<label class="error" for="mailcheck" generated="true" style="display:none;" id="emailerror"></label><br />
 <input type="submit" value="find" id="find" style="height:50px; width:350px;" /><br />
 </form><br />
-${account.id}
+<p id="emailerror">${id}</p>
+<p id="emailerror">${account.id}</p>
+<c:if test="${account.id!=null}">
+<input type="button" value="login" id="find" style="height:50px; width:350px;" onclick="location.href='login.jsp'" />
+</c:if>
 </body>
 </html>

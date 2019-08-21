@@ -23,7 +23,7 @@ import Model.book;
 
 
  
-@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd" , "/detail" , "/Withdrawal" , "/delete"})
+@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd" , "/detail" , "/Withdrawal" , "/delete" ,"/text"})
 public class LoginController extends HttpServlet {
 
 	@Override
@@ -103,7 +103,14 @@ public class LoginController extends HttpServlet {
 			String email = req.getParameter("email");
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.selectByEmail(email);
-			req.setAttribute("account", account);
+			
+			if(account!=null) {
+				req.setAttribute("account", account);
+				
+			}else{
+				req.setAttribute("id", "discord");				
+			}
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/find.jsp");
 			rd.forward(req, resp);
 			
@@ -117,8 +124,7 @@ public class LoginController extends HttpServlet {
 			if(count==0) {
 				req.setAttribute("idcheck", "The ID is available for use.");
 			}else {
-				req.setAttribute("idcheck", "This ID cannot be used.");
-				
+				req.setAttribute("idcheck", "This ID cannot be used.");				
 			}
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
@@ -129,6 +135,7 @@ public class LoginController extends HttpServlet {
 			AccountDAO dao = new AccountDAOImpl();
 			int count = dao.checkByemail(req.getParameter("inputemail"));
 			req.setAttribute("count", count);
+			System.out.println(count);
 			if(count==0) {
 				req.setAttribute("email", "This is an email you can use.");
 			}else {
@@ -147,7 +154,13 @@ public class LoginController extends HttpServlet {
 			String email = req.getParameter("email");
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.findByPwd(id, email);
-			req.setAttribute("account", account);
+			if(account!=null) {
+				req.setAttribute("account", account);
+				
+			}else{
+				req.setAttribute("id", "discord");				
+			}
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/findpwd.jsp");
 			rd.forward(req, resp);
 		
@@ -190,6 +203,10 @@ public class LoginController extends HttpServlet {
 			session.removeAttribute("account");
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
+			rd.forward(req, resp);
+		}else if(action.equals("text")) {
+			req.setAttribute("text", "");
+			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);
 		}
 	

@@ -19,6 +19,9 @@
 			border-top-right-radius : 5px;
 			border-bottom-right-radius : 5px;
 			height:50px;
+			width:100px;
+			position: relative;
+			left: 52.5px;
 		}
 		#checkid:hover{
 			background-color: skyblue;
@@ -35,7 +38,11 @@
 			border-top-right-radius : 5px;
 			border-bottom-right-radius : 5px;
 			height:50px;
+			width:100px;
+			position: relative;
+			left: 52.5px;
 		}
+		
 		#checkemail:hover{
 			background-color: skyblue;
 			color:white;
@@ -55,7 +62,8 @@
 		body {
   			text-align: center;
 		}
-		#font {font-size: 70px;} 	
+		#font {font-size: 70px;}
+		#error{font-size: 25px;} 	
 	</style>
 
 <script type = "text/javascript">
@@ -104,17 +112,16 @@ var idck=0;
 var idch1=0;
 $(function(){
 	$("#checkid").click(function(){	
-		var input_val = $("#id").val();
-		
+		var input_val = $("#id").val();		
 	if(!input_val){
 		alert("Please enter your ID.");
 		return false;
-	}
+	}	
 	var url = "idcheck";
 	$.get(url, {"inputid":input_val},function(xml){
 		var result = $(xml).find("result").text();
 		var count = $(xml).find("count").text();
-		$(".console").html(result);
+		$(".console").html(result);			
 		if(count>0){
 			idck = 0;
 			idck1 = document.getElementById("id").value;
@@ -125,7 +132,7 @@ $(function(){
 			return true;
 		}
 		});	
-
+	
 	});
 });
 var emailck=0;
@@ -184,21 +191,45 @@ $(function(){
 	
 	});
 });
+
+function mykeydown() {
+	var input_val = $("#id").val();		
+	idck=0;
+	var url = "text";
+	$.get(url, {"inputid":input_val},function(xml){
+		var result = $(xml).find("text").text();
+		$(".console").html(result);
+	});
+}
+
+function mykeydown1() {
+	var input_val = $("#email").val();		
+	emailck=0;
+	var url = "text";
+	$.get(url, {"inputemail":input_val},function(xml){
+		var result = $(xml).find("text").text();
+		$(".console1").html(result);
+	});
+}
 </script>
 </head>
 <body>
 <p id="font">SING UP</P>
 <form method="post" action="join" id="singupForm" name="form">
-<input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" style="width:345px; height:45px;" />
+<input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" onkeydown="mykeydown()" style="width:345px; height:45px; position: relative; left: 52.5px;" />
 <input type="button" id="checkid" value="ID check" name="idcheck" style="vertical-align: bottom;" /><br />
-<div class="console" id="consoletest"></div><br />
-<input type="password" placeholder="Input Password" name="inputpassword" id="pwd" style="width:345px; height:45px;" /><br /><br />
-<input type="password" placeholder="Input Re Password" name="repwd" style="width:345px; height:45px;" /><br /><br />
-<input type="email" placeholder="Input Email" name="inputemail" id="email" style="width:345px; height:45px;" />
-<input type="button" id="checkemail" value="Email Check" style="vertical-align: bottom;" />
-<div class="console1"></div>
-<br /><br />
-<input type="submit" value="join" id="jointest" style="height:50px; width:300px;" />
+<div style="display:inline" class="console" id="error" ></div>
+<label class="error" for="id" generated="true" style="display:none;" id="error"></label><br />
+<input type="password" placeholder="Input Password" name="inputpassword" id="pwd" style="width:345px; height:45px;" /><br />
+<label class="error" for="pwd" generated="true" style="display:none;" id="error"></label><br />
+<input type="password" placeholder="Input Re Password" name="repwd" id="pwdre" style="width:345px; height:45px;" /><br />
+<label class="error" for="pwdre" generated="true" style="display:none;" id="error"></label><br />
+<input type="email" placeholder="Input Email" name="inputemail" id="email" style="width:345px; height:45px; position: relative; left: 52.5px;" onkeydown="mykeydown1()"/>
+<input type="button" id="checkemail" value="Email Check" style="vertical-align: bottom;" /><br />
+<label class="error" for="email" generated="true" style="display:none;" id="error"></label>
+<div class="console1" id="error"></div>
+<br />
+<input type="submit" value="join" id="jointest" style="height:50px; width:350px;" />
 <input type="hidden" id="checkemail" value="${idcheck}" />
 </form>
 </body>

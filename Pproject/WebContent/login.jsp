@@ -70,9 +70,23 @@
   			text-align: center;
 		}
 		#font {font-size: 70px;} 
-			
+		#pwderror {font-size : 25px;}	
 	</style>
 <script type = "text/javascript">
+$(function (){
+	$("#loginchecker").validate({
+		debug : false,		
+		rules:{
+			id : "required",
+			password : "required"
+		},
+		messages:{
+			id : "ID is required.",
+			password :"Password is required."
+		}
+	});
+});
+
 $(function(){	
 	$("#check").click(function(){		
 		var input_val = $("#idcheck").val();
@@ -84,6 +98,7 @@ $(function(){
 		}else{
 			alert("login fail");
 			location.href = "login.jsp";
+			return false;
 		}
 		});
 	});		
@@ -92,9 +107,11 @@ $(function(){
 </head>
 <body>
 	<p id="font">AIR LINE</p>
-	<form action="login" method ="post">
-		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:345px; height:45px;"><br /><br />
-		<input type="password" placeholder="Password" name="password" id="passwordcheck" style="width:345px; height:45px;"><br /><br />
+	<form action="login" method ="post" id="loginchecker">
+		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:345px; height:45px;"><br />
+		<label class="error" for="idcheck" generated="true" style="display:none;" id="pwderror"></label><br />
+		<input type="password" placeholder="Password" name="password" id="passwordcheck" style="width:345px; height:45px;"><br />
+		<label class="error" for="passwordcheck" generated="true" style="display:none;" id="pwderror"></label><br />
 		<input type="submit" id="check" value="login"  style="height:50px; width:350px;"><br />
 	</form>
 	

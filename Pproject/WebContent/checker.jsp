@@ -7,4 +7,5 @@
 	<result>${email}</result>
 	<result>${idcheck}</result>
 	<count>${count}</count>
+	<text>${text}</text>
 </idcheck>
