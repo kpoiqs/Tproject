@@ -208,6 +208,7 @@ public class ReservationController extends HttpServlet {
 			int plan1cost = Integer.parseInt(req.getParameter("plan1cost"));
 			String plan1sno = req.getParameter("plan1sno");
 			String seat = req.getParameter("seat");
+			
 
 			book book1 = new book();
 			book1.setId(id);
@@ -256,7 +257,40 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			PlanDAO dao = new PlanDAOImpl();
 			String id = req.getParameter("accountid");
-			List<Book2> booklist = dao.bookselectall(id);
+			List<Book2> booklist = new ArrayList<Book2>();
+			
+			booklist = dao.bookselectall(id);
+			for(int d = 0; d < booklist.size(); d++) {
+				String str = booklist.get(d).getSeat().substring(booklist.get(d).getSeat().length()-1,booklist.get(d).getSeat().length());
+				String str2 = booklist.get(d).getSeat().substring(0,booklist.get(d).getSeat().length()-1);
+				
+				if(str.equals("1")) {
+					str = "A";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("2")) {
+					str = "B";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("3")) {
+					str = "C";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("4")) {
+					str = "D";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("5")) {
+					str = "E";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("6")) {
+					str = "F";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}
+				
+			}
 			req.setAttribute("list", booklist);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/booklist.jsp");
@@ -316,6 +350,37 @@ public class ReservationController extends HttpServlet {
 			req.setCharacterEncoding("utf-8");
 			PlanDAO dao = new PlanDAOImpl();
 			List<book> booklist = dao.bookselectall();
+			for(int d = 0; d < booklist.size(); d++) {
+				String str = booklist.get(d).getSeat().substring(booklist.get(d).getSeat().length()-1,booklist.get(d).getSeat().length());
+				String str2 = booklist.get(d).getSeat().substring(0,booklist.get(d).getSeat().length()-1);
+				
+				if(str.equals("1")) {
+					str = "A";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("2")) {
+					str = "B";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("3")) {
+					str = "C";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("4")) {
+					str = "D";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("5")) {
+					str = "E";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}else if(str.equals("6")) {
+					str = "F";
+					String str3 = str2+str;
+					booklist.get(d).setSeat(str3);
+				}
+				
+			}
 			req.setAttribute("list", booklist);
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/book3.jsp");

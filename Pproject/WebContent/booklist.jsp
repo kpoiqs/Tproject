@@ -162,12 +162,12 @@ td {
 				</colgroup>
 				<thead>
 				<tr>
-					<td scope="col">NO</td>
-					<td scope="col">TITLE</td>
-					<td scope="col">WRITER</td>
-					<td scope="col">DATE</td>
-					<td scope="col">VIEW</td>
-					<td scope="col">VIEW1</td>
+					<td scope="col">Depart</td>
+					<td scope="col">Arrive</td>
+					<td scope="col">Date</td>
+					<td scope="col">Price</td>
+					<td scope="col">Reservation no</td>
+					<td scope="col">Seat no</td>
 				</tr>
 				</thead>
 				
@@ -175,8 +175,38 @@ td {
   <c:forEach var="booklist" items="${list}">
   <tbody>
   <tr>
-  					<td>${booklist.depa}</td>
-					<td>${booklist.arva}</td>
+  <c:if test = "${booklist.depa eq 'ICN'}">
+  <td>INCHEON</td>
+  </c:if>
+  <c:if test = "${booklist.depa eq 'NRT'}">
+  <td>NARITA</td>
+  </c:if>
+  <c:if test = "${booklist.depa eq 'KIX'}">
+  <td>KANSAI</td>
+  </c:if>
+  <c:if test = "${booklist.depa eq 'CJU'}">
+  <td>JEJU</td>
+  </c:if>
+  <c:if test = "${booklist.depa eq 'HKQ'}">
+  <td>HONGKONG</td>
+  </c:if>
+  
+  <c:if test = "${booklist.arva eq 'ICN'}">
+  <td>INCHEON</td>
+  </c:if>
+  <c:if test = "${booklist.arva eq 'NRT'}">
+  <td>NARITA</td>
+  </c:if>
+  <c:if test = "${booklist.arva eq 'KIX'}">
+  <td>KANSAI</td>
+  </c:if>
+  <c:if test = "${booklist.arva eq 'CJU'}">
+  <td>JEJU</td>
+  </c:if>
+  <c:if test = "${booklist.arva eq 'HKG'}">
+  <td>HONGKONG</td>
+  </c:if>
+					
 
 					<td>${booklist.day}</td>
 					<td>${booklist.pay}</td>
