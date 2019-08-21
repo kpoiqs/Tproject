@@ -12,7 +12,7 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 	private static final String ACCOUNT_SELECT_BY_ID
 	="select * from account where id=? and pwd=?";
 	private static final String ACCOUNT_INSERT
-	="insert into account values(account_seq.nextval ,? ,? ,?)";
+	="insert into account values(? ,? ,?)";
 	private static final String ACCOUNT_ID_CHECK
 	="select count(*) as overlap from account where id=?";
 	private static final String ACCOUNT_FIND
