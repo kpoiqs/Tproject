@@ -3,6 +3,7 @@ package DBO;
 import java.util.List;
 
 import Model.Qna;
+import Model.Reqna;
 
 public interface QnaDAO {
 	
@@ -18,4 +19,7 @@ public interface QnaDAO {
 
 	void insertReply(Qna qna);//
 	void updateVisited(int no);//
+	
+	boolean reqnainsert(Reqna reqna);
+	List<Reqna> reqnaselectAll(int no);
 }

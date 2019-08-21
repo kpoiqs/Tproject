@@ -33,8 +33,18 @@
 				subject : "Please enter a subject.",
 				content : "Please enter a content."
 			}
+			function noSpaceForm(obj) {
+			    var str_space = /\s/;
+			    if(str_space.exec(obj.value)) {
+			        alert("Spaces cannot be used.\n\nSpaces are automatically deleted.");
+			        obj.focus();
+			        obj.value = obj.value.replace(' ','');
+			        return false;
+			    }
+			}
 		});
 	});
+	
 </script>
 
 

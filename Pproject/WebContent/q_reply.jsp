@@ -110,8 +110,8 @@ td{
 
 				<tr>
 					<th>WRITER</th>
-					<td><input type="text" id="writer" name="writer" value=""
-						maxlength="10"></td>
+					<td><input type="text" id="writer" name="writer" value="${account.id}"
+						maxlength="10" readonly></td>
 				</tr>
 
 				<tr>
