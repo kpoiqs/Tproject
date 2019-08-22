@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Qna;
+import Model.Reqna;
 
 public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	
@@ -34,6 +35,13 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 
 	private static final String Q_VISTIED_SQL
 	="update qna set visited = visited+1 where no=?";
+	
+	private static final String REQNA_INSERT
+	="insert into reqna values(reqna_seq.nextval,?,?,?,sysdate)";
+	
+	private static final String REQNA_LIST
+	="select * from reqna where no = ?";
+	
 	
 	@Override
 	public List<Qna> selectall() {
@@ -267,6 +275,69 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			}finally {
 			CloseDBObjects(null, preparedStatement, connection);
 			}
+	}
+
+	@Override
+	public boolean reqnainsert(Reqna reqna) {
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(REQNA_INSERT);
+			
+			preparedStatement.setInt(1, reqna.getNo());
+			preparedStatement.setString(2, reqna.getWriter());
+			preparedStatement.setString(3, reqna.getContent());
+			
+			int rowCount = preparedStatement.executeUpdate();
+			if(rowCount>0) {
+				result = true;
+			}
+			}catch(SQLException e) {
+				e.printStackTrace();
+		}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+		}
+		return result;
+	}
+
+	@Override
+	public List<Reqna> reqnaselectAll(int no) {
+		List<Reqna> qna = new ArrayList<Reqna>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(REQNA_LIST);
+			preparedStatement.setInt(1, no);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				Reqna q = new Reqna();
+				q.setNum(resultSet.getInt("num"));
+				q.setNo(resultSet.getInt("no"));
+				q.setContent(resultSet.getString("content"));
+				q.setWriter(resultSet.getString("writer"));
+				
+				q.setWdate(resultSet.getString("wdate"));
+				String s2 = q.getWdate().substring(0,q.getWdate().length()-9);
+				q.setWdate(s2);
+			
+				qna.add(q);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			CloseDBObjects(resultSet, preparedStatement,connection);
+		}
+		
+		return qna;
 	}	
 
 }

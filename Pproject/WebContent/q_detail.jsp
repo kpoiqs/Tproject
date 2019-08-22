@@ -80,7 +80,7 @@ $(function(){
 			location.href = "q_form.jsp";
 		});
 	});
-
+	
 </script>
 
 
@@ -218,8 +218,11 @@ td{
 	<h2>DETAIL</h2>
 	<div class="all">
 	
-	<form action="q_modify?no=${q.no }" method="post" id="form" name="form">
+	<form action="q_modify?no=${q.no}" method="post" id="form" name="form">
+	<c:if test = "${account.id == q.writer }">
 	<table class="tb">
+	
+	
 	
 					<tr>
 					<th>NO</th>
@@ -236,24 +239,69 @@ td{
 					<th>SUBJECT</th>
 
 					<td><input type="text" id="subject" name="subject" value="${q.subject}" style="width: 345px" 
-						maxlength="40"></td>
+						maxlength="40" readonly></td>
 				</tr>
 				
 				<tr>
 					<th>CONTENT</th>
-					<td><textarea id="content" name="content" style="width: 345px; height: 300px">${q.content }</textarea>
+					<td><textarea id="content" name="content" style="width: 345px; height: 300px" readonly>${q.content }</textarea>
 							<input type="submit" value="MODIFY" id="modify" > <br /></td>
 					</tr>
+					
 			</table>
+			<input type="button" id="delete" value="DELETE">
+					<input type="button" id="write" value="WRITE" onclick="location.href='q_form.jsp'">
+			</c:if>
 		</form>	
 		
+		<c:if test = "${account.id != q.writer }">
+		<table class="tb">
+			<tr>
+					<th>NO</th>
+					<td>${q.no}</td>
+						
+				</tr>
+				
+				<tr>
+					<th>WRITER</th>
+					<td>${q.writer}</td>
+				</tr>
+
+				<tr>
+					<th>SUBJECT</th>
+
+					<td>${q.subject}</td>
+				</tr>
+				
+				<tr>
+					<th>CONTENT</th>
+					<td><textarea id="content" name="content" style="width: 345px; height: 300px" readonly>${q.content }</textarea>
+							<input type="submit" value="MODIFY" id="modify" > <br /></td>
+					</tr>
+					
+			</table>
+			<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
+			</c:if>
+		
 	<c:if test="${q.lvl == 0}">
-	<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
+	
 	</c:if>
-	<input type="button" id="delete" value="DELETE">
-	<input type="button" id="write" value="WRITE">	<button type="button" onclick="history.back()" id="bl">BACK TO LIST</button>
 	
+	<input type="button" id="write" value="WRITE" onclick="location.href='q_form.jsp'">	
+	<button type="button" onclick="history.back()" id="bl">BACK TO LIST</button>
+	<form style="text-align:center" action = "reqna_input.do" method = "post">
+	<br/>댓글임<input type = "text" id='reqnacon' name = 'reqnacon'><br/>
+	작성자<input type = "text" id = 'reqwriter' name = 'reqwriter' value='${account.id}' readonly/><br/>
+	<input type = "submit" id="write" name="write" value = "submit"/>
+	<input type="text" id="num" name="num" value="${q.no}" readonly></td>
+	</form>
 	</div>
+	<c:forEach var="qlist" items="${qa}">
+
 	
+	<td>${qlist.num}번 댓글 작성자 : ${qlist.writer} 작성날짜 : ${qlist.wdate}<br/>${qlist.content}</td>
+	<br/>
+	
+	</c:forEach>
 </body>
 </html>
