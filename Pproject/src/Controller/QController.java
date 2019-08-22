@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import DBO.QnaDAO;
 import DBO.QnaDAOImpl;
 import Model.Qna;
+import Model.Reqna;
 import page.PageManager;
 import page.PageSQL;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list.do","/q_reply","/q_reply_page","/q_visited","/q_modify"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list.do","/q_reply","/q_reply_page","/q_visited","/q_modify","/reqna_input.do"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -59,6 +60,11 @@ public class QController extends HttpServlet {
 			QnaDAO dao = new QnaDAOImpl();
 			Qna qna = dao.selectByNo(no);
 			
+			List<Reqna> qList = dao.reqnaselectAll(no);
+			
+			req.setAttribute("qa", qList);//memoList화면으로 보내고자하는거 .  memos는 맘대로
+			
+			
 			dao.updateVisited(no);
 			
 			System.out.println(qna);
@@ -76,7 +82,7 @@ public class QController extends HttpServlet {
 			QnaDAO dao = new QnaDAOImpl();
 			Qna qna = dao.selectByNo(no);
 			
-			dao.updateVisited(no);
+			
 			
 			System.out.println(qna);
 						
@@ -156,6 +162,20 @@ public class QController extends HttpServlet {
 			
 			RequestDispatcher rd = req.getRequestDispatcher("q_reply.jsp");
 			rd.forward(req, resp);
+			
+		}else if(action.equals("reqna_input.do")) {
+			req.setCharacterEncoding("utf-8");
+			QnaDAO dao = new QnaDAOImpl();
+			Reqna qna = new Reqna();
+			
+			int num = Integer.parseInt(req.getParameter("num"));
+			qna.setNo(num);
+			qna.setContent(req.getParameter("reqnacon"));
+			qna.setWriter(req.getParameter("reqwriter"));
+								
+			dao.reqnainsert(qna);
+
+			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
 			
 		}
 	}

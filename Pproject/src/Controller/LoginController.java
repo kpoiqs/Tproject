@@ -23,7 +23,7 @@ import Model.book;
 
 
  
-@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd" , "/detail" , "/Withdrawal" , "/delete" ,"/text"})
+@WebServlet(name="LoginController" , urlPatterns={"/login" , "/login_input" , "/logout" , "/join" , "/idcheck" , "/find" , "/emailcheck" , "/findpwd" , "/detail" , "/Withdrawal" , "/delete" ,"/text" ,"/emailcheckdetail"})
 public class LoginController extends HttpServlet {
 
 	@Override
@@ -134,14 +134,15 @@ public class LoginController extends HttpServlet {
 					
 			AccountDAO dao = new AccountDAOImpl();
 			int count = dao.checkByemail(req.getParameter("inputemail"));
+			String a = req.getParameter("inputemail");
 			req.setAttribute("count", count);
-			System.out.println(count);
-			if(count==0) {
+			
+			if(count==0 && a.contains("@") && a.contains(".")) {
 				req.setAttribute("email", "This is an email you can use.");
-			}else {
-				req.setAttribute("email", "This email is not available.");				
+			}else{
+				req.setAttribute("email", "This email is not available.");
+				req.setAttribute("count", 1);
 			}
-
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);	
 		
@@ -208,8 +209,23 @@ public class LoginController extends HttpServlet {
 			req.setAttribute("text", "");
 			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 			rd.forward(req, resp);
-		}
-	
+		}else if(action.equals("emailcheckdetail")) {
+			
+			String id = req.getParameter("id");
+			String email = req.getParameter("inputemail");
+			AccountDAO dao = new AccountDAOImpl();
+			
+			int count = dao.checkByEmaildetail(id , email);
+			req.setAttribute("count", count);
 
+			if(count==0 && email.contains("@") && email.contains(".")) {
+				req.setAttribute("email", "This is an email you can use.");
+			}else {
+				req.setAttribute("email", "This email is not available.");
+				req.setAttribute("count", 1);
+			}
+			RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
+			rd.forward(req, resp);
+		}	
 	}
 }

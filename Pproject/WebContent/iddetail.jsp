@@ -76,6 +76,7 @@ $(function (){
 					equalTo : "#pwd"
 				},
 				inputemail : {
+					required : true,
 					email : true
 				}
 		},
@@ -89,6 +90,7 @@ $(function (){
 				equalTo : "please check a repassword"
 			},
 			inputemail :{
+				required : "email is required",
 				email : "please check a email"
 			}
 		}
@@ -99,15 +101,15 @@ var emailch1 = 0;
 $(function(){	
 	$("#checkemail").click(function(){		
 		var input_val = $("#email").val();
-		var emailch2 = "${account.email}";
+		var id = "${account.id}";
 	if(!input_val){
 		alert("Please enter e-mail.");
 		return false;
 	}
-	var url = "emailcheck";
-	$.get(url, {"inputemail":input_val},function(xml){
+	var url = "emailcheckdetail";
+	$.get(url, {"inputemail":input_val , "id" : id },function(xml){
 		var result = $(xml).find("result").text();
-		count = $(xml).find("count").text();
+		var count = $(xml).find("count").text();
 		$(".console1").html(result);
 		if(count>0){
 			emailck = 0;
@@ -158,6 +160,14 @@ function mykeydown1() {
 		$(".console1").html(result);
 	});
 }
+
+
+
+function emailcheck(str) {
+
+    
+}
+
 </script>
 </head>
 <body>
