@@ -130,11 +130,8 @@ td {
 			<input type = 'hidden' id = 'accountid' name = 'accountid' value = "${account.id}" />
 			<input type = "submit" style="float: right" id = 'mybook' class="btn btn-primary" value = "Mybook"/>
 			</form>
-			<div style="text-align:right" id = 'abbd'>
-			<input type = "button" style="float: right" onclick="location.href='iddetail.jsp'" class="btn btn-primary" value = "detail"/>
-			</div>
 			<div style="text-align:right" id = 'abbd' >
-			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "Withdrawal"/>
+			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "detail"/>
 			</div>
 			<form action="logout" style="float:right" method = "post" id='abbd'>
 			<input type = 'submit' style="float: right" class='btn btn-primary' value = 'logout'>

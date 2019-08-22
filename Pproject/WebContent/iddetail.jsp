@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,10 +187,14 @@ function emailcheck(str) {
 <input type="submit" value="submit" id="jointest" style="height:50px; width:350px;" />
 <input type="hidden" value="${account.id}" />
 <br />
+<c:if test="${account.id != 'kpoiqq'}">
 <hr />
+</c:if>
+<c:if test="${account.id != 'kpoiqq'}">
 <p id="text">Your ID is : ${account.id}</p>
 <p id="text">Would you like to leave?</p>
 <button type="button" id="delete" style="height:50px; width:350px;">delete</button>
+</c:if>
 </form>
 </body>
 </html>

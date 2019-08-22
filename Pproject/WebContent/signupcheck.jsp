@@ -53,6 +53,6 @@
 <body>
 <p id="text">Congratulations on your membership.</p>
 <button onclick="location.href='login.jsp'" id="checkid" >login</button>
-<button onclick="location.href='index.jsp'" id="checkid1" >index</button>
+<button onclick="location.href='index.jsp'" id="checkid1" >Home</button>
 </body>
 </html>
