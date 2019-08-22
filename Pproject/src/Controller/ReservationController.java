@@ -93,7 +93,6 @@ public class ReservationController extends HttpServlet {
 							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlistR.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
-							System.out.println(cht);
 							if (cht > 100) {
 								int cnt4 = 0;
 
@@ -115,7 +114,6 @@ public class ReservationController extends HttpServlet {
 							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlistR.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
-							System.out.println(cht);
 							if (cht > 100) {
 								int cnt3 = 0;
 
