@@ -93,17 +93,16 @@ public class ReservationController extends HttpServlet {
 							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlistR.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
-							if (cht <= 200) {
-
-							} else {
+							System.out.println(cht);
+							if (cht > 100) {
 								int cnt4 = 0;
 
 								cnt4 = dao.checkbook(todate, planlistR.get(i).getSno());
 								if (cnt4 < 3) {								
-									planlistDF1.add(planlistR.get(i));
-									for (int j = 0; j< planlistDF1.size(); j++) {
-										if(!planlistDF2.contains(planlistDF1.get(j))) {
-											planlistDF2.add(planlistDF1.get(j));
+									planlistRF1.add(planlistR.get(i));
+									for (int j = 0; j< planlistRF1.size(); j++) {
+										if(!planlistRF2.contains(planlistRF1.get(j))) {
+											planlistRF2.add(planlistRF1.get(j));
 										}
 									}
 								}
@@ -116,18 +115,17 @@ public class ReservationController extends HttpServlet {
 							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
 							int bdept = Integer.parseInt(planlistR.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
-							if (cht <= 200) {
-
-							} else {
+							System.out.println(cht);
+							if (cht > 100) {
 								int cnt3 = 0;
 
 								cnt3 = dao.checkbook(fromdate, planlistD.get(d).getSno());
 								if (cnt3 < 3) {
-									planlistRF1.add(planlistD.get(d));
-									for (int j = 0; j< planlistRF1.size(); j++) {
-										if(!planlistRF2.contains(planlistRF1.get(j))) {
-											planlistRF2.add(planlistRF1.get(j));
-										}
+									planlistDF1.add(planlistD.get(d));
+									for (int j = 0; j< planlistDF1.size(); j++) {
+										if(!planlistDF2.contains(planlistDF1.get(j))) {
+											planlistDF2.add(planlistDF1.get(j));
+										} 
 									}
 								}
 
@@ -136,8 +134,8 @@ public class ReservationController extends HttpServlet {
 					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
-					req.setAttribute("plans", planlistRF2);
-					req.setAttribute("plan2", planlistDF2);
+					req.setAttribute("plans", planlistDF2);
+					req.setAttribute("plan2", planlistRF2);
 					RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 					rd.forward(req, resp);
 				}
