@@ -50,60 +50,60 @@ public class ReservationController extends HttpServlet {
 
 			PlanDAO dao = new PlanDAOImpl();
 
-			List<plan> planlist = dao.selectname12(from, to);
-			List<plan> planlist1 = dao.selectname12(to, from);
+			List<plan> planlistD = dao.selectname12(from, to);
+			List<plan> planlistR = dao.selectname12(to, from);
 
 			if (todate != null) {
 				if (!fromdate.equals(todate)) {
-					List<plan> planlist5 = new ArrayList<plan>();
-					List<plan> planlist6 = new ArrayList<plan>();
+					List<plan> planlistDF = new ArrayList<plan>();
+					List<plan> planlistRF = new ArrayList<plan>();
 					int cnt = 0;
-					for (int y = 0; y < planlist.size(); y++) {
+					for (int y = 0; y < planlistD.size(); y++) {
 
-						cnt = dao.checkbook(fromdate, planlist.get(y).getSno());
+						cnt = dao.checkbook(fromdate, planlistD.get(y).getSno());
 						if (cnt < 3) {
-							planlist5.add(planlist.get(y));
+							planlistDF.add(planlistD.get(y));
 						}
 
 					}
 					int cnt1 = 0;
-					for (int y = 0; y < planlist1.size(); y++) {
+					for (int y = 0; y < planlistR.size(); y++) {
 
-						cnt1 = dao.checkbook(todate, planlist1.get(y).getSno());
+						cnt1 = dao.checkbook(todate, planlistR.get(y).getSno());
 						if (cnt1 < 3) {
-							planlist6.add(planlist1.get(y));
+							planlistRF.add(planlistR.get(y));
 						}
 
 					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
-					req.setAttribute("plans", planlist5);
-					req.setAttribute("plan2", planlist6);
+					req.setAttribute("plans", planlistDF);
+					req.setAttribute("plan2", planlistRF);
 
 					RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 					rd.forward(req, resp);
 				} else if (fromdate.equals(todate)) {
 
-					List<plan> planlist3 = new ArrayList<plan>();
-					List<plan> planlist4 = new ArrayList<plan>();
-					List<plan> planlist33 = new ArrayList<plan>();
-					List<plan> planlist44 = new ArrayList<plan>();
-					for (int d = 0; d < planlist.size(); d++) {
-						for (int i = 0; i < planlist1.size(); i++) {
-							int aarvt = Integer.parseInt(planlist.get(d).getArvt().replaceAll("[^0-9]", ""));
-							int bdept = Integer.parseInt(planlist1.get(i).getDept().replaceAll("[^0-9]", ""));
+					List<plan> planlistDF1 = new ArrayList<plan>();
+					List<plan> planlistRF1 = new ArrayList<plan>();
+					List<plan> planlistDF2 = new ArrayList<plan>();
+					List<plan> planlistRF2 = new ArrayList<plan>();
+					for (int d = 0; d < planlistD.size(); d++) {
+						for (int i = 0; i < planlistR.size(); i++) {
+							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
+							int bdept = Integer.parseInt(planlistR.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
 							if (cht <= 200) {
 
 							} else {
 								int cnt4 = 0;
 
-								cnt4 = dao.checkbook(todate, planlist1.get(i).getSno());
+								cnt4 = dao.checkbook(todate, planlistR.get(i).getSno());
 								if (cnt4 < 3) {								
-									planlist3.add(planlist1.get(i));
-									for (int j = 0; j< planlist3.size(); j++) {
-										if(!planlist33.contains(planlist3.get(j))) {
-											planlist33.add(planlist3.get(j));
+									planlistDF1.add(planlistR.get(i));
+									for (int j = 0; j< planlistDF1.size(); j++) {
+										if(!planlistDF2.contains(planlistDF1.get(j))) {
+											planlistDF2.add(planlistDF1.get(j));
 										}
 									}
 								}
@@ -111,22 +111,22 @@ public class ReservationController extends HttpServlet {
 							}
 						}
 					}
-					for (int d = 0; d < planlist.size(); d++) {
-						for (int i = 0; i < planlist1.size(); i++) {
-							int aarvt = Integer.parseInt(planlist.get(d).getArvt().replaceAll("[^0-9]", ""));
-							int bdept = Integer.parseInt(planlist1.get(i).getDept().replaceAll("[^0-9]", ""));
+					for (int d = 0; d < planlistD.size(); d++) {
+						for (int i = 0; i < planlistR.size(); i++) {
+							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
+							int bdept = Integer.parseInt(planlistR.get(i).getDept().replaceAll("[^0-9]", ""));
 							int cht = bdept - aarvt;
 							if (cht <= 200) {
 
 							} else {
 								int cnt3 = 0;
 
-								cnt3 = dao.checkbook(fromdate, planlist.get(d).getSno());
+								cnt3 = dao.checkbook(fromdate, planlistD.get(d).getSno());
 								if (cnt3 < 3) {
-									planlist4.add(planlist.get(d));
-									for (int j = 0; j< planlist4.size(); j++) {
-										if(!planlist44.contains(planlist4.get(j))) {
-											planlist44.add(planlist4.get(j));
+									planlistRF1.add(planlistD.get(d));
+									for (int j = 0; j< planlistRF1.size(); j++) {
+										if(!planlistRF2.contains(planlistRF1.get(j))) {
+											planlistRF2.add(planlistRF1.get(j));
 										}
 									}
 								}
@@ -136,24 +136,24 @@ public class ReservationController extends HttpServlet {
 					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
-					req.setAttribute("plans", planlist44);
-					req.setAttribute("plan2", planlist33);
+					req.setAttribute("plans", planlistRF2);
+					req.setAttribute("plan2", planlistDF2);
 					RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 					rd.forward(req, resp);
 				}
 			} else if (todate == null) {
 
-				List<plan> planlist7 = new ArrayList<plan>();
+				List<plan> planlistO = new ArrayList<plan>();
 				int cnt2 = 0;
-				for (int y = 0; y < planlist.size(); y++) {
+				for (int y = 0; y < planlistD.size(); y++) {
 
-					cnt2 = dao.checkbook(fromdate, planlist.get(y).getSno());
+					cnt2 = dao.checkbook(fromdate, planlistD.get(y).getSno());
 					if (cnt2 < 3) {
-						planlist7.add(planlist.get(y));
+						planlistO.add(planlistD.get(y));
 					}
 
 				}
-				req.setAttribute("plans", planlist7);
+				req.setAttribute("plans", planlistO);
 				req.setAttribute("fromdate", fromdate);
 				RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 				rd.forward(req, resp);
