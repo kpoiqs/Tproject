@@ -49,6 +49,8 @@ public class PlanDAOImpl extends BaseDAO implements PlanDAO {
 	private static final String SELECT_BY_BNO = "select id, day, pay, sno, bno, seat from book where bno = ?";
 	
 	
+	
+	
 	@Override
 
 	public List<plan> selectname12(String depa, String arva) {

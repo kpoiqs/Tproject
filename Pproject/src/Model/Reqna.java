@@ -4,7 +4,7 @@ public class Reqna {
 	private int num;
 	private	int no;
 	private	String writer;
-	private	String content;
+	private	String contents;
 	private	String wdate;
 	public int getNum() {
 		return num;
@@ -24,11 +24,11 @@ public class Reqna {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getContent() {
-		return content;
+	public String getContents() {
+		return contents;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	public String getWdate() {
 		return wdate;
@@ -38,9 +38,8 @@ public class Reqna {
 	}
 	@Override
 	public String toString() {
-		return "Reqna [num=" + num + ", no=" + no + ", writer=" + writer + ", content=" + content + ", wdate=" + wdate
+		return "Reqna [num=" + num + ", no=" + no + ", writer=" + writer + ", contents=" + contents + ", wdate=" + wdate
 				+ "]";
 	}
-	
 	
 }

@@ -17,7 +17,7 @@ import Model.Reqna;
 import page.PageManager;
 import page.PageSQL;
 
-@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list.do","/q_reply","/q_reply_page","/q_visited","/q_modify","/reqna_input.do"})
+@WebServlet(name="QController", urlPatterns= {"/q_input","/q_save","/q_list","/q_detail","/q_delete","/q_update","/q_req_list.do","/q_reply","/q_reply_page","/q_visited","/q_modify","/reqna_input.do","/reqna_delete","/reqna_update"})
 public class QController extends HttpServlet {
 
 	@Override
@@ -170,13 +170,31 @@ public class QController extends HttpServlet {
 			
 			int num = Integer.parseInt(req.getParameter("num"));
 			qna.setNo(num);
-			qna.setContent(req.getParameter("reqnacon"));
+			qna.setContents(req.getParameter("reqnacon"));
 			qna.setWriter(req.getParameter("reqwriter"));
 								
 			dao.reqnainsert(qna);
 
 			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
 			
+		}else if(action.equals("reqna_delete")) {
+			
+			int num = Integer.parseInt(req.getParameter("num"));
+			QnaDAO dao = new QnaDAOImpl();
+			boolean result = dao.deleteByNum(num);
+				
+			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
+			
+		}else if(action.equals("reqna_update")) {
+
+			QnaDAO dao = new QnaDAOImpl();
+			Reqna reqna = new Reqna();
+			
+			reqna.setNum(Integer.parseInt(req.getParameter("num")));
+			reqna.setContents(req.getParameter("contents"));
+			
+			boolean c = dao.reqnaupdate(reqna);
+			resp.sendRedirect("q_req_list.do?reqPage=1");
 		}
 	}
 }

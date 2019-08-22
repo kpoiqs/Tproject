@@ -42,6 +42,11 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 	private static final String REQNA_LIST
 	="select * from reqna where no = ?";
 	
+	private static final String REQNA_DELETE
+	="DELETE FROM reqna WHERE num = ?";
+	
+	private static final String REQNA_UPDATE
+	="UPDATE reqna SET contents = ? where num = ?";
 	
 	@Override
 	public List<Qna> selectall() {
@@ -289,7 +294,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			
 			preparedStatement.setInt(1, reqna.getNo());
 			preparedStatement.setString(2, reqna.getWriter());
-			preparedStatement.setString(3, reqna.getContent());
+			preparedStatement.setString(3, reqna.getContents());
 			
 			int rowCount = preparedStatement.executeUpdate();
 			if(rowCount>0) {
@@ -322,7 +327,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				Reqna q = new Reqna();
 				q.setNum(resultSet.getInt("num"));
 				q.setNo(resultSet.getInt("no"));
-				q.setContent(resultSet.getString("content"));
+				q.setContents(resultSet.getString("contents"));
 				q.setWriter(resultSet.getString("writer"));
 				
 				q.setWdate(resultSet.getString("wdate"));
@@ -338,6 +343,58 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 		}
 		
 		return qna;
+	}
+
+	@Override
+	public boolean deleteByNum(int num) {
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(REQNA_DELETE);
+			
+			preparedStatement.setInt(1, num);
+
+			int rowCount = preparedStatement.executeUpdate();
+			
+			if(rowCount>0) {
+				result = true;
+			}
+			}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}			
+		return result;
+	}
+
+	@Override
+	public boolean reqnaupdate(Reqna reqna) {
+		boolean result = false;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = getConnection();
+			preparedStatement = connection.prepareStatement(REQNA_UPDATE);
+			
+			preparedStatement.setString(1, reqna.getContents());
+			preparedStatement.setInt(2, reqna.getNum());
+			
+			int rowCount = preparedStatement.executeUpdate();
+			if(rowCount>0) {
+				result = true;
+			}
+			}catch(SQLException e) {
+			e.printStackTrace();
+			}finally {
+			CloseDBObjects(null, preparedStatement, connection);
+			}
+		return result;	
 	}	
 
 }

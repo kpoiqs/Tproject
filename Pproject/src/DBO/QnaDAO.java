@@ -16,10 +16,12 @@ public interface QnaDAO {
 	boolean insert(Qna qna);
 	boolean update(Qna qna);
 	boolean deleteByNo(int no);
+	boolean deleteByNum(int num);
 
 	void insertReply(Qna qna);//
 	void updateVisited(int no);//
 	
 	boolean reqnainsert(Reqna reqna);
 	List<Reqna> reqnaselectAll(int no);
+	boolean reqnaupdate(Reqna reqna);
 }

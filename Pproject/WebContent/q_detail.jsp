@@ -275,33 +275,53 @@ td{
 				
 				<tr>
 					<th>CONTENT</th>
-					<td><textarea id="content" name="content" style="width: 345px; height: 300px" readonly>${q.content }</textarea>
-							<input type="submit" value="MODIFY" id="modify" > <br /></td>
+					<td><textarea id="content" name="content" style="width: 640px; height: 300px" readonly>${q.content }</textarea>
+							 </td>
 					</tr>
 					
 			</table>
+			<input type="submit" value="MODIFY" id="modify" >
 			<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
 			</c:if>
 		
 	<c:if test="${q.lvl == 0}">
 	
 	</c:if>
-	
-	<input type="button" id="write" value="WRITE" onclick="location.href='q_form.jsp'">	
 	<button type="button" onclick="history.back()" id="bl">BACK TO LIST</button>
+	<fieldset>
+  <legend>댓글작성</legend>
+	
 	<form style="text-align:center" action = "reqna_input.do" method = "post">
 	<br/>댓글임<input type = "text" id='reqnacon' name = 'reqnacon'><br/>
 	작성자<input type = "text" id = 'reqwriter' name = 'reqwriter' value='${account.id}' readonly/><br/>
 	<input type = "submit" id="write" name="write" value = "submit"/>
-	<input type="text" id="num" name="num" value="${q.no}" readonly></td>
+	<input type="hidden" id="num" name="num" value="${q.no}" readonly></td>
 	</form>
 	</div>
+	</fieldset>
+	
+	<fieldset>
+  <legend>댓글</legend>
 	<c:forEach var="qlist" items="${qa}">
-
-	
-	<td>${qlist.num}번 댓글 작성자 : ${qlist.writer} 작성날짜 : ${qlist.wdate}<br/>${qlist.content}</td>
+	<form style="text-align:center" action = "reqna_update?num=${qlist.num}" method = "post">
+	<td>${qlist.num}번 댓글 작성자 : ${qlist.writer} 작성날짜 : ${qlist.wdate} </td>
+	<input type="hidden" id="num1" name="num1" value="${qlist.num}" readonly>
+	<c:if test="${account.id == q.writer}">
+	<input type="submit" id="update" value="없데이트" ><input type="button" onclick="location.href='reqna_delete?num=${qlist.num}'" value="삭제하자" >
 	<br/>
+	<input type = "text" id = "contents" name = 'contents' value = "${qlist.contents}"/>
+	<hr/>
+	</c:if>
 	
+	<c:if test="${account.id != q.writer}">
+	<br/>
+	<input type = "text" value = "${qlist.contents}" readonly>
+	<hr/>
+	</c:if>
+	
+	<br/>
+	</form>
 	</c:forEach>
+	</fieldset>
 </body>
 </html>
