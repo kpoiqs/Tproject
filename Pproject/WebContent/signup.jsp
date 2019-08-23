@@ -214,6 +214,10 @@ function mykeydown1() {
 </script>
 </head>
 <body>
+<a href='index.jsp'><img id="b" src="img/airlogo.jpg" style="float: left"></a>
+  <br/>
+  <br/>
+  <br/>
 <p id="font">SIGN UP</P>
 <form method="post" action="join" id="singupForm" name="form">
 <input type="text" placeholder="Input ID" name="inputid" id="id" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" onkeydown="mykeydown()" style="width:345px; height:45px; position: relative; left: 52.5px;" />

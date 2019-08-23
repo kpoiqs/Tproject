@@ -53,6 +53,11 @@ $(function (){
 </script>
 </head>
 <body>
+<a href='index.jsp'><img id="b" src="img/airlogo.jpg" style="float: left"></a>
+  <br/>
+  <br/>
+  <br/>
+  
 <p id="font">FIND ID</P>
 <form method="post" action="find" id="findid">
 <input type="text" id="mailcheck" name="email" style="width:345px; height:45px;" placeholder="Email"/><br />

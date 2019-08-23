@@ -71,6 +71,29 @@
 		}
 		#font {font-size: 70px;} 
 		#pwderror {font-size : 25px;}	
+		 
+ul.a{
+	list-style-type : none;
+}
+li{
+	list-style-type : none;
+	display:inline;
+	
+}
+p{
+text-align:right;
+display:inline;
+}
+#a{
+  font-size: 150%;
+}
+
+#abbd{display:inline;
+text-align:right;
+align:right;
+}
+#abbd{text-align:right}
+#b{align:left}
 	</style>
 <script type = "text/javascript">
 $(function (){
@@ -106,6 +129,15 @@ $(function(){
 </script>
 </head>
 <body>
+
+  <a href='index.jsp'><img id="b" src="img/airlogo.jpg" style="float: left"></a>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 	<p id="font">AIR LINE</p>
 	<form action="login" method ="post" id="loginchecker">
 		<input type="text" placeholder="ID" name="id" id="idcheck"  style="width:345px; height:45px;"><br />

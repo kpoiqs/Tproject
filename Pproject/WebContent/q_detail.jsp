@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -9,7 +9,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+<link rel="stylesheet"
+
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 <script type="text/javascript">
+
 
 
 
@@ -89,7 +95,9 @@ $(function(){
 h1,h2 {
 	text-align: center;
 }
-
+#all{
+	margin:auto;
+}
 #write {
   background-color: white;
   font-size: 24px;
@@ -102,7 +110,7 @@ h1,h2 {
   border-bottom-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-
+ 
 }
 #write:hover{
 	background-color: skyblue;
@@ -182,6 +190,7 @@ h1,h2 {
 #bl:hover{
 	background-color: skyblue;
 	color: white;
+	text-align:center;
 }
 
 tr.sub{
@@ -192,7 +201,7 @@ tr.sub{
 
 body {
 	width: 800px;
-	margin: 0 auto;
+	margin: auto;
 	border: 1px;
 }
 
@@ -204,13 +213,77 @@ body {
 td{
 	 float: left;
 }
+ul.a{
+	list-style-type : none;
+}
+li{
+	list-style-type : none;
+	display:inline;
+	
+}
+p{
+text-align:right;
+display:inline;
+}
+#a{
+  font-size: 150%;
+}
+#ab {
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  width: 90%;
+  margin-left: 100px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;
+}
 
-
+#abbd{display:inline;
+text-align:right;
+align:right;
+}
+#abbd{text-align:right}
+img{display:inline}
 </style>
 
 </head>
 <body>
-
+<div id = "a" >
+  <a href='index.jsp'><img id="b" src="img/airlogo.jpg"></a>
+  
+  	<c:choose>
+  		<c:when test="${account !=null || admin != null}">
+			
+			
+			
+			<p style="text-align:right" id = 'abbd' >Welcome ${account.id}</p>
+			
+			<form action="mybook" style="float: right" method = "post" id = 'abbd'>
+			<input type = 'hidden' id = 'accountid' name = 'accountid' value = "${account.id}" />
+			<input type = "submit" style="float: right" id = 'mybook' class="btn btn-primary" value = "Mybook"/>
+			</form>
+			<div style="text-align:right" id = 'abbd' >
+			<input type = "button" style="float: right" onclick="location.href='Withdrawalcheck.jsp'" class="btn btn-primary" value = "detail"/>
+			</div>
+			<button type="button" style="float: right" class="btn btn-primary" onclick="location.href='q_req_list.do?reqPage=1'">QnA</button>
+			<form action="logout" style="float:right" method = "post" id='abbd'>
+			<input type = 'submit' style="float: right" class='btn btn-primary' value = 'logout'>
+			</form>
+			
+  		</c:when>
+  		
+  		<c:otherwise>
+  			<form action = 'login_input' id = 'abbd'>
+ 			<input type = "submit" class="btn btn-primary" value = "login" style="float: right"/>
+ 			</form>
+  		</c:otherwise>
+  	</c:choose>
+  	<c:if test = "${account !=null && admin != null}">
+  	<form action = 'adminbooklist.admin' id = 'abbd'>
+ 			<input type = "submit" class="btn btn-primary" value = "admin" style="float: right"/>
+ 			</form>
+  	</c:if>
+  </div>
 
 	
 	
@@ -218,7 +291,7 @@ td{
 	<h2>DETAIL</h2>
 	<div class="all">
 	
-	<form action="q_modify?no=${q.no}" method="post" id="form" name="form">
+	<form action="q_modify?no=${q.no}" method="post" id="form" name="form"  style="margin:auto">
 	<c:if test = "${account.id == q.writer }">
 	<table class="tb">
 	
@@ -245,12 +318,15 @@ td{
 				<tr>
 					<th>CONTENT</th>
 					<td><textarea id="content" name="content" style="width: 345px; height: 300px" readonly>${q.content }</textarea>
-							<input type="submit" value="MODIFY" id="modify" > <br /></td>
+							</td>
 					</tr>
 					
 			</table>
-			<input type="button" id="delete" value="DELETE">
+			<div style="float:right">
+			<input type="submit" value="MODIFY" id="modify" style="display:inline"> 
+			<input type="button" id="delete"  value="DELETE">
 					<input type="button" id="write" value="WRITE" onclick="location.href='q_form.jsp'">
+			</div>
 			</c:if>
 		</form>	
 		
@@ -280,37 +356,51 @@ td{
 					</tr>
 					
 			</table>
-			<input type="submit" value="MODIFY" id="modify" >
+			<div style="float:right">
+			<input type="submit" value="MODIFY" id="modify" style = "display:inline" >
 			<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
+			</div>
 			</c:if>
 		
 	<c:if test="${q.lvl == 0}">
 	
 	</c:if>
-	<button type="button" onclick="history.back()" id="bl">BACK TO LIST</button>
-	<fieldset>
-  <legend>댓글작성</legend>
+	<button type="button" onclick="history.back()" id="bl" style="float:right">BACK TO LIST</button>
+	
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<div style="text-align:center">
+<div id='ab' style="text-align:center">
+	
+  Reply
 	
 	<form style="text-align:center" action = "reqna_input.do" method = "post">
-	<br/>댓글임<input type = "text" id='reqnacon' name = 'reqnacon'><br/>
-	작성자<input type = "text" id = 'reqwriter' name = 'reqwriter' value='${account.id}' readonly/><br/>
-	<input type = "submit" id="write" name="write" value = "submit"/>
+	<br/>comment<br/><input type = "text" id='reqnacon' name = 'reqnacon'><br/>
+	writers<br/><input type = "text" id = 'reqwriter' name = 'reqwriter' value='${account.id}' readonly/><br/>
+	<input type = "submit" id="write" name="write" value = "submit" />
 	<input type="hidden" id="num" name="num" value="${q.no}" readonly></td>
 	</form>
 	</div>
-	</fieldset>
 	
-	<fieldset>
-  <legend>댓글</legend>
+	</div>
+	
+	<br/>
+	<div style="text-align:center">
+<div id='ab' style="text-align:center">
+  comment
 	<c:forEach var="qlist" items="${qa}">
 	<form style="text-align:center" action = "reqna_update?num=${qlist.num}" method = "post">
-	<td>${qlist.num}번 댓글 작성자 : ${qlist.writer} 작성날짜 : ${qlist.wdate} </td>
+	<td>writer : ${qlist.writer} date : ${qlist.wdate} </td>
 	<input type="hidden" id="num1" name="num1" value="${qlist.num}" readonly>
 	<c:if test="${account.id == q.writer}">
-	<input type="submit" id="update" value="없데이트" ><input type="button" onclick="location.href='reqna_delete?num=${qlist.num}'" value="삭제하자" >
+	<input type="submit" id="update" value="Update" class="btn btn-primary"><input type="button" onclick="location.href='reqna_delete?num=${qlist.num}'" class="btn btn-primary" value="Delete" >
 	<br/>
 	<input type = "text" id = "contents" name = 'contents' value = "${qlist.contents}"/>
 	<hr/>
+	
 	</c:if>
 	
 	<c:if test="${account.id != q.writer}">
@@ -322,6 +412,8 @@ td{
 	<br/>
 	</form>
 	</c:forEach>
-	</fieldset>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

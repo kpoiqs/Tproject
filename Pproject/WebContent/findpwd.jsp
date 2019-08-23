@@ -43,6 +43,10 @@ $(function (){
 </script>
 </head>
 <body>
+<a href='index.jsp'><img id="b" src="img/airlogo.jpg" style="float: left"></a>
+  <br/>
+  <br/>
+  <br/>
 <p id="font">FIND PASSWORD</P>
 <form method="post" action="findpwd" id="findpwd">
 <input type="text" name="id" style="width:345px; height:45px;" placeholder="ID" id="pwdid"/><br />
