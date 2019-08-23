@@ -59,7 +59,7 @@ img{display:inline}
 
    	      alert("Cancel!");
    		return false;
-   	   }1
+   	   }
    	
    	});
    });

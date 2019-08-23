@@ -129,7 +129,7 @@ img{display:inline}
 <div style="text-align:center">
 <div id='a' style="text-align:center">
 <fieldset>
-  <legend>Outbound</legend>1
+  <legend>Outbound</legend>
     <br>
 	Depart : ${fromdate} ${plan1.depa} ${plan1.dept}<br> Arrives : ${fromdate} ${plan1.arva} ${plan1.arvt} <br/>
 <br>
