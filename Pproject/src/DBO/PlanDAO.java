@@ -7,7 +7,7 @@ import Model.Book2;
 import Model.book;
 import Model.plan;
 
-public interface PlanDAO {1
+public interface PlanDAO {
 
 	List<plan> selectname12(String depa , String arva);
 	

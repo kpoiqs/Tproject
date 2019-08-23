@@ -4,7 +4,7 @@ public class Book2 {
 
 	private String depa;
 	private String arva;
-	private String id;1
+	private String id;
 	private String day;
 	private int pay;
 	private String sno;
