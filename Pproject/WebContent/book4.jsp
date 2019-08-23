@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<style>
+<style>1
 #abbd{display:inline;
 text-align:right;
 align:right;
