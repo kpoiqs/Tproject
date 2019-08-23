@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @WebFilter(filterName="FilterController2" , urlPatterns = {"*.admin"})
 public class MemberCheckFilter2 implements Filter {
 
-	@Override
+	@Override1
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		
