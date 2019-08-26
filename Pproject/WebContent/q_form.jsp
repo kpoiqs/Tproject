@@ -24,7 +24,7 @@
 <script type="text/javascript">
 	$(function() {
 		//alert("sfsdf");
-		$("#form").validate(){
+		$("#form").validate({
 			debug : false,
 
 			rules : {
@@ -179,7 +179,7 @@ img{display:inline}
 
 				<tr>
 					<th>WRITER</th>
-					<td><input type="text" id="writer" name="writer" value="${account.id}"
+					<td><input type="text" id="id" name="id" value="${account.id}"
 						 readonly></td>
 				</tr>
 					

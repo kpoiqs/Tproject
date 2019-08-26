@@ -292,7 +292,7 @@ img{display:inline}
 	<div class="all">
 	
 	<form action="q_modify?no=${q.no}" method="post" id="form" name="form"  style="margin:auto">
-	<c:if test = "${account.id == q.writer }">
+	<c:if test = "${account.id == q.id }">
 	<table class="tb">
 	
 	
@@ -305,7 +305,7 @@ img{display:inline}
 				
 				<tr>
 					<th>WRITER</th>
-					<td><input type="text" id="writer" name="writer" value="${q.writer}" maxlength="100" readonly></td>
+					<td><input type="text" id="writer" name="writer" value="${q.id}" maxlength="100" readonly></td>
 				</tr>
 
 				<tr>
@@ -325,12 +325,12 @@ img{display:inline}
 			<div style="float:right">
 			<input type="submit" value="MODIFY" id="modify" style="display:inline"> 
 			<input type="button" id="delete"  value="DELETE">
-					<input type="button" id="write" value="WRITE" onclick="location.href='q_form.jsp'">
+					
 			</div>
 			</c:if>
 		</form>	
 		
-		<c:if test = "${account.id != q.writer }">
+		<c:if test = "${account.id != q.id }">
 		<table class="tb">
 			<tr>
 					<th>NO</th>
@@ -340,7 +340,7 @@ img{display:inline}
 				
 				<tr>
 					<th>WRITER</th>
-					<td>${q.writer}</td>
+					<td>${q.id}</td>
 				</tr>
 
 				<tr>
@@ -357,8 +357,8 @@ img{display:inline}
 					
 			</table>
 			<div style="float:right">
-			<input type="submit" value="MODIFY" id="modify" style = "display:inline" >
-			<input type="button" onclick="location.href='q_reply_page?grp=${q.grp }'" id="reply" value="REPLY">
+			
+			
 			</div>
 			</c:if>
 		
@@ -395,7 +395,9 @@ img{display:inline}
 	<form style="text-align:center" action = "reqna_update?num=${qlist.num}" method = "post">
 	<td>writer : ${qlist.writer} date : ${qlist.wdate} </td>
 	<input type="hidden" id="num1" name="num1" value="${qlist.num}" readonly>
-	<c:if test="${account.id == q.writer}">
+	
+	
+	<c:if test="${account.id == qlist.writer}">
 	<input type="submit" id="update" value="Update" class="btn btn-primary"><input type="button" onclick="location.href='reqna_delete?num=${qlist.num}'" class="btn btn-primary" value="Delete" >
 	<br/>
 	<input type = "text" id = "contents" name = 'contents' value = "${qlist.contents}"/>
@@ -403,7 +405,7 @@ img{display:inline}
 	
 	</c:if>
 	
-	<c:if test="${account.id != q.writer}">
+	<c:if test="${account.id != qlist.writer}">
 	<br/>
 	<input type = "text" value = "${qlist.contents}" readonly>
 	<hr/>

@@ -10,7 +10,6 @@ public class  Qna {
 	private int grp;
 	private int lvl;
 	private int visited;
-	
 	public int getNo() {
 		return no;
 	}
@@ -29,11 +28,11 @@ public class  Qna {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWriter() {
+	public String getId() {
 		return id;
 	}
-	public void setWriter(String writer) {
-		this.id = writer;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getWdate() {
 		return wdate;
@@ -61,10 +60,9 @@ public class  Qna {
 	}
 	@Override
 	public String toString() {
-		return "Qna [no=" + no + ", subject=" + subject + ", content=" + content + ", writer=" + id + ", wdate="
-				+ wdate + ", grp=" + grp + ", lvl=" + lvl + ", visited=" + visited + "]";
+		return "Qna [no=" + no + ", subject=" + subject + ", content=" + content + ", id=" + id + ", wdate=" + wdate
+				+ ", grp=" + grp + ", lvl=" + lvl + ", visited=" + visited + "]";
 	}
-	
 	
 	
 }

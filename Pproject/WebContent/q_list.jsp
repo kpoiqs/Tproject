@@ -184,7 +184,7 @@ img{display:inline}
 							</c:if> <a href="/q_visited"></a><a href="q_detail?no=${qq.no}">${qq.subject}</a>
 						</td>
 
-						<td>${qq.writer}</td>
+						<td>${qq.id}</td>
 						<td>${qq.wdate}</td>
 						<td>${qq.visited }</td>
 					</tr>

@@ -173,7 +173,7 @@ img{display:inline}
 
 				<tr>
 					<th>WRITER</th>
-					<td><input type="text" id="writer" name="writer" value="${account.id}"
+					<td><input type="text" id="id" name="id" value="${account.id}"
 						maxlength="10" readonly></td>
 				</tr>
 

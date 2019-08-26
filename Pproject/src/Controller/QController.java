@@ -47,7 +47,7 @@ public class QController extends HttpServlet {
 			
 			qna.setSubject(req.getParameter("subject"));
 			qna.setContent(req.getParameter("content"));
-			qna.setWriter(req.getParameter("writer"));
+			qna.setId(req.getParameter("id"));
 								
 			dao.insert(qna);
 			
@@ -146,7 +146,7 @@ public class QController extends HttpServlet {
 			
 			qna.setSubject(req.getParameter("subject"));
 			qna.setContent(req.getParameter("content"));
-			qna.setWriter(req.getParameter("writer"));
+			qna.setId(req.getParameter("id"));
 			qna.setGrp(Integer.parseInt(req.getParameter("grp")));
 			
 			dao.insertReply(qna);

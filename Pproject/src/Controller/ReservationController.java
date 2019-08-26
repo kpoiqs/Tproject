@@ -84,10 +84,10 @@ public class ReservationController extends HttpServlet {
 					rd.forward(req, resp);
 				} else if (fromdate.equals(todate)) {
 
-					List<plan> planlistDF1 = new ArrayList<plan>();
-					List<plan> planlistRF1 = new ArrayList<plan>();
-					List<plan> planlistDF2 = new ArrayList<plan>();
-					List<plan> planlistRF2 = new ArrayList<plan>();
+					List<plan> planlistDOF = new ArrayList<plan>(); //Depart Occupy Filter
+					List<plan> planlistROF = new ArrayList<plan>(); //Return Occupy Filter
+					List<plan> planlistDDF = new ArrayList<plan>(); //Depart Duplication Filter
+					List<plan> planlistRDF = new ArrayList<plan>(); //Return Duplication Filter
 					for (int d = 0; d < planlistD.size(); d++) {
 						for (int i = 0; i < planlistR.size(); i++) {
 							int aarvt = Integer.parseInt(planlistD.get(d).getArvt().replaceAll("[^0-9]", ""));
@@ -98,10 +98,10 @@ public class ReservationController extends HttpServlet {
 
 								cnt4 = dao.checkbook(todate, planlistR.get(i).getSno());
 								if (cnt4 < 3) {								
-									planlistRF1.add(planlistR.get(i));
-									for (int j = 0; j< planlistRF1.size(); j++) {
-										if(!planlistRF2.contains(planlistRF1.get(j))) {
-											planlistRF2.add(planlistRF1.get(j));
+									planlistROF.add(planlistR.get(i));
+									for (int j = 0; j< planlistROF.size(); j++) {
+										if(!planlistRDF.contains(planlistROF.get(j))) {
+											planlistRDF.add(planlistROF.get(j));
 										}
 									}
 								}
@@ -119,10 +119,10 @@ public class ReservationController extends HttpServlet {
 
 								cnt3 = dao.checkbook(fromdate, planlistD.get(d).getSno());
 								if (cnt3 < 3) {
-									planlistDF1.add(planlistD.get(d));
-									for (int j = 0; j< planlistDF1.size(); j++) {
-										if(!planlistDF2.contains(planlistDF1.get(j))) {
-											planlistDF2.add(planlistDF1.get(j));
+									planlistDOF.add(planlistD.get(d));
+									for (int j = 0; j< planlistDOF.size(); j++) {
+										if(!planlistDDF.contains(planlistDOF.get(j))) {
+											planlistDDF.add(planlistDOF.get(j));
 										} 
 									}
 								}
@@ -132,8 +132,8 @@ public class ReservationController extends HttpServlet {
 					}
 					req.setAttribute("fromdate", fromdate);
 					req.setAttribute("todate", todate);
-					req.setAttribute("plans", planlistDF2);
-					req.setAttribute("plan2", planlistRF2);
+					req.setAttribute("plans", planlistDDF);
+					req.setAttribute("plan2", planlistRDF);
 					RequestDispatcher rd = req.getRequestDispatcher("/reservation.jsp");
 					rd.forward(req, resp);
 				}

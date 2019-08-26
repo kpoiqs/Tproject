@@ -167,7 +167,7 @@ img{display:inline}
 				
 				<tr>
 					<th>WRITER</th>
-					<td><input type="text" id="writer" name="writer" value="${q.writer }"
+					<td><input type="text" id="writer" name="writer" value="${q.id }"
 						maxlength="10" readonly></td>
 				</tr>
 

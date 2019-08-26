@@ -65,7 +65,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				Qna q = new Qna();
 				q.setNo(resultSet.getInt("no"));
 				q.setSubject(resultSet.getString("subject"));
-				q.setWriter(resultSet.getString("id"));
+				q.setId(resultSet.getString("id"));
 				q.setWdate(resultSet.getString("wdate"));
 				q.setGrp(resultSet.getInt("grp"));
 				q.setLvl(resultSet.getInt("lvl"));
@@ -102,7 +102,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			qna = new Qna();
 			
 			qna.setNo(resultSet.getInt("no"));
-			qna.setWriter(resultSet.getString("id"));
+			qna.setId(resultSet.getString("id"));
 			qna.setSubject(resultSet.getString("subject"));
 			qna.setContent(resultSet.getString("content"));
 			qna.setGrp(resultSet.getInt("grp"));
@@ -129,7 +129,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			
 			preparedStatement.setString(1, qna.getSubject());
 			preparedStatement.setString(2, qna.getContent());
-			preparedStatement.setString(3, qna.getWriter());
+			preparedStatement.setString(3, qna.getId());
 			
 			int rowCount = preparedStatement.executeUpdate();
 			if(rowCount>0) {
@@ -218,7 +218,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				q.setNo(resultSet.getInt("no"));
 				q.setSubject(resultSet.getString("subject"));
 				q.setContent(resultSet.getString("content"));
-				q.setWriter(resultSet.getString("id"));
+				q.setId(resultSet.getString("id"));
 				
 				q.setWdate(resultSet.getString("wdate"));
 				String s2 = q.getWdate().substring(0,q.getWdate().length()-9);
@@ -249,7 +249,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			
 			preparedStatement.setString(1, qna.getSubject());
 			preparedStatement.setString(2, qna.getContent());
-			preparedStatement.setString(3, qna.getWriter());
+			preparedStatement.setString(3, qna.getId());
 			preparedStatement.setInt(4, qna.getGrp());
 			
 			preparedStatement.executeUpdate();
