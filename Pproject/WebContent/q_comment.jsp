@@ -32,7 +32,7 @@ div.ex1 {
 </style> -->
 
 <meta charset="utf-8">
-<title>Ajax Comment</title>
+<title>Comment</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- 템플릿 플러그인 설정 -->

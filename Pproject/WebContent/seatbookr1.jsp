@@ -5,6 +5,7 @@
 <html>
 
 	<head>
+	<title>Seat Book1</title>
 	<style>
 	#h{
 		background-image:url("img/airplane7.jpg");

@@ -5,7 +5,9 @@
 <html lang="ko">
 
 	<head>
+	<title>Seat Book2</title>
 	<style>
+	
 	#h{
 		background-image:url("img/airplane7.jpg");
 		background-repeat:no-repeat;

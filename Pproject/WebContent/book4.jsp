@@ -40,7 +40,7 @@ img{display:inline}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<title>Insert title here</title>
+<title>Admin Detail</title>
 </head>
 <body>
 <div id = "b" >

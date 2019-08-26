@@ -24,7 +24,7 @@
 <script type="text/javascript">
 	$(function() {
 		//alert("sfsdf");
-		$("#form").validate({
+		$("#form").validate(){
 			debug : false,
 
 			rules : {
