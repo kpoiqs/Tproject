@@ -65,7 +65,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				Qna q = new Qna();
 				q.setNo(resultSet.getInt("no"));
 				q.setSubject(resultSet.getString("subject"));
-				q.setWriter(resultSet.getString("writer"));
+				q.setWriter(resultSet.getString("id"));
 				q.setWdate(resultSet.getString("wdate"));
 				q.setGrp(resultSet.getInt("grp"));
 				q.setLvl(resultSet.getInt("lvl"));
@@ -102,7 +102,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 			qna = new Qna();
 			
 			qna.setNo(resultSet.getInt("no"));
-			qna.setWriter(resultSet.getString("writer"));
+			qna.setWriter(resultSet.getString("id"));
 			qna.setSubject(resultSet.getString("subject"));
 			qna.setContent(resultSet.getString("content"));
 			qna.setGrp(resultSet.getInt("grp"));
@@ -218,7 +218,7 @@ public class QnaDAOImpl extends BaseDAO implements QnaDAO {
 				q.setNo(resultSet.getInt("no"));
 				q.setSubject(resultSet.getString("subject"));
 				q.setContent(resultSet.getString("content"));
-				q.setWriter(resultSet.getString("writer"));
+				q.setWriter(resultSet.getString("id"));
 				
 				q.setWdate(resultSet.getString("wdate"));
 				String s2 = q.getWdate().substring(0,q.getWdate().length()-9);
