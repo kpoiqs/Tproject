@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 			AccountDAO dao = new AccountDAOImpl();
 			Account account = dao.selectById(id, password);
 			
-				if(account != null&&!account.getId().equals("kpoiqq")) {
+				if(account != null&&!account.getId().equals("admin")) {
 					HttpSession session = req.getSession();
 					session.setAttribute("account", account);
 					RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
@@ -63,7 +63,7 @@ public class LoginController extends HttpServlet {
 					RequestDispatcher rd = req.getRequestDispatcher("/checker.jsp");
 					rd.forward(req, resp);
 				}
-				else if (account.getId().equals("kpoiqq")) {
+				else if (account.getId().equals("admin")) {
 					HttpSession session = req.getSession();
 					session.setAttribute("admin", account);
 					session.setAttribute("account", account);
