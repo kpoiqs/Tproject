@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>AIR Q&A</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 
 $(function(){
 	$("#delete").click(function(){
-	var result = confirm("${q.no }¹ø °Ô½Ã±ÛÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
+	var result = confirm("${q.no }ë²ˆ ê²Œì‹œê¸€ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 	if(result){
 		location.href = "q_delete?no=${q.no }";
 	}else{
@@ -53,7 +53,7 @@ $(function(){
 
  $(function(){
 	$("#modify").click(function(){
-	var result = confirm("${q.no }¹ø °Ô½Ã±ÛÀ» ¼öÁ¤ÇÏ½Ã°Ú½À´Ï±î?");
+	var result = confirm("${q.no }ë²ˆ ê²Œì‹œê¸€ì„ ìˆ˜ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 	var con = document.form1.content;
 	
 	if(result){
@@ -63,7 +63,7 @@ $(function(){
 	}/* ,
 	
 	if(con==null){
-		alert("ÀÔ·Â ºÎÅ¹");
+		alert("ì…ë ¥ ë¶€íƒ");
 		return false;
 	} */
 	
@@ -75,7 +75,7 @@ $(function(){
 		var con = document.modify;
 		
 		if(con == null){
-			alert("ÀÔ·Â ºÎÅ¹");
+			alert("ì…ë ¥ ë¶€íƒ");
 			return false;
 		}
 		});

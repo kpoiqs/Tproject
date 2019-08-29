@@ -38,9 +38,11 @@ public class QController extends HttpServlet {
 		String action = uri.substring(lastIndex+1);//
 		
 		if(action.equals("q_input")) {
+			req.setCharacterEncoding("utf-8");
 			RequestDispatcher rd = req.getRequestDispatcher("/q_form.jsp");
 			rd.forward(req, resp);
 		}else if(action.equals("q_save")) {
+			req.setCharacterEncoding("utf-8");
 			
 			QnaDAO dao = new QnaDAOImpl();
 			Qna qna = new Qna();
@@ -54,6 +56,7 @@ public class QController extends HttpServlet {
 			resp.sendRedirect("q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_detail")) {
+			req.setCharacterEncoding("utf-8");
 			
 			int no = Integer.parseInt(req.getParameter("no"));
 			
@@ -75,6 +78,7 @@ public class QController extends HttpServlet {
 			rd.forward(req, resp);
 			
 		}else if(action.equals("q_modify")) {
+			req.setCharacterEncoding("utf-8");
 			
 			
 			int no = Integer.parseInt(req.getParameter("no"));
@@ -92,6 +96,7 @@ public class QController extends HttpServlet {
 			rd.forward(req, resp);
 			
 		}else if(action.equals("q_delete")) {
+			req.setCharacterEncoding("utf-8");
 			int no = Integer.parseInt(req.getParameter("no"));
 			QnaDAO dao = new QnaDAOImpl();
 			dao.deleteByNo(no);
@@ -101,6 +106,7 @@ public class QController extends HttpServlet {
 			resp.sendRedirect("q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_update")) {
+			req.setCharacterEncoding("utf-8");
 
 			QnaDAO dao = new QnaDAOImpl();
 			Qna qna = new Qna();
@@ -116,6 +122,7 @@ public class QController extends HttpServlet {
 			resp.sendRedirect("q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_req_list.do")) {
+			req.setCharacterEncoding("utf-8");
 			
 			int requestPage = Integer.parseInt(req.getParameter("reqPage"));
 			PageManager pm = new PageManager(requestPage);
@@ -131,6 +138,7 @@ public class QController extends HttpServlet {
 			rd.forward(req, resp);
 			
 		}else if(action.equals("q_list")) {
+			req.setCharacterEncoding("utf-8");
 			
 			QnaDAO dao = new QnaDAOImpl();
 			List<Qna> qList = dao.selectall();
@@ -140,6 +148,7 @@ public class QController extends HttpServlet {
 			rd.forward(req, resp);
 			
 		}else if(action.equals("q_reply")) {
+			req.setCharacterEncoding("utf-8");
 			
 			QnaDAO dao = new QnaDAOImpl();
 			Qna qna = new Qna();
@@ -155,6 +164,7 @@ public class QController extends HttpServlet {
 			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("q_reply_page")) {
+			
 			req.setCharacterEncoding("utf-8");
 			int grp = Integer.parseInt(req.getParameter("grp"));
 			
@@ -178,6 +188,7 @@ public class QController extends HttpServlet {
 			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("reqna_delete")) {
+			req.setCharacterEncoding("utf-8");
 			
 			int num = Integer.parseInt(req.getParameter("num"));
 			QnaDAO dao = new QnaDAOImpl();
@@ -186,6 +197,7 @@ public class QController extends HttpServlet {
 			resp.sendRedirect("/Pproject/q_req_list.do?reqPage=1");
 			
 		}else if(action.equals("reqna_update")) {
+			req.setCharacterEncoding("utf-8");
 
 			QnaDAO dao = new QnaDAOImpl();
 			Reqna reqna = new Reqna();
